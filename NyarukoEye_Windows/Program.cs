@@ -114,9 +114,53 @@ namespace NyarukoEye_Windows
                 sleepTime = sleepTimeSecInt * 1000;
             }
             printf("间隔时间（秒）：" + sleepTimeSecInt.ToString());
+            printf("启动屏幕截图线程...", 0);
+            ThreadStart screenshotRef = new ThreadStart(screenshotThreadRun);
+            Thread screenshotThread = new Thread(screenshotRef);
+            screenshotThread.Name = "screenshotThread";
+            screenshotThread.Start();
             printf("初始化完成。");
             Application.Run();
             return 0;
+        }
+        static private void screenshotThreadRun()
+        {
+            while (true)
+            {
+                printf("进行屏幕截图...", 0);
+                printf("屏幕截图完成 " + getScreenshot(), 0);
+                Thread.Sleep(sleepTime);
+            }
+        }
+        static private string getScreenshot()
+        {
+            Bitmap bmp = new Bitmap(screenW, screenH);
+            Graphics gra = Graphics.FromImage(bmp);
+            gra.CopyFromScreen(new Point(0, 0), new Point(0, 0), bmp.Size);
+            string time = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+            string fileName = prefix + name + time + "." + imgType; //创建文件名
+            string filePath = tempdir + "\\" + fileName;
+            switch (imgTypeID)
+            {
+                case 1:
+                    bmp.Save(filePath, ImageFormat.Bmp);
+                    break;
+                case 2:
+                    bmp.Save(filePath, ImageFormat.Png);
+                    break;
+                case 3:
+                    bmp.Save(filePath, ImageFormat.Tiff);
+                    break;
+                case 4:
+                    bmp.Save(filePath, ImageFormat.Gif);
+                    break;
+                default:
+                    bmp.Save(filePath, ImageFormat.Jpeg);
+                    break;
+            }
+            bmp.Dispose(); //关闭对象
+            gra.Dispose(); //关闭画笔
+            return filePath;
         }
         static private void printf(string txt, uint level = 1)
         {
