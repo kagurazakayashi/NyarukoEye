@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace NyarukoEye_Windows
 {
-    class INIClass
+    public class INI
     {
         public string inipath;
         [DllImport("kernel32")]
@@ -18,7 +15,7 @@ namespace NyarukoEye_Windows
         /// 构造方法
         /// </summary>
         /// <param name="INIPath">文件路径</param>
-        public INIClass(string INIPath)
+        public INI(string INIPath)
         {
             inipath = INIPath;
         }
