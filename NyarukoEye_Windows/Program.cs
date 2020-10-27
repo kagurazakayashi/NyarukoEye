@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -14,12 +12,11 @@ namespace NyarukoEye_Windows
         static private int debuglevel = 4;
         static private string tempdir = "";
         static private string imgType = "";
-        static private int imgTypeID = 0;
+        static private ImageFormat imgFormat;
         static private int sleepTime = 600000;
         static private string prefix = "";
         static private string name = "";
-        static private int screenW;
-        static private int screenH;
+        static private UInt64 threadID = 0;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -28,7 +25,6 @@ namespace NyarukoEye_Windows
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run();
             AppDomain appd = AppDomain.CurrentDomain;
             appd.ProcessExit += (s, e) =>
             {
@@ -45,14 +41,14 @@ namespace NyarukoEye_Windows
             }
             string IniFileDir = IniFileDirArr[0];
             printf("加载配置文件：" + IniFileDir);
-            INIClass ini = new INIClass(IniFileDir);
+            INI ini = new INI(IniFileDir);
             if (!ini.ExistINIFile())
             {
                 printf("找不到配置文件！", 3);
                 return -1;
             }
-            screenW = Screen.PrimaryScreen.Bounds.Width;
-            screenH = Screen.PrimaryScreen.Bounds.Height;
+            int screenW = Screen.PrimaryScreen.Bounds.Width;
+            int screenH = Screen.PrimaryScreen.Bounds.Height;
             printf("主屏幕像素：" + screenW.ToString() + " × " + screenH.ToString());
             tempdir = ini.IniReadValue("Work", "TempDir");
             if (tempdir.Length == 0)
@@ -70,19 +66,19 @@ namespace NyarukoEye_Windows
             switch (imgType)
             {
                 case "bmp":
-                    imgTypeID = 1;
+                    imgFormat = ImageFormat.Bmp;
                     break;
                 case "png":
-                    imgTypeID = 2;
+                    imgFormat = ImageFormat.Png;
                     break;
                 case "tif":
-                    imgTypeID = 3;
+                    imgFormat = ImageFormat.Tiff;
                     break;
                 case "gif":
-                    imgTypeID = 4;
+                    imgFormat = ImageFormat.Gif;
                     break;
                 default:
-                    imgTypeID = 0;
+                    imgFormat = ImageFormat.Jpeg;
                     break;
             }
             printf("文件格式：" + imgType);
@@ -114,10 +110,10 @@ namespace NyarukoEye_Windows
                 sleepTime = sleepTimeSecInt * 1000;
             }
             printf("间隔时间（秒）：" + sleepTimeSecInt.ToString());
-            printf("启动屏幕截图线程...", 0);
+            printf("启动屏幕截图线程 " + threadID.ToString() + " ...", 0);
             ThreadStart screenshotRef = new ThreadStart(screenshotThreadRun);
             Thread screenshotThread = new Thread(screenshotRef);
-            screenshotThread.Name = "screenshotThread";
+            screenshotThread.Name = "screenshotThread" + (threadID++).ToString();
             screenshotThread.Start();
             printf("初始化完成。");
             Application.Run();
@@ -129,37 +125,23 @@ namespace NyarukoEye_Windows
             {
                 printf("进行屏幕截图...", 0);
                 printf("屏幕截图完成 " + getScreenshot(), 0);
+                printf("启动文件加密线程 "+ threadID.ToString() + " ...", 0);
+                ThreadStart encryptRef = new ThreadStart(encryptThreadRun);
+                Thread encryptThread = new Thread(encryptRef);
+                encryptThread.Name = "encryptThread" + (threadID++).ToString();
+                encryptThread.Start();
                 Thread.Sleep(sleepTime);
             }
         }
+        static private void encryptThreadRun()
+        {
+            printf("加密线程.", 0);
+        }
         static private string getScreenshot()
         {
-            Bitmap bmp = new Bitmap(screenW, screenH);
-            Graphics gra = Graphics.FromImage(bmp);
-            gra.CopyFromScreen(new Point(0, 0), new Point(0, 0), bmp.Size);
             string time = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-            string fileName = prefix + name + time + "." + imgType; //创建文件名
-            string filePath = tempdir + "\\" + fileName;
-            switch (imgTypeID)
-            {
-                case 1:
-                    bmp.Save(filePath, ImageFormat.Bmp);
-                    break;
-                case 2:
-                    bmp.Save(filePath, ImageFormat.Png);
-                    break;
-                case 3:
-                    bmp.Save(filePath, ImageFormat.Tiff);
-                    break;
-                case 4:
-                    bmp.Save(filePath, ImageFormat.Gif);
-                    break;
-                default:
-                    bmp.Save(filePath, ImageFormat.Jpeg);
-                    break;
-            }
-            bmp.Dispose(); //关闭对象
-            gra.Dispose(); //关闭画笔
+            string filePath = tempdir + "\\" + prefix + name + time + "." + imgType;
+            Screenshot.saveScreenshot(filePath, imgFormat);
             return filePath;
         }
         static private void printf(string txt, uint level = 1)
