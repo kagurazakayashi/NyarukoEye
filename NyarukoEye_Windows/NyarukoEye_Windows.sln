@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INI", "INI\INI.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shot", "Shot\Shot.csproj", "{BD794388-1491-4EF1-B781-00D8AA239896}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RsaTool", "RSA\RsaTool.csproj", "{74EA63AA-3992-4C15-B756-0E77B18372E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyTool", "KeyTool\KeyTool.csproj", "{36958DE2-3BD7-4C63-A975-9698D284A66E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
