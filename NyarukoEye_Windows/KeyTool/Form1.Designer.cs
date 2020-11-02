@@ -35,14 +35,21 @@
             this.txtPublicXML = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtPrivateXML = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnNew = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtPublicPEM = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.txtPrivatePEM = new System.Windows.Forms.TextBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnInpPub = new System.Windows.Forms.Button();
+            this.btnExpPub = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExpPri = new System.Windows.Forms.Button();
+            this.btnInpPri = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -50,6 +57,8 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -105,7 +114,6 @@
             this.txtPublicXML.Name = "txtPublicXML";
             this.txtPublicXML.Size = new System.Drawing.Size(650, 485);
             this.txtPublicXML.TabIndex = 0;
-            this.txtPublicXML.Text = "[NONE]";
             // 
             // tabPage2
             // 
@@ -132,27 +140,6 @@
             this.txtPrivateXML.Name = "txtPrivateXML";
             this.txtPrivateXML.Size = new System.Drawing.Size(650, 485);
             this.txtPrivateXML.TabIndex = 1;
-            this.txtPrivateXML.Text = "[NONE]";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(688, 498);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(141, 40);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "退出(&E)";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(0, 0);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(141, 40);
-            this.btnNew.TabIndex = 2;
-            this.btnNew.Text = "建立新密钥对(&N)";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // tabPage3
             // 
@@ -179,7 +166,6 @@
             this.txtPublicPEM.Name = "txtPublicPEM";
             this.txtPublicPEM.Size = new System.Drawing.Size(650, 485);
             this.txtPublicPEM.TabIndex = 2;
-            this.txtPublicPEM.Text = "[NONE]";
             // 
             // tabPage4
             // 
@@ -206,15 +192,98 @@
             this.txtPrivatePEM.Name = "txtPrivatePEM";
             this.txtPrivatePEM.Size = new System.Drawing.Size(650, 485);
             this.txtPrivatePEM.TabIndex = 3;
-            this.txtPrivatePEM.Text = "[NONE]";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(688, 498);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(141, 40);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "退出(&E)";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(0, 0);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(141, 40);
+            this.btnNew.TabIndex = 2;
+            this.btnNew.Text = "建立新密钥对(&N)";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Location = new System.Drawing.Point(688, 41);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(141, 451);
             this.panel1.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnExpPub);
+            this.groupBox1.Controls.Add(this.btnInpPub);
+            this.groupBox1.Location = new System.Drawing.Point(0, 46);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(141, 121);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "公钥";
+            // 
+            // btnInpPub
+            // 
+            this.btnInpPub.Location = new System.Drawing.Point(6, 25);
+            this.btnInpPub.Name = "btnInpPub";
+            this.btnInpPub.Size = new System.Drawing.Size(129, 40);
+            this.btnInpPub.TabIndex = 3;
+            this.btnInpPub.Text = "导入公钥";
+            this.btnInpPub.UseVisualStyleBackColor = true;
+            this.btnInpPub.Click += new System.EventHandler(this.btnInpPub_Click);
+            // 
+            // btnExpPub
+            // 
+            this.btnExpPub.Location = new System.Drawing.Point(6, 71);
+            this.btnExpPub.Name = "btnExpPub";
+            this.btnExpPub.Size = new System.Drawing.Size(129, 40);
+            this.btnExpPub.TabIndex = 4;
+            this.btnExpPub.Text = "导出公钥";
+            this.btnExpPub.UseVisualStyleBackColor = true;
+            this.btnExpPub.Click += new System.EventHandler(this.btnExpPub_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnExpPri);
+            this.groupBox2.Controls.Add(this.btnInpPri);
+            this.groupBox2.Location = new System.Drawing.Point(0, 173);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(141, 121);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "私钥";
+            // 
+            // btnExpPri
+            // 
+            this.btnExpPri.Location = new System.Drawing.Point(6, 71);
+            this.btnExpPri.Name = "btnExpPri";
+            this.btnExpPri.Size = new System.Drawing.Size(129, 40);
+            this.btnExpPri.TabIndex = 4;
+            this.btnExpPri.Text = "导出私钥";
+            this.btnExpPri.UseVisualStyleBackColor = true;
+            this.btnExpPri.Click += new System.EventHandler(this.btnExpPri_Click);
+            // 
+            // btnInpPri
+            // 
+            this.btnInpPri.Location = new System.Drawing.Point(6, 25);
+            this.btnInpPri.Name = "btnInpPri";
+            this.btnInpPri.Size = new System.Drawing.Size(129, 40);
+            this.btnInpPri.TabIndex = 3;
+            this.btnInpPri.Text = "导入私钥";
+            this.btnInpPri.UseVisualStyleBackColor = true;
+            this.btnInpPri.Click += new System.EventHandler(this.btnInpPri_Click);
             // 
             // Form1
             // 
@@ -241,6 +310,8 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,6 +334,13 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox txtPrivatePEM;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnExpPri;
+        private System.Windows.Forms.Button btnInpPri;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnExpPub;
+        private System.Windows.Forms.Button btnInpPub;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

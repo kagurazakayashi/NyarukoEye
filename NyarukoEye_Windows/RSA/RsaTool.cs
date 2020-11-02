@@ -132,13 +132,13 @@ namespace NyarukoEye_Windows
         public static void privateKeyPem2Xml2(string privatePemKeyPath = "PrivateKey.pem", string privateXmlKeyPath = "PrivateKey.xml")
         {
             AsymmetricCipherKeyPair keyPair;
-            using (var sr = new StreamReader(privatePemKeyPath))
+            using (StreamReader sr = new StreamReader(privatePemKeyPath))
             {
                 var pemReader = new Org.BouncyCastle.OpenSsl.PemReader(sr);
                 keyPair = (AsymmetricCipherKeyPair)pemReader.ReadObject();
             }
-            var key = (RsaPrivateCrtKeyParameters)keyPair.Private;
-            var p = new RSAParameters
+            RsaPrivateCrtKeyParameters key = (RsaPrivateCrtKeyParameters)keyPair.Private;
+            RSAParameters p = new RSAParameters
             {
                 Modulus = key.Modulus.ToByteArrayUnsigned(),
                 Exponent = key.PublicExponent.ToByteArrayUnsigned(),
@@ -149,13 +149,13 @@ namespace NyarukoEye_Windows
                 DQ = key.DQ.ToByteArrayUnsigned(),
                 InverseQ = key.QInv.ToByteArrayUnsigned(),
             };
-            var rsa = new RSACryptoServiceProvider();
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             rsa.ImportParameters(p);
             string xmlString = rsa.ToXmlString(true);
             RSACSPrivate.FromXmlString(xmlString);
             if (privateXmlKeyPath.Length > 0)
             {
-                using (var sw = new StreamWriter(privateXmlKeyPath))
+                using (StreamWriter sw = new StreamWriter(privateXmlKeyPath))
                 {
                     sw.Write(xmlString);
                 }
