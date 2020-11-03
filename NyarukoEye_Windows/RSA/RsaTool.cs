@@ -79,6 +79,14 @@ namespace NyarukoEye_Windows
                 RSACSPublic.FromXmlString(sr.ReadToEnd());
             }
         }
+        //載入 PEM 格式公鑰
+        public static void loadPemPublicKey(string publicXmlKeyPath = "PrivateKey.pub")
+        {
+            using (var sr = new StreamReader(publicXmlKeyPath))
+            {
+                RSACSPublic.FromXmlString(publicKeyPem2Xml(sr.ReadToEnd()));
+            }
+        }
         //XML 私鑰轉換為 PEM 私鑰
         public static string privateKeyXml2Pem(string privateXmlKeyString)
         {

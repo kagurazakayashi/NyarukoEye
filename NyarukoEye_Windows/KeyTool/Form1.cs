@@ -27,6 +27,7 @@ namespace NyarukoEye_Windows
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "正在新建密钥对...";
             panel1.Enabled = false;
             ThreadStart screenshotRef = new ThreadStart(newKeysThreadRun);
             Thread screenshotThread = new Thread(screenshotRef);
@@ -41,18 +42,14 @@ namespace NyarukoEye_Windows
                 txtPrivateXML.Text = returnPrivateXML;
                 txtPublicPEM.Text = returnPublicPEM;
                 txtPrivatePEM.Text = returnPrivatePEM;
+                toolStripStatusLabel1.Text = "新建密钥对完成。";
                 panel1.Enabled = true;
             };
-            toolStripStatusLabel1.Text = "正在生成公钥...";
             string strPublicXML = RsaTool.newPublicKey("");
-            toolStripStatusLabel1.Text = "正在生成私钥...";
             string strPrivateXML = RsaTool.newPrivateKey("");
-            toolStripStatusLabel1.Text = "正在转换公钥为 PEM ...";
             string strPublicPEM = RsaTool.publicKeyXml2Pem(strPublicXML);
-            toolStripStatusLabel1.Text = "正在转换私钥为 PEM ...";
             string strPrivatePEM = RsaTool.privateKeyXml2Pem(strPrivateXML);
             Invoke(txtKeyDelegate, new object[] { strPublicXML, strPrivateXML, strPublicPEM, strPrivatePEM });
-            toolStripStatusLabel1.Text = "新建密钥对完成。";
         }
         private string extName(string fileName)
         {
@@ -84,7 +81,6 @@ namespace NyarukoEye_Windows
                 return;
             }
         }
-
         private void btnInpPub_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "请选择要导入的公钥";
@@ -94,16 +90,30 @@ namespace NyarukoEye_Windows
             if (result == DialogResult.OK)
             {
                 string fName = openFileDialog1.FileName;
-                toolStripStatusLabel1.Text = "找不到文件 " + fName + " ,请确认输入的文件名是否存在";
-                if (!File.Exists(fName)) MessageBox.Show(toolStripStatusLabel1.Text, "找不到文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                string eName = extName(fName);
-                if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                if (!File.Exists(fName))
                 {
-
+                    toolStripStatusLabel1.Text = "找不到文件 " + fName + " ,请确认输入的文件名是否存在";
+                    MessageBox.Show(toolStripStatusLabel1.Text, "找不到文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
+                string eName = extName(fName);
+                try
                 {
-
+                    if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                    {
+                        RsaTool.loadXmlPublicKey(fName);
+                    }
+                    else
+                    {
+                        RsaTool.loadPemPublicKey(fName);
+                    }
+                    txtPublicXML.Text = RsaTool.RSACSPublic.ToXmlString(checkBox1.Checked);
+                    txtPublicPEM.Text = RsaTool.publicKeyXml2Pem(txtPublicXML.Text);
+                }
+                catch (Exception err)
+                {
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -152,13 +162,23 @@ namespace NyarukoEye_Windows
                     return;
                 }
                 string eName = extName(fName);
-                if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                try
                 {
-
+                    if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                    {
+                        RsaTool.loadXmlPrivateKey(fName);
+                    }
+                    else
+                    {
+                        RsaTool.loadPemPrivateKey(fName);
+                    }
+                    txtPrivateXML.Text = RsaTool.RSACSPrivate.ToXmlString(checkBox1.Checked);
+                    txtPrivatePEM.Text = RsaTool.privateKeyXml2Pem(txtPrivateXML.Text);
                 }
-                else
+                catch (Exception err)
                 {
-
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

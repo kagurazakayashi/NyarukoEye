@@ -50,6 +50,7 @@
             this.btnExpPri = new System.Windows.Forms.Button();
             this.btnInpPri = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -225,18 +226,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnExpPub);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.btnInpPri);
             this.groupBox1.Controls.Add(this.btnInpPub);
             this.groupBox1.Location = new System.Drawing.Point(0, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(141, 121);
+            this.groupBox1.Size = new System.Drawing.Size(141, 151);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "公钥";
+            this.groupBox1.Text = "导入";
             // 
             // btnInpPub
             // 
-            this.btnInpPub.Location = new System.Drawing.Point(6, 25);
+            this.btnInpPub.Location = new System.Drawing.Point(6, 71);
             this.btnInpPub.Name = "btnInpPub";
             this.btnInpPub.Size = new System.Drawing.Size(129, 40);
             this.btnInpPub.TabIndex = 3;
@@ -246,7 +248,7 @@
             // 
             // btnExpPub
             // 
-            this.btnExpPub.Location = new System.Drawing.Point(6, 71);
+            this.btnExpPub.Location = new System.Drawing.Point(6, 25);
             this.btnExpPub.Name = "btnExpPub";
             this.btnExpPub.Size = new System.Drawing.Size(129, 40);
             this.btnExpPub.TabIndex = 4;
@@ -257,13 +259,13 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnExpPri);
-            this.groupBox2.Controls.Add(this.btnInpPri);
-            this.groupBox2.Location = new System.Drawing.Point(0, 173);
+            this.groupBox2.Controls.Add(this.btnExpPub);
+            this.groupBox2.Location = new System.Drawing.Point(0, 203);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(141, 121);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "私钥";
+            this.groupBox2.Text = "导出";
             // 
             // btnExpPri
             // 
@@ -284,6 +286,16 @@
             this.btnInpPri.Text = "导入私钥";
             this.btnInpPri.UseVisualStyleBackColor = true;
             this.btnInpPri.Click += new System.EventHandler(this.btnInpPri_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(6, 117);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(129, 28);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "包含私钥";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -341,6 +353,7 @@
         private System.Windows.Forms.Button btnExpPub;
         private System.Windows.Forms.Button btnInpPub;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
