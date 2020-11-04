@@ -192,16 +192,24 @@ namespace NyarukoEye_Windows
         //使用公鑰加密內容（應先載入公鑰）
         public static string rsaEncrypt(string content)
         {
-            byte[] cipherbytes;
-            cipherbytes = RSACSPublic.Encrypt(Encoding.UTF8.GetBytes(content), false);
-            return Convert.ToBase64String(cipherbytes);
+            //byte[] cipherbytes;
+            //cipherbytes = RSACSPublic.Encrypt(Encoding.UTF8.GetBytes(content), false);
+            //return Convert.ToBase64String(cipherbytes);
+            byte[] PlainTextBArray = Encoding.UTF8.GetBytes("加密的内容");
+            byte[] CypherTextBArray = RSACSPublic.Encrypt(PlainTextBArray, false);
+            string EncryptedContent = Convert.ToBase64String(CypherTextBArray);
+            return EncryptedContent;
         }
         //使用私鑰解密內容（應先載入私鑰）
         public static string rsaDecrypt(string content)
         {
-            byte[] cipherbytes;
-            cipherbytes = RSACSPrivate.Decrypt(Convert.FromBase64String(content), false);
-            return Encoding.UTF8.GetString(cipherbytes);
+            //byte[] cipherbytes;
+            //cipherbytes = RSACSPrivate.Decrypt(Convert.FromBase64String(content), false);
+            //return Encoding.UTF8.GetString(cipherbytes);
+            byte[] PlainTextBArray = Convert.FromBase64String(content);
+            byte[] DypherTextBArray = RSACSPrivate.Decrypt(PlainTextBArray, false);
+            string dContent = Encoding.UTF8.GetString(DypherTextBArray);
+            return dContent;
         }
     }
 }

@@ -49,6 +49,8 @@ namespace NyarukoEye_Windows
             string strPrivateXML = RsaTool.newPrivateKey("");
             string strPublicPEM = RsaTool.publicKeyXml2Pem(strPublicXML);
             string strPrivatePEM = RsaTool.privateKeyXml2Pem(strPrivateXML);
+            RsaTool.RSACSPublic.FromXmlString(strPublicXML);
+            RsaTool.RSACSPrivate.FromXmlString(strPrivateXML);
             Invoke(txtKeyDelegate, new object[] { strPublicXML, strPrivateXML, strPublicPEM, strPrivatePEM });
         }
         private string extName(string fileName)
@@ -209,6 +211,33 @@ namespace NyarukoEye_Windows
                 }
                 saveText(fName, cerStr);
             }
+        }
+
+        private void btnEncTxt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtText.Text=RsaTool.rsaEncrypt(txtText.Text);
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDecTxt_Click(object sender, EventArgs e)
+        {
+            txtText.Text = RsaTool.rsaDecrypt(txtText.Text);
+            //try
+            //{
+            //    txtText.Text=RsaTool.rsaDecrypt(txtText.Text);
+            //}
+            //catch (Exception err)
+            //{
+            //    toolStripStatusLabel1.Text = err.Message;
+            //    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

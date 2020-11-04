@@ -51,6 +51,11 @@
             this.btnInpPri = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtText = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDecTxt = new System.Windows.Forms.Button();
+            this.btnEncTxt = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -60,13 +65,15 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 545);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 586);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(841, 22);
             this.statusStrip1.TabIndex = 0;
@@ -80,14 +87,18 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(670, 530);
+            this.tabControl1.Size = new System.Drawing.Size(670, 571);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -103,17 +114,15 @@
             // 
             // txtPublicXML
             // 
-            this.txtPublicXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPublicXML.BackColor = System.Drawing.Color.Black;
             this.txtPublicXML.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPublicXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPublicXML.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPublicXML.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtPublicXML.Location = new System.Drawing.Point(6, 6);
+            this.txtPublicXML.Location = new System.Drawing.Point(3, 3);
             this.txtPublicXML.Multiline = true;
             this.txtPublicXML.Name = "txtPublicXML";
-            this.txtPublicXML.Size = new System.Drawing.Size(650, 485);
+            this.txtPublicXML.Size = new System.Drawing.Size(656, 491);
             this.txtPublicXML.TabIndex = 0;
             // 
             // tabPage2
@@ -129,17 +138,15 @@
             // 
             // txtPrivateXML
             // 
-            this.txtPrivateXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrivateXML.BackColor = System.Drawing.Color.Black;
             this.txtPrivateXML.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrivateXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPrivateXML.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPrivateXML.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtPrivateXML.Location = new System.Drawing.Point(6, 6);
+            this.txtPrivateXML.Location = new System.Drawing.Point(3, 3);
             this.txtPrivateXML.Multiline = true;
             this.txtPrivateXML.Name = "txtPrivateXML";
-            this.txtPrivateXML.Size = new System.Drawing.Size(650, 485);
+            this.txtPrivateXML.Size = new System.Drawing.Size(656, 491);
             this.txtPrivateXML.TabIndex = 1;
             // 
             // tabPage3
@@ -155,17 +162,15 @@
             // 
             // txtPublicPEM
             // 
-            this.txtPublicPEM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPublicPEM.BackColor = System.Drawing.Color.Black;
             this.txtPublicPEM.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPublicPEM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPublicPEM.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPublicPEM.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtPublicPEM.Location = new System.Drawing.Point(6, 6);
+            this.txtPublicPEM.Location = new System.Drawing.Point(3, 3);
             this.txtPublicPEM.Multiline = true;
             this.txtPublicPEM.Name = "txtPublicPEM";
-            this.txtPublicPEM.Size = new System.Drawing.Size(650, 485);
+            this.txtPublicPEM.Size = new System.Drawing.Size(656, 491);
             this.txtPublicPEM.TabIndex = 2;
             // 
             // tabPage4
@@ -181,22 +186,21 @@
             // 
             // txtPrivatePEM
             // 
-            this.txtPrivatePEM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrivatePEM.BackColor = System.Drawing.Color.Black;
             this.txtPrivatePEM.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrivatePEM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPrivatePEM.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPrivatePEM.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtPrivatePEM.Location = new System.Drawing.Point(6, 6);
+            this.txtPrivatePEM.Location = new System.Drawing.Point(3, 3);
             this.txtPrivatePEM.Multiline = true;
             this.txtPrivatePEM.Name = "txtPrivatePEM";
-            this.txtPrivatePEM.Size = new System.Drawing.Size(650, 485);
+            this.txtPrivatePEM.Size = new System.Drawing.Size(656, 491);
             this.txtPrivatePEM.TabIndex = 3;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(688, 498);
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.Location = new System.Drawing.Point(688, 539);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(141, 40);
             this.btnExit.TabIndex = 3;
@@ -216,12 +220,14 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Location = new System.Drawing.Point(688, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(141, 451);
+            this.panel1.Size = new System.Drawing.Size(141, 467);
             this.panel1.TabIndex = 4;
             // 
             // groupBox1
@@ -297,11 +303,64 @@
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.txtText);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(662, 538);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "测试文本";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // txtText
+            // 
+            this.txtText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtText.Location = new System.Drawing.Point(3, 3);
+            this.txtText.Multiline = true;
+            this.txtText.Name = "txtText";
+            this.txtText.Size = new System.Drawing.Size(656, 532);
+            this.txtText.TabIndex = 4;
+            this.txtText.Text = "在此输入测试用文本";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnDecTxt);
+            this.groupBox3.Controls.Add(this.btnEncTxt);
+            this.groupBox3.Location = new System.Drawing.Point(0, 330);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(141, 120);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "测试文本";
+            // 
+            // btnDecTxt
+            // 
+            this.btnDecTxt.Location = new System.Drawing.Point(6, 71);
+            this.btnDecTxt.Name = "btnDecTxt";
+            this.btnDecTxt.Size = new System.Drawing.Size(129, 40);
+            this.btnDecTxt.TabIndex = 4;
+            this.btnDecTxt.Text = "解密";
+            this.btnDecTxt.UseVisualStyleBackColor = true;
+            this.btnDecTxt.Click += new System.EventHandler(this.btnDecTxt_Click);
+            // 
+            // btnEncTxt
+            // 
+            this.btnEncTxt.Location = new System.Drawing.Point(6, 25);
+            this.btnEncTxt.Name = "btnEncTxt";
+            this.btnEncTxt.Size = new System.Drawing.Size(129, 40);
+            this.btnEncTxt.TabIndex = 4;
+            this.btnEncTxt.Text = "加密";
+            this.btnEncTxt.UseVisualStyleBackColor = true;
+            this.btnEncTxt.Click += new System.EventHandler(this.btnEncTxt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 567);
+            this.ClientSize = new System.Drawing.Size(841, 608);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
@@ -324,6 +383,9 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,6 +416,11 @@
         private System.Windows.Forms.Button btnInpPub;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox txtText;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnDecTxt;
+        private System.Windows.Forms.Button btnEncTxt;
     }
 }
 
