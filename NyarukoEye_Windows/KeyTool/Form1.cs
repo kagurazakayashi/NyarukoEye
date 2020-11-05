@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NyarukoEye_Windows
@@ -15,9 +17,41 @@ namespace NyarukoEye_Windows
     public partial class Form1 : Form
     {
         private UInt64 threadID = 0;
+        private string workDic = Environment.CurrentDirectory;
+        private string tempDic = Environment.GetEnvironmentVariable("TEMP");
+        private string tempPrivateKeyFile;
+        private string tempPublicKeyFile;
+
         public Form1()
         {
             InitializeComponent();
+            tempPrivateKeyFile = tempDic+"\\NyaEye_Tools_Pri_" + GetTimeStamp();
+            tempPublicKeyFile = tempDic+"\\NyaEye_Tools_Pub_" + GetTimeStamp();
+            string[] opensslPaths = Enc.getOpensslPaths();
+            if (opensslPaths.Length == 0)
+            {
+                MessageBox.Show("没有在程序目录和环境变量中找到 openssl.exe ，程序将立即退出。", "需要 OpenSSL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Thread thread = new Thread(() =>
+                {
+                    Thread.Sleep(100);
+                    Application.Exit();
+                });
+                thread.IsBackground = true;
+                thread.Start();
+                return;
+            }
+            foreach (string opensslPath in opensslPaths)
+            {
+                comboBox1.Items.Add(opensslPath);
+            }
+            comboBox1.Text = comboBox1.Items[0].ToString();
+            Enc.opensslPath = comboBox1.Text;
+        }
+
+        public string GetTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalMilliseconds).ToString();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -28,30 +62,10 @@ namespace NyarukoEye_Windows
         private void btnNew_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在新建密钥对...";
-            panel1.Enabled = false;
-            ThreadStart screenshotRef = new ThreadStart(newKeysThreadRun);
-            Thread screenshotThread = new Thread(screenshotRef);
-            screenshotThread.Name = "screenshotThread" + (threadID++).ToString();
-            screenshotThread.Start();
-        }
-        private void newKeysThreadRun()
-        {
-            Action<String, String, String, String> txtKeyDelegate = delegate (string returnPublicXML, string returnPrivateXML, string returnPublicPEM, string returnPrivatePEM)
-            {
-                txtPublicXML.Text = returnPublicXML;
-                txtPrivateXML.Text = returnPrivateXML;
-                txtPublicPEM.Text = returnPublicPEM;
-                txtPrivatePEM.Text = returnPrivatePEM;
-                toolStripStatusLabel1.Text = "新建密钥对完成。";
-                panel1.Enabled = true;
-            };
-            string strPublicXML = RsaTool.newPublicKey("");
-            string strPrivateXML = RsaTool.newPrivateKey("");
-            string strPublicPEM = RsaTool.publicKeyXml2Pem(strPublicXML);
-            string strPrivatePEM = RsaTool.privateKeyXml2Pem(strPrivateXML);
-            RsaTool.RSACSPublic.FromXmlString(strPublicXML);
-            RsaTool.RSACSPrivate.FromXmlString(strPrivateXML);
-            Invoke(txtKeyDelegate, new object[] { strPublicXML, strPrivateXML, strPublicPEM, strPrivatePEM });
+            btnNewPriKey_Click(sender, e);
+            btnNewPubKey_Click(sender, e);
+            tabControl1.SelectedIndex = 0;
+            toolStripStatusLabel1.Text = "新建密钥对完成。";
         }
         private string extName(string fileName)
         {
@@ -86,31 +100,14 @@ namespace NyarukoEye_Windows
         private void btnInpPub_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "请选择要导入的公钥";
-            openFileDialog1.FileName = "PublicKey";
-            openFileDialog1.Filter = "XML 公钥|*.xml|PEM 公钥|*.pub|所有文件|*.*";
+            openFileDialog1.FileName = "PublicKey.pub";
+            openFileDialog1.Filter = "PEM 公钥|*.pub|所有文件|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string fName = openFileDialog1.FileName;
-                if (!File.Exists(fName))
-                {
-                    toolStripStatusLabel1.Text = "找不到文件 " + fName + " ,请确认输入的文件名是否存在";
-                    MessageBox.Show(toolStripStatusLabel1.Text, "找不到文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string eName = extName(fName);
                 try
                 {
-                    if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
-                    {
-                        RsaTool.loadXmlPublicKey(fName);
-                    }
-                    else
-                    {
-                        RsaTool.loadPemPublicKey(fName);
-                    }
-                    txtPublicXML.Text = RsaTool.RSACSPublic.ToXmlString(checkBox1.Checked);
-                    txtPublicPEM.Text = RsaTool.publicKeyXml2Pem(txtPublicXML.Text);
+                    txtPublicPEM.Text = File.ReadAllText(openFileDialog1.FileName);
                 }
                 catch (Exception err)
                 {
@@ -123,59 +120,35 @@ namespace NyarukoEye_Windows
         private void btnExpPub_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Title = "指定公钥保存位置";
-            saveFileDialog1.FileName = "PublicKey";
-            saveFileDialog1.Filter = "XML 公钥|*.xml|PEM 公钥|*.pub";
+            saveFileDialog1.FileName = "PublicKey.pub";
+            saveFileDialog1.Filter = "PEM 公钥|*.pub|所有文件|*.*";
             DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
                 string fName = saveFileDialog1.FileName;
-                string eName = extName(fName);
-                string cerStr = txtPublicXML.Text;
-                if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                try
                 {
-                    cerStr = txtPublicXML.Text;
+                    File.WriteAllText(fName, txtPublicPEM.Text);
                 }
-                else if (eName.Equals("pub", StringComparison.OrdinalIgnoreCase))
+                catch (Exception err)
                 {
-                    cerStr = txtPublicPEM.Text;
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                {
-                    MessageBox.Show("请指定一个存储类型", "未知的存储类型", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                saveText(fName, cerStr);
             }
         }
 
         private void btnInpPri_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "请选择要导入的私钥";
-            openFileDialog1.FileName = "PrivateKey";
-            openFileDialog1.Filter = "XML 私钥|*.xml|PEM 私钥|*.pem|所有文件|*.*";
+            openFileDialog1.FileName = "PrivateKey.pem";
+            openFileDialog1.Filter = "PEM 私钥|*.pem|所有文件|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string fName = openFileDialog1.FileName;
-                if (!File.Exists(fName))
-                {
-                    toolStripStatusLabel1.Text = "找不到文件 " + fName + " ,请确认输入的文件名是否存在";
-                    if (!File.Exists(fName)) MessageBox.Show(toolStripStatusLabel1.Text, "找不到文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string eName = extName(fName);
                 try
                 {
-                    if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
-                    {
-                        RsaTool.loadXmlPrivateKey(fName);
-                    }
-                    else
-                    {
-                        RsaTool.loadPemPrivateKey(fName);
-                    }
-                    txtPrivateXML.Text = RsaTool.RSACSPrivate.ToXmlString(checkBox1.Checked);
-                    txtPrivatePEM.Text = RsaTool.privateKeyXml2Pem(txtPrivateXML.Text);
+                    txtPrivatePEM.Text = File.ReadAllText(openFileDialog1.FileName);
                 }
                 catch (Exception err)
                 {
@@ -188,47 +161,40 @@ namespace NyarukoEye_Windows
         private void btnExpPri_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Title = "指定私钥保存位置";
-            saveFileDialog1.FileName = "PrivateKey";
-            saveFileDialog1.Filter = "XML 私钥|*.xml|PEM 私钥|*.pem";
+            saveFileDialog1.FileName = "PrivateKey.pem";
+            saveFileDialog1.Filter = "PEM 私钥|*.pem|所有文件|*.*";
             DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
                 string fName = saveFileDialog1.FileName;
-                string eName = extName(fName);
-                string cerStr = "";
-                if (eName.Equals("xml", StringComparison.OrdinalIgnoreCase))
+                try
                 {
-                    cerStr = txtPrivateXML.Text;
+                    File.WriteAllText(fName, txtPublicPEM.Text);
                 }
-                else if (eName.Equals("pub", StringComparison.OrdinalIgnoreCase))
+                catch (Exception err)
                 {
-                    cerStr = txtPrivatePEM.Text;
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                {
-                    MessageBox.Show("请指定一个存储类型", "未知的存储类型", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                saveText(fName, cerStr);
             }
         }
 
         private void btnEncTxt_Click(object sender, EventArgs e)
         {
-            try
-            {
-                txtText.Text=RsaTool.rsaEncrypt(txtText.Text);
-            }
-            catch (Exception err)
-            {
-                toolStripStatusLabel1.Text = err.Message;
-                MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    txtText.Text=RsaTool.rsaEncrypt(txtText.Text);
+            //}
+            //catch (Exception err)
+            //{
+            //    toolStripStatusLabel1.Text = err.Message;
+            //    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnDecTxt_Click(object sender, EventArgs e)
         {
-            txtText.Text = RsaTool.rsaDecrypt(txtText.Text);
+            //txtText.Text = RsaTool.rsaDecrypt(txtText.Text);
             //try
             //{
             //    txtText.Text=RsaTool.rsaDecrypt(txtText.Text);
@@ -238,6 +204,74 @@ namespace NyarukoEye_Windows
             //    toolStripStatusLabel1.Text = err.Message;
             //    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Enc.opensslPath = comboBox1.Text;
+        }
+
+        private void btnNewPriKey_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "正在创建私钥...";
+            txtPrivatePEM.Text = Enc.genPrivateKey(int.Parse(txtKeyLength.Text));
+            tabControl1.SelectedIndex = 0;
+            toolStripStatusLabel1.Text = "创建私钥完成。";
+        }
+
+        private void btnNewPubKey_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "正在提取公钥...";
+            txtPublicPEM.Text = Enc.getPublicKey(txtPrivatePEM.Text);
+            tabControl1.SelectedIndex = 1;
+            toolStripStatusLabel1.Text = "提取公钥完成。";
+        }
+
+        private void txtPrivatePEM_TextChanged(object sender, EventArgs e)
+        {
+            bool btnenable = false;
+            if (txtPrivatePEM.Text.Length > 0)
+            {
+                btnenable = true;
+            }
+            btnExpPri.Enabled = btnenable;
+            btnNewPubKey.Enabled = btnenable;
+            btnDecTxt.Enabled = btnenable;
+            try
+            {
+                File.WriteAllText(tempPrivateKeyFile, txtPublicPEM.Text);
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "临时文件保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtPublicPEM_TextChanged(object sender, EventArgs e)
+        {
+            bool btnenable = false;
+            if (txtPublicPEM.Text.Length > 0)
+            {
+                btnenable = true;
+            }
+            btnExpPub.Enabled = btnenable;
+            btnEncTxt.Enabled = btnenable;
+            try
+            {
+                File.WriteAllText(tempPublicKeyFile, txtPublicPEM.Text);
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "临时文件保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        ~Form1()
+        {
+            if (File.Exists(tempPrivateKeyFile)) File.Delete(tempPrivateKeyFile);
+            if (File.Exists(tempPublicKeyFile)) File.Delete(tempPublicKeyFile);
         }
     }
 }
