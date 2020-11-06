@@ -9,6 +9,8 @@ namespace NyarukoEye_Windows
     static public class Enc
     {
         static public string opensslPath = "openssl";
+        static public string error = "";
+        static public bool getError = false;
         static public string[] getOpensslPaths()
         {
             Process p = new Process();
@@ -17,10 +19,19 @@ namespace NyarukoEye_Windows
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardInput = false;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
+            p.StandardOutput.Close();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.Close();
             string[] openssls = pout.Split('\n');
             if (openssls[0].IndexOf(".exe") == -1)
             {
@@ -38,17 +49,26 @@ namespace NyarukoEye_Windows
             if (outFile.Length > 0)
             {
                 arguments.Add("-out");
-                arguments.Add(outFile);
+                arguments.Add("\"" + outFile + "\"");
             }
             arguments.Add(length.ToString());
             p.StartInfo.Arguments = string.Join(" ", arguments);
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardInput = true;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
+            p.StandardOutput.Close();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.Close();
             return pout;
         }
         static public string getPublicKey(string privateKey, bool privateKeyIsPath = false, string outFile = "")
@@ -60,26 +80,127 @@ namespace NyarukoEye_Windows
             if (privateKeyIsPath)
             {
                 arguments.Add("-in");
-                arguments.Add("-inFile");
+                arguments.Add("\"" + privateKey + "\"");
             }
             arguments.Add("-pubout");
             if (outFile.Length > 0)
             {
                 arguments.Add("-out");
-                arguments.Add(outFile);
+                arguments.Add("\"" + outFile + "\"");
             }
             p.StartInfo.Arguments = string.Join(" ", arguments);
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardInput = !privateKeyIsPath;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
-            if (!privateKeyIsPath) p.StandardInput.WriteLine(privateKey);
+            if (!privateKeyIsPath)
+            {
+                p.StandardInput.WriteLine(privateKey);
+                p.StandardInput.Close();
+            }
             p.WaitForExit();
             if (privateKeyIsPath) return "";
             string pout = p.StandardOutput.ReadToEnd();
+            p.StandardOutput.Close();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.Close();
             return pout;
         }
-        
+        static public string encryptData(string pubilcKeyPath, string source, bool sourceIsPath = false, string outFile = "")
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = opensslPath;
+            List<string> arguments = new List<string>();
+            arguments.Add("rsautl");
+            arguments.Add("-encrypt");
+            if (sourceIsPath)
+            {
+                arguments.Add("-in");
+                arguments.Add("\"" + source + "\"");
+            }
+            arguments.Add("-inkey");
+            arguments.Add("\"" + pubilcKeyPath + "\"");
+            arguments.Add("-pubin");
+            if (outFile.Length > 0)
+            {
+                arguments.Add("-out");
+                arguments.Add("\"" + outFile + "\"");
+            }
+            p.StartInfo.Arguments = string.Join(" ", arguments);
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = !sourceIsPath;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
+            p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            p.Start();
+            if (!sourceIsPath)
+            {
+                p.StandardInput.WriteLine(source);
+                p.StandardInput.Close();
+            }
+            p.WaitForExit();
+            if (outFile.Length > 0) return "";
+            string pout = p.StandardOutput.ReadToEnd();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.StandardOutput.Close();
+            p.Close();
+            return pout;
+        }
+        static public string decryptionData(string privateKeyPath, string source, bool sourceIsPath = false, string outFile = "")
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = opensslPath;
+            List<string> arguments = new List<string>();
+            arguments.Add("rsautl");
+            arguments.Add("-decrypt");
+            if (sourceIsPath)
+            {
+                arguments.Add("-in");
+                arguments.Add("\"" + source + "\"");
+            }
+            arguments.Add("-inkey");
+            arguments.Add("\"" + privateKeyPath + "\"");
+            if (outFile.Length > 0)
+            {
+                arguments.Add("-out");
+                arguments.Add("\"" + outFile + "\"");
+            }
+            p.StartInfo.Arguments = string.Join(" ", arguments);
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = !sourceIsPath;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
+            p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            p.Start();
+            if (!sourceIsPath)
+            {
+                p.StandardInput.WriteLine(source);
+                p.StandardInput.Close();
+            }
+            p.WaitForExit();
+            if (outFile.Length > 0) return "";
+            string pout = p.StandardOutput.ReadToEnd();
+            p.StandardOutput.Close();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.Close();
+            return pout;
+        }
     }
 }

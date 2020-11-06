@@ -41,40 +41,49 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBase64 = new System.Windows.Forms.CheckBox();
+            this.btnDecTxt = new System.Windows.Forms.Button();
+            this.btnEncTxt = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnInpPri = new System.Windows.Forms.Button();
             this.btnInpPub = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnExpPri = new System.Windows.Forms.Button();
-            this.btnExpPub = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnDecTxt = new System.Windows.Forms.Button();
-            this.btnEncTxt = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtKeyLength = new System.Windows.Forms.ComboBox();
             this.btnNewPriKey = new System.Windows.Forms.Button();
             this.btnNewPubKey = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExpPri = new System.Windows.Forms.Button();
+            this.btnExpPub = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnFrom = new System.Windows.Forms.Button();
+            this.btnTo = new System.Windows.Forms.Button();
+            this.txtFrom = new System.Windows.Forms.TextBox();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.btnDecFile = new System.Windows.Forms.Button();
+            this.btnEncFile = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 586);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 596);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1008, 22);
             this.statusStrip1.TabIndex = 0;
@@ -97,7 +106,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 41);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(689, 542);
+            this.tabControl1.Size = new System.Drawing.Size(689, 552);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage2
@@ -107,7 +116,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(681, 509);
+            this.tabPage2.Size = new System.Drawing.Size(681, 519);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "私钥";
             // 
@@ -121,7 +130,7 @@
             this.txtPrivatePEM.Location = new System.Drawing.Point(3, 3);
             this.txtPrivatePEM.Multiline = true;
             this.txtPrivatePEM.Name = "txtPrivatePEM";
-            this.txtPrivatePEM.Size = new System.Drawing.Size(675, 503);
+            this.txtPrivatePEM.Size = new System.Drawing.Size(675, 513);
             this.txtPrivatePEM.TabIndex = 1;
             this.txtPrivatePEM.TextChanged += new System.EventHandler(this.txtPrivatePEM_TextChanged);
             // 
@@ -175,7 +184,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(855, 539);
+            this.btnExit.Location = new System.Drawing.Point(855, 549);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(141, 40);
             this.btnExit.TabIndex = 3;
@@ -196,14 +205,61 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Location = new System.Drawing.Point(707, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 492);
+            this.panel1.Size = new System.Drawing.Size(289, 502);
             this.panel1.TabIndex = 4;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBase64);
+            this.groupBox3.Controls.Add(this.btnDecTxt);
+            this.groupBox3.Controls.Add(this.btnEncTxt);
+            this.groupBox3.Location = new System.Drawing.Point(0, 257);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(286, 72);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "测试文本";
+            // 
+            // checkBase64
+            // 
+            this.checkBase64.Checked = true;
+            this.checkBase64.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBase64.Location = new System.Drawing.Point(202, 32);
+            this.checkBase64.Name = "checkBase64";
+            this.checkBase64.Size = new System.Drawing.Size(78, 29);
+            this.checkBase64.TabIndex = 5;
+            this.checkBase64.Text = "Base64";
+            this.checkBase64.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBase64.UseVisualStyleBackColor = true;
+            // 
+            // btnDecTxt
+            // 
+            this.btnDecTxt.Enabled = false;
+            this.btnDecTxt.Location = new System.Drawing.Point(104, 25);
+            this.btnDecTxt.Name = "btnDecTxt";
+            this.btnDecTxt.Size = new System.Drawing.Size(92, 40);
+            this.btnDecTxt.TabIndex = 4;
+            this.btnDecTxt.Text = "解密";
+            this.btnDecTxt.UseVisualStyleBackColor = true;
+            this.btnDecTxt.Click += new System.EventHandler(this.btnDecTxt_Click);
+            // 
+            // btnEncTxt
+            // 
+            this.btnEncTxt.Enabled = false;
+            this.btnEncTxt.Location = new System.Drawing.Point(6, 25);
+            this.btnEncTxt.Name = "btnEncTxt";
+            this.btnEncTxt.Size = new System.Drawing.Size(92, 40);
+            this.btnEncTxt.TabIndex = 4;
+            this.btnEncTxt.Text = "加密";
+            this.btnEncTxt.UseVisualStyleBackColor = true;
+            this.btnEncTxt.Click += new System.EventHandler(this.btnEncTxt_Click);
             // 
             // groupBox1
             // 
@@ -235,87 +291,6 @@
             this.btnInpPub.Text = "导入公钥";
             this.btnInpPub.UseVisualStyleBackColor = true;
             this.btnInpPub.Click += new System.EventHandler(this.btnInpPub_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnExpPri);
-            this.groupBox2.Controls.Add(this.btnExpPub);
-            this.groupBox2.Location = new System.Drawing.Point(145, 130);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(141, 121);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "导出";
-            // 
-            // btnExpPri
-            // 
-            this.btnExpPri.Location = new System.Drawing.Point(6, 71);
-            this.btnExpPri.Name = "btnExpPri";
-            this.btnExpPri.Size = new System.Drawing.Size(129, 40);
-            this.btnExpPri.TabIndex = 4;
-            this.btnExpPri.Text = "导出私钥";
-            this.btnExpPri.UseVisualStyleBackColor = true;
-            this.btnExpPri.Click += new System.EventHandler(this.btnExpPri_Click);
-            // 
-            // btnExpPub
-            // 
-            this.btnExpPub.Location = new System.Drawing.Point(6, 25);
-            this.btnExpPub.Name = "btnExpPub";
-            this.btnExpPub.Size = new System.Drawing.Size(129, 40);
-            this.btnExpPub.TabIndex = 4;
-            this.btnExpPub.Text = "导出公钥";
-            this.btnExpPub.UseVisualStyleBackColor = true;
-            this.btnExpPub.Click += new System.EventHandler(this.btnExpPub_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnDecTxt);
-            this.groupBox3.Controls.Add(this.btnEncTxt);
-            this.groupBox3.Location = new System.Drawing.Point(0, 257);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(141, 120);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "测试文本";
-            // 
-            // btnDecTxt
-            // 
-            this.btnDecTxt.Location = new System.Drawing.Point(6, 71);
-            this.btnDecTxt.Name = "btnDecTxt";
-            this.btnDecTxt.Size = new System.Drawing.Size(129, 40);
-            this.btnDecTxt.TabIndex = 4;
-            this.btnDecTxt.Text = "解密";
-            this.btnDecTxt.UseVisualStyleBackColor = true;
-            this.btnDecTxt.Click += new System.EventHandler(this.btnDecTxt_Click);
-            // 
-            // btnEncTxt
-            // 
-            this.btnEncTxt.Location = new System.Drawing.Point(6, 25);
-            this.btnEncTxt.Name = "btnEncTxt";
-            this.btnEncTxt.Size = new System.Drawing.Size(129, 40);
-            this.btnEncTxt.TabIndex = 4;
-            this.btnEncTxt.Text = "加密";
-            this.btnEncTxt.UseVisualStyleBackColor = true;
-            this.btnEncTxt.Click += new System.EventHandler(this.btnEncTxt_Click);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(15, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 29);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "OpenSSL 执行文件：";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(175, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(821, 28);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -366,6 +341,7 @@
             // 
             // btnNewPubKey
             // 
+            this.btnNewPubKey.Enabled = false;
             this.btnNewPubKey.Location = new System.Drawing.Point(151, 25);
             this.btnNewPubKey.Name = "btnNewPubKey";
             this.btnNewPubKey.Size = new System.Drawing.Size(129, 40);
@@ -374,21 +350,147 @@
             this.btnNewPubKey.UseVisualStyleBackColor = true;
             this.btnNewPubKey.Click += new System.EventHandler(this.btnNewPubKey_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnExpPri);
+            this.groupBox2.Controls.Add(this.btnExpPub);
+            this.groupBox2.Location = new System.Drawing.Point(145, 130);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(141, 121);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "导出";
+            // 
+            // btnExpPri
+            // 
+            this.btnExpPri.Enabled = false;
+            this.btnExpPri.Location = new System.Drawing.Point(6, 71);
+            this.btnExpPri.Name = "btnExpPri";
+            this.btnExpPri.Size = new System.Drawing.Size(129, 40);
+            this.btnExpPri.TabIndex = 4;
+            this.btnExpPri.Text = "导出私钥";
+            this.btnExpPri.UseVisualStyleBackColor = true;
+            this.btnExpPri.Click += new System.EventHandler(this.btnExpPri_Click);
+            // 
+            // btnExpPub
+            // 
+            this.btnExpPub.Enabled = false;
+            this.btnExpPub.Location = new System.Drawing.Point(6, 25);
+            this.btnExpPub.Name = "btnExpPub";
+            this.btnExpPub.Size = new System.Drawing.Size(129, 40);
+            this.btnExpPub.TabIndex = 4;
+            this.btnExpPub.Text = "导出公钥";
+            this.btnExpPub.UseVisualStyleBackColor = true;
+            this.btnExpPub.Click += new System.EventHandler(this.btnExpPub_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 29);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "OpenSSL 执行文件：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(175, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(821, 28);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDecFile);
+            this.groupBox5.Controls.Add(this.btnEncFile);
+            this.groupBox5.Controls.Add(this.txtTo);
+            this.groupBox5.Controls.Add(this.txtFrom);
+            this.groupBox5.Controls.Add(this.btnTo);
+            this.groupBox5.Controls.Add(this.btnFrom);
+            this.groupBox5.Location = new System.Drawing.Point(0, 335);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(289, 167);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "测试文件";
+            // 
+            // btnFrom
+            // 
+            this.btnFrom.Location = new System.Drawing.Point(6, 25);
+            this.btnFrom.Name = "btnFrom";
+            this.btnFrom.Size = new System.Drawing.Size(92, 40);
+            this.btnFrom.TabIndex = 5;
+            this.btnFrom.Text = "源文件";
+            this.btnFrom.UseVisualStyleBackColor = true;
+            this.btnFrom.Click += new System.EventHandler(this.btnFrom_Click);
+            // 
+            // btnTo
+            // 
+            this.btnTo.Location = new System.Drawing.Point(6, 71);
+            this.btnTo.Name = "btnTo";
+            this.btnTo.Size = new System.Drawing.Size(92, 40);
+            this.btnTo.TabIndex = 6;
+            this.btnTo.Text = "目标文件";
+            this.btnTo.UseVisualStyleBackColor = true;
+            this.btnTo.Click += new System.EventHandler(this.btnTo_Click);
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Location = new System.Drawing.Point(104, 32);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(176, 26);
+            this.txtFrom.TabIndex = 7;
+            this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
+            // 
+            // txtTo
+            // 
+            this.txtTo.Location = new System.Drawing.Point(104, 78);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(176, 26);
+            this.txtTo.TabIndex = 8;
+            this.txtTo.TextChanged += new System.EventHandler(this.txtTo_TextChanged);
+            // 
+            // btnDecFile
+            // 
+            this.btnDecFile.Enabled = false;
+            this.btnDecFile.Location = new System.Drawing.Point(191, 121);
+            this.btnDecFile.Name = "btnDecFile";
+            this.btnDecFile.Size = new System.Drawing.Size(92, 40);
+            this.btnDecFile.TabIndex = 9;
+            this.btnDecFile.Text = "解密";
+            this.btnDecFile.UseVisualStyleBackColor = true;
+            this.btnDecFile.Click += new System.EventHandler(this.btnDecFile_Click);
+            // 
+            // btnEncFile
+            // 
+            this.btnEncFile.Enabled = false;
+            this.btnEncFile.Location = new System.Drawing.Point(93, 121);
+            this.btnEncFile.Name = "btnEncFile";
+            this.btnEncFile.Size = new System.Drawing.Size(92, 40);
+            this.btnEncFile.TabIndex = 10;
+            this.btnEncFile.Text = "加密";
+            this.btnEncFile.UseVisualStyleBackColor = true;
+            this.btnEncFile.Click += new System.EventHandler(this.btnEncFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 608);
+            this.ClientSize = new System.Drawing.Size(1008, 618);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "密钥工具";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -399,11 +501,13 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,6 +545,14 @@
         private System.Windows.Forms.ComboBox txtKeyLength;
         private System.Windows.Forms.Button btnNewPriKey;
         private System.Windows.Forms.Button btnNewPubKey;
+        private System.Windows.Forms.CheckBox checkBase64;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnDecFile;
+        private System.Windows.Forms.Button btnEncFile;
+        private System.Windows.Forms.TextBox txtTo;
+        private System.Windows.Forms.TextBox txtFrom;
+        private System.Windows.Forms.Button btnTo;
+        private System.Windows.Forms.Button btnFrom;
     }
 }
 

@@ -25,8 +25,8 @@ namespace NyarukoEye_Windows
         public Form1()
         {
             InitializeComponent();
-            tempPrivateKeyFile = tempDic+"\\NyaEye_Tools_Pri_" + GetTimeStamp();
-            tempPublicKeyFile = tempDic+"\\NyaEye_Tools_Pub_" + GetTimeStamp();
+            tempPrivateKeyFile = tempDic + "\\NyaEye_Tools_Pri_" + GetTimeStamp();
+            tempPublicKeyFile = tempDic + "\\NyaEye_Tools_Pub_" + GetTimeStamp();
             string[] opensslPaths = Enc.getOpensslPaths();
             if (opensslPaths.Length == 0)
             {
@@ -181,29 +181,61 @@ namespace NyarukoEye_Windows
 
         private void btnEncTxt_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    txtText.Text=RsaTool.rsaEncrypt(txtText.Text);
-            //}
-            //catch (Exception err)
-            //{
-            //    toolStripStatusLabel1.Text = err.Message;
-            //    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            toolStripStatusLabel1.Text = "正在加密...";
+            try
+            {
+                string rText = Enc.encryptData(tempPublicKeyFile, txtText.Text);
+                if (rText.Length == 0)
+                {
+                    toolStripStatusLabel1.Text = "加密操作失败";
+                    MessageBox.Show("加密操作失败，检查相关信息再试。", "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    toolStripStatusLabel1.Text = "加密完成";
+                    if (checkBase64.Checked)
+                    {
+                        byte[] rTextB64 = Encoding.Default.GetBytes(rText);
+                        rText = Convert.ToBase64String(rTextB64);
+                    }
+                    txtText.Text = rText;
+                }
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDecTxt_Click(object sender, EventArgs e)
         {
-            //txtText.Text = RsaTool.rsaDecrypt(txtText.Text);
-            //try
-            //{
-            //    txtText.Text=RsaTool.rsaDecrypt(txtText.Text);
-            //}
-            //catch (Exception err)
-            //{
-            //    toolStripStatusLabel1.Text = err.Message;
-            //    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            toolStripStatusLabel1.Text = "正在解密...";
+            try
+            {
+                string rText = txtText.Text;
+                if (checkBase64.Checked)
+                {
+                    byte[] rTextB64 = Convert.FromBase64String(rText);
+                    rText = Encoding.Default.GetString(rTextB64);
+                }
+                rText = Enc.decryptionData(tempPrivateKeyFile, rText);
+                if (rText.Length == 0)
+                {
+                    toolStripStatusLabel1.Text = "解密操作失败";
+                    MessageBox.Show("解密操作失败，检查相关信息再试。", "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    toolStripStatusLabel1.Text = "解密完成";
+                    txtText.Text = rText;
+                }
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,7 +271,7 @@ namespace NyarukoEye_Windows
             btnDecTxt.Enabled = btnenable;
             try
             {
-                File.WriteAllText(tempPrivateKeyFile, txtPublicPEM.Text);
+                File.WriteAllText(tempPrivateKeyFile, txtPrivatePEM.Text);
             }
             catch (Exception err)
             {
@@ -268,10 +300,85 @@ namespace NyarukoEye_Windows
             }
         }
 
-        ~Form1()
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (File.Exists(tempPrivateKeyFile)) File.Delete(tempPrivateKeyFile);
             if (File.Exists(tempPublicKeyFile)) File.Delete(tempPublicKeyFile);
+        }
+
+        private void txtFrom_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFrom.Text.Length > 0 && txtTo.Text.Length > 0)
+            {
+                btnEncFile.Enabled = btnEncTxt.Enabled;
+                btnDecFile.Enabled = btnDecTxt.Enabled;
+            }
+            else
+            {
+                btnEncFile.Enabled = btnDecFile.Enabled = false;
+            }
+        }
+
+        private void txtTo_TextChanged(object sender, EventArgs e)
+        {
+            txtFrom_TextChanged(sender, e);
+        }
+
+        private void btnFrom_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "请选择要加密/解密的文件";
+            openFileDialog1.FileName = "";
+            openFileDialog1.Filter = "所有文件|*.*";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) txtFrom.Text = openFileDialog1.FileName;
+        }
+
+        private void btnTo_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Title = "请选择加密/解密之后存放到哪里";
+            saveFileDialog1.FileName = txtFrom.Text;
+            saveFileDialog1.Filter = "所有文件|*.*";
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) txtTo.Text = saveFileDialog1.FileName;
+        }
+
+        private void btnEncFile_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "正在加密...";
+            try
+            {
+                Enc.encryptData(tempPublicKeyFile, txtFrom.Text, true, txtTo.Text);
+                toolStripStatusLabel1.Text = "加密完成";
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //if (Enc.error.Length > 0)
+            //{
+            //    toolStripStatusLabel1.Text = "加密操作失败";
+            //    MessageBox.Show(Enc.error, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        private void btnDecFile_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "正在解密...";
+            try
+            {
+                Enc.decryptionData(tempPrivateKeyFile, txtFrom.Text, true, txtTo.Text);
+            }
+            catch (Exception err)
+            {
+                toolStripStatusLabel1.Text = err.Message;
+                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //if (Enc.error.Length > 0)
+            //{
+            //    toolStripStatusLabel1.Text = "加密操作失败";
+            //    MessageBox.Show(Enc.error, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }
