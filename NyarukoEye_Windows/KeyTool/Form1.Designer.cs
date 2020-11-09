@@ -41,6 +41,13 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDecFile = new System.Windows.Forms.Button();
+            this.btnEncFile = new System.Windows.Forms.Button();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.txtFrom = new System.Windows.Forms.TextBox();
+            this.btnTo = new System.Windows.Forms.Button();
+            this.btnFrom = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBase64 = new System.Windows.Forms.CheckBox();
             this.btnDecTxt = new System.Windows.Forms.Button();
@@ -59,33 +66,43 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnFrom = new System.Windows.Forms.Button();
-            this.btnTo = new System.Windows.Forms.Button();
-            this.txtFrom = new System.Windows.Forms.TextBox();
-            this.txtTo = new System.Windows.Forms.TextBox();
-            this.btnDecFile = new System.Windows.Forms.Button();
-            this.btnEncFile = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtAESKeyLength = new System.Windows.Forms.ComboBox();
+            this.btnNewAES = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSecMode = new System.Windows.Forms.ComboBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtAES = new System.Windows.Forms.TextBox();
+            this.radioKeyMode1 = new System.Windows.Forms.RadioButton();
+            this.radioKeyMode2 = new System.Windows.Forms.RadioButton();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnInpAes = new System.Windows.Forms.Button();
+            this.btnExpAes = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 596);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 552);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1008, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1243, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -102,11 +119,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 41);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(689, 552);
+            this.tabControl1.Size = new System.Drawing.Size(631, 508);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage2
@@ -116,9 +134,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(681, 519);
+            this.tabPage2.Size = new System.Drawing.Size(623, 535);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "私钥";
+            this.tabPage2.Text = "非对称私钥";
             // 
             // txtPrivatePEM
             // 
@@ -130,7 +148,7 @@
             this.txtPrivatePEM.Location = new System.Drawing.Point(3, 3);
             this.txtPrivatePEM.Multiline = true;
             this.txtPrivatePEM.Name = "txtPrivatePEM";
-            this.txtPrivatePEM.Size = new System.Drawing.Size(675, 513);
+            this.txtPrivatePEM.Size = new System.Drawing.Size(617, 529);
             this.txtPrivatePEM.TabIndex = 1;
             this.txtPrivatePEM.TextChanged += new System.EventHandler(this.txtPrivatePEM_TextChanged);
             // 
@@ -141,9 +159,9 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(681, 509);
+            this.tabPage3.Size = new System.Drawing.Size(623, 475);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "公钥";
+            this.tabPage3.Text = "非对称公钥";
             // 
             // txtPublicPEM
             // 
@@ -155,7 +173,7 @@
             this.txtPublicPEM.Location = new System.Drawing.Point(3, 3);
             this.txtPublicPEM.Multiline = true;
             this.txtPublicPEM.Name = "txtPublicPEM";
-            this.txtPublicPEM.Size = new System.Drawing.Size(675, 503);
+            this.txtPublicPEM.Size = new System.Drawing.Size(617, 469);
             this.txtPublicPEM.TabIndex = 2;
             this.txtPublicPEM.TextChanged += new System.EventHandler(this.txtPublicPEM_TextChanged);
             // 
@@ -165,7 +183,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(681, 509);
+            this.tabPage5.Size = new System.Drawing.Size(623, 535);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "测试文本";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -177,14 +195,14 @@
             this.txtText.Location = new System.Drawing.Point(3, 3);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(675, 503);
+            this.txtText.Size = new System.Drawing.Size(617, 529);
             this.txtText.TabIndex = 4;
             this.txtText.Text = "在此输入测试用文本";
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(855, 549);
+            this.btnExit.Location = new System.Drawing.Point(1090, 505);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(141, 40);
             this.btnExit.TabIndex = 3;
@@ -205,22 +223,96 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.Controls.Add(this.groupBox6);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Location = new System.Drawing.Point(707, 41);
+            this.panel1.Location = new System.Drawing.Point(649, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 502);
+            this.panel1.Size = new System.Drawing.Size(582, 455);
             this.panel1.TabIndex = 4;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDecFile);
+            this.groupBox5.Controls.Add(this.btnEncFile);
+            this.groupBox5.Controls.Add(this.txtTo);
+            this.groupBox5.Controls.Add(this.txtFrom);
+            this.groupBox5.Controls.Add(this.btnTo);
+            this.groupBox5.Controls.Add(this.btnFrom);
+            this.groupBox5.Location = new System.Drawing.Point(648, 376);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(579, 120);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "测试文件";
+            // 
+            // btnDecFile
+            // 
+            this.btnDecFile.Enabled = false;
+            this.btnDecFile.Location = new System.Drawing.Point(481, 71);
+            this.btnDecFile.Name = "btnDecFile";
+            this.btnDecFile.Size = new System.Drawing.Size(92, 40);
+            this.btnDecFile.TabIndex = 9;
+            this.btnDecFile.Text = "解密";
+            this.btnDecFile.UseVisualStyleBackColor = true;
+            this.btnDecFile.Click += new System.EventHandler(this.btnDecFile_Click);
+            // 
+            // btnEncFile
+            // 
+            this.btnEncFile.Enabled = false;
+            this.btnEncFile.Location = new System.Drawing.Point(481, 25);
+            this.btnEncFile.Name = "btnEncFile";
+            this.btnEncFile.Size = new System.Drawing.Size(92, 40);
+            this.btnEncFile.TabIndex = 10;
+            this.btnEncFile.Text = "加密";
+            this.btnEncFile.UseVisualStyleBackColor = true;
+            this.btnEncFile.Click += new System.EventHandler(this.btnEncFile_Click);
+            // 
+            // txtTo
+            // 
+            this.txtTo.Location = new System.Drawing.Point(104, 78);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(371, 26);
+            this.txtTo.TabIndex = 8;
+            this.txtTo.TextChanged += new System.EventHandler(this.txtTo_TextChanged);
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Location = new System.Drawing.Point(104, 32);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(371, 26);
+            this.txtFrom.TabIndex = 7;
+            this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
+            // 
+            // btnTo
+            // 
+            this.btnTo.Location = new System.Drawing.Point(6, 71);
+            this.btnTo.Name = "btnTo";
+            this.btnTo.Size = new System.Drawing.Size(92, 40);
+            this.btnTo.TabIndex = 6;
+            this.btnTo.Text = "目标文件";
+            this.btnTo.UseVisualStyleBackColor = true;
+            this.btnTo.Click += new System.EventHandler(this.btnTo_Click);
+            // 
+            // btnFrom
+            // 
+            this.btnFrom.Location = new System.Drawing.Point(6, 25);
+            this.btnFrom.Name = "btnFrom";
+            this.btnFrom.Size = new System.Drawing.Size(92, 40);
+            this.btnFrom.TabIndex = 5;
+            this.btnFrom.Text = "源文件";
+            this.btnFrom.UseVisualStyleBackColor = true;
+            this.btnFrom.Click += new System.EventHandler(this.btnFrom_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.checkBase64);
             this.groupBox3.Controls.Add(this.btnDecTxt);
             this.groupBox3.Controls.Add(this.btnEncTxt);
-            this.groupBox3.Location = new System.Drawing.Point(0, 257);
+            this.groupBox3.Location = new System.Drawing.Point(292, 247);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(286, 72);
             this.groupBox3.TabIndex = 6;
@@ -263,11 +355,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnInpAes);
             this.groupBox1.Controls.Add(this.btnInpPri);
             this.groupBox1.Controls.Add(this.btnInpPub);
             this.groupBox1.Location = new System.Drawing.Point(0, 130);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(141, 121);
+            this.groupBox1.Size = new System.Drawing.Size(141, 166);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "导入";
@@ -278,7 +371,7 @@
             this.btnInpPri.Name = "btnInpPri";
             this.btnInpPri.Size = new System.Drawing.Size(129, 40);
             this.btnInpPri.TabIndex = 3;
-            this.btnInpPri.Text = "导入私钥";
+            this.btnInpPri.Text = "导入非对称私钥";
             this.btnInpPri.UseVisualStyleBackColor = true;
             this.btnInpPri.Click += new System.EventHandler(this.btnInpPri_Click);
             // 
@@ -288,7 +381,7 @@
             this.btnInpPub.Name = "btnInpPub";
             this.btnInpPub.Size = new System.Drawing.Size(129, 40);
             this.btnInpPub.TabIndex = 3;
-            this.btnInpPub.Text = "导入公钥";
+            this.btnInpPub.Text = "导入非对称公钥";
             this.btnInpPub.UseVisualStyleBackColor = true;
             this.btnInpPub.Click += new System.EventHandler(this.btnInpPub_Click);
             // 
@@ -304,7 +397,7 @@
             this.groupBox4.Size = new System.Drawing.Size(286, 121);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "建立";
+            this.groupBox4.Text = "建立非对称密钥";
             // 
             // label2
             // 
@@ -352,11 +445,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnExpAes);
             this.groupBox2.Controls.Add(this.btnExpPri);
             this.groupBox2.Controls.Add(this.btnExpPub);
             this.groupBox2.Location = new System.Drawing.Point(145, 130);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(141, 121);
+            this.groupBox2.Size = new System.Drawing.Size(141, 166);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "导出";
@@ -368,7 +462,7 @@
             this.btnExpPri.Name = "btnExpPri";
             this.btnExpPri.Size = new System.Drawing.Size(129, 40);
             this.btnExpPri.TabIndex = 4;
-            this.btnExpPri.Text = "导出私钥";
+            this.btnExpPri.Text = "导出非对称私钥";
             this.btnExpPri.UseVisualStyleBackColor = true;
             this.btnExpPri.Click += new System.EventHandler(this.btnExpPri_Click);
             // 
@@ -379,7 +473,7 @@
             this.btnExpPub.Name = "btnExpPub";
             this.btnExpPub.Size = new System.Drawing.Size(129, 40);
             this.btnExpPub.TabIndex = 4;
-            this.btnExpPub.Text = "导出公钥";
+            this.btnExpPub.Text = "导出非对称公钥";
             this.btnExpPub.UseVisualStyleBackColor = true;
             this.btnExpPub.Click += new System.EventHandler(this.btnExpPub_Click);
             // 
@@ -398,90 +492,278 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(175, 6);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(821, 28);
+            this.comboBox1.Size = new System.Drawing.Size(1056, 28);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // groupBox5
+            // groupBox6
             // 
-            this.groupBox5.Controls.Add(this.btnDecFile);
-            this.groupBox5.Controls.Add(this.btnEncFile);
-            this.groupBox5.Controls.Add(this.txtTo);
-            this.groupBox5.Controls.Add(this.txtFrom);
-            this.groupBox5.Controls.Add(this.btnTo);
-            this.groupBox5.Controls.Add(this.btnFrom);
-            this.groupBox5.Location = new System.Drawing.Point(0, 335);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(289, 167);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "测试文件";
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.txtAESKeyLength);
+            this.groupBox6.Controls.Add(this.btnNewAES);
+            this.groupBox6.Location = new System.Drawing.Point(292, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(287, 81);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "建立对称密钥";
             // 
-            // btnFrom
+            // label3
             // 
-            this.btnFrom.Location = new System.Drawing.Point(6, 25);
-            this.btnFrom.Name = "btnFrom";
-            this.btnFrom.Size = new System.Drawing.Size(92, 40);
-            this.btnFrom.TabIndex = 5;
-            this.btnFrom.Text = "源文件";
-            this.btnFrom.UseVisualStyleBackColor = true;
-            this.btnFrom.Click += new System.EventHandler(this.btnFrom_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(147, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "位数：";
             // 
-            // btnTo
+            // txtAESKeyLength
             // 
-            this.btnTo.Location = new System.Drawing.Point(6, 71);
-            this.btnTo.Name = "btnTo";
-            this.btnTo.Size = new System.Drawing.Size(92, 40);
-            this.btnTo.TabIndex = 6;
-            this.btnTo.Text = "目标文件";
-            this.btnTo.UseVisualStyleBackColor = true;
-            this.btnTo.Click += new System.EventHandler(this.btnTo_Click);
+            this.txtAESKeyLength.FormattingEnabled = true;
+            this.txtAESKeyLength.Items.AddRange(new object[] {
+            "32",
+            "64",
+            "128",
+            "256",
+            "512",
+            "1024"});
+            this.txtAESKeyLength.Location = new System.Drawing.Point(211, 37);
+            this.txtAESKeyLength.Name = "txtAESKeyLength";
+            this.txtAESKeyLength.Size = new System.Drawing.Size(69, 28);
+            this.txtAESKeyLength.TabIndex = 9;
+            this.txtAESKeyLength.Text = "32";
             // 
-            // txtFrom
+            // btnNewAES
             // 
-            this.txtFrom.Location = new System.Drawing.Point(104, 32);
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(176, 26);
-            this.txtFrom.TabIndex = 7;
-            this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
+            this.btnNewAES.Location = new System.Drawing.Point(12, 30);
+            this.btnNewAES.Name = "btnNewAES";
+            this.btnNewAES.Size = new System.Drawing.Size(129, 40);
+            this.btnNewAES.TabIndex = 7;
+            this.btnNewAES.Text = "生成新对称密钥";
+            this.btnNewAES.UseVisualStyleBackColor = true;
+            this.btnNewAES.Click += new System.EventHandler(this.btnNewAES_Click);
             // 
-            // txtTo
+            // label4
             // 
-            this.txtTo.Location = new System.Drawing.Point(104, 78);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(176, 26);
-            this.txtTo.TabIndex = 8;
-            this.txtTo.TextChanged += new System.EventHandler(this.txtTo_TextChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "对称密钥格式：";
             // 
-            // btnDecFile
+            // txtSecMode
             // 
-            this.btnDecFile.Enabled = false;
-            this.btnDecFile.Location = new System.Drawing.Point(191, 121);
-            this.btnDecFile.Name = "btnDecFile";
-            this.btnDecFile.Size = new System.Drawing.Size(92, 40);
-            this.btnDecFile.TabIndex = 9;
-            this.btnDecFile.Text = "解密";
-            this.btnDecFile.UseVisualStyleBackColor = true;
-            this.btnDecFile.Click += new System.EventHandler(this.btnDecFile_Click);
+            this.txtSecMode.FormattingEnabled = true;
+            this.txtSecMode.Items.AddRange(new object[] {
+            "aes-128-cbc",
+            "aes-128-cbc-hmac-sha1",
+            "aes-128-cfb",
+            "aes-128-cfb1",
+            "aes-128-cfb8",
+            "aes-128-ctr",
+            "aes-128-ecb",
+            "aes-128-gcm",
+            "aes-128-ofb",
+            "aes-128-xts",
+            "aes-192-cbc",
+            "aes-192-cfb",
+            "aes-192-cfb1",
+            "aes-192-cfb8",
+            "aes-192-ctr",
+            "aes-192-ecb",
+            "aes-192-gcm",
+            "aes-192-ofb",
+            "aes-256-cbc",
+            "aes-256-cbc-hmac-sha1",
+            "aes-256-cfb",
+            "aes-256-cfb1",
+            "aes-256-cfb8",
+            "aes-256-ctr",
+            "aes-256-ecb",
+            "aes-256-gcm",
+            "aes-256-ofb",
+            "aes-256-xts",
+            "aes128",
+            "aes192",
+            "aes256",
+            "bf",
+            "bf-cbc",
+            "bf-cfb",
+            "bf-ecb",
+            "bf-ofb",
+            "blowfish",
+            "camellia-128-cbc",
+            "camellia-128-cfb",
+            "camellia-128-cfb1",
+            "camellia-128-cfb8",
+            "camellia-128-ecb",
+            "camellia-128-ofb",
+            "camellia-192-cbc",
+            "camellia-192-cfb",
+            "camellia-192-cfb1",
+            "camellia-192-cfb8",
+            "camellia-192-ecb",
+            "camellia-192-ofb",
+            "camellia-256-cbc",
+            "camellia-256-cfb",
+            "camellia-256-cfb1",
+            "camellia-256-cfb8",
+            "camellia-256-ecb",
+            "camellia-256-ofb",
+            "camellia128",
+            "camellia192",
+            "camellia256",
+            "cast",
+            "cast-cbc",
+            "cast5-cbc",
+            "cast5-cfb",
+            "cast5-ecb",
+            "cast5-ofb",
+            "des",
+            "des-cbc",
+            "des-cfb",
+            "des-cfb1",
+            "des-cfb8",
+            "des-ecb",
+            "des-ede",
+            "des-ede-cbc",
+            "des-ede-cfb",
+            "des-ede-ofb",
+            "des-ede3",
+            "des-ede3-cbc",
+            "des-ede3-cfb",
+            "des-ede3-cfb1",
+            "des-ede3-cfb8",
+            "des-ede3-ofb",
+            "des-ofb",
+            "des3",
+            "desx",
+            "desx-cbc",
+            "id-aes128-GCM",
+            "id-aes192-GCM",
+            "id-aes256-GCM",
+            "rc2",
+            "rc2-40-cbc",
+            "rc2-64-cbc",
+            "rc2-cbc",
+            "rc2-cfb",
+            "rc2-ecb",
+            "rc2-ofb",
+            "rc4",
+            "rc4-40",
+            "rc4-hmac-md5",
+            "seed",
+            "seed-cbc",
+            "seed-cfb",
+            "seed-ecb",
+            "seed-ofb"});
+            this.txtSecMode.Location = new System.Drawing.Point(126, 53);
+            this.txtSecMode.Name = "txtSecMode";
+            this.txtSecMode.Size = new System.Drawing.Size(154, 28);
+            this.txtSecMode.TabIndex = 11;
+            this.txtSecMode.Text = "aes-256-cbc";
             // 
-            // btnEncFile
+            // tabPage1
             // 
-            this.btnEncFile.Enabled = false;
-            this.btnEncFile.Location = new System.Drawing.Point(93, 121);
-            this.btnEncFile.Name = "btnEncFile";
-            this.btnEncFile.Size = new System.Drawing.Size(92, 40);
-            this.btnEncFile.TabIndex = 10;
-            this.btnEncFile.Text = "加密";
-            this.btnEncFile.UseVisualStyleBackColor = true;
-            this.btnEncFile.Click += new System.EventHandler(this.btnEncFile_Click);
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage1.Controls.Add(this.txtAES);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(623, 475);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "对称密钥";
+            // 
+            // txtAES
+            // 
+            this.txtAES.BackColor = System.Drawing.Color.Black;
+            this.txtAES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAES.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAES.Font = new System.Drawing.Font("Verdana", 10F);
+            this.txtAES.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtAES.Location = new System.Drawing.Point(3, 3);
+            this.txtAES.Multiline = true;
+            this.txtAES.Name = "txtAES";
+            this.txtAES.Size = new System.Drawing.Size(617, 469);
+            this.txtAES.TabIndex = 3;
+            this.txtAES.TextChanged += new System.EventHandler(this.txtAES_TextChanged);
+            // 
+            // radioKeyMode1
+            // 
+            this.radioKeyMode1.AutoSize = true;
+            this.radioKeyMode1.Checked = true;
+            this.radioKeyMode1.Location = new System.Drawing.Point(126, 23);
+            this.radioKeyMode1.Name = "radioKeyMode1";
+            this.radioKeyMode1.Size = new System.Drawing.Size(55, 24);
+            this.radioKeyMode1.TabIndex = 11;
+            this.radioKeyMode1.TabStop = true;
+            this.radioKeyMode1.Text = "对称";
+            this.radioKeyMode1.UseVisualStyleBackColor = true;
+            this.radioKeyMode1.CheckedChanged += new System.EventHandler(this.radioKeyMode1_CheckedChanged);
+            // 
+            // radioKeyMode2
+            // 
+            this.radioKeyMode2.AutoSize = true;
+            this.radioKeyMode2.Location = new System.Drawing.Point(206, 23);
+            this.radioKeyMode2.Name = "radioKeyMode2";
+            this.radioKeyMode2.Size = new System.Drawing.Size(69, 24);
+            this.radioKeyMode2.TabIndex = 12;
+            this.radioKeyMode2.Text = "非对称";
+            this.radioKeyMode2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Controls.Add(this.label5);
+            this.groupBox7.Controls.Add(this.txtSecMode);
+            this.groupBox7.Controls.Add(this.radioKeyMode2);
+            this.groupBox7.Controls.Add(this.radioKeyMode1);
+            this.groupBox7.Location = new System.Drawing.Point(292, 152);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(286, 89);
+            this.groupBox7.TabIndex = 13;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "加密解密测试模式";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "使用密钥：";
+            // 
+            // btnInpAes
+            // 
+            this.btnInpAes.Location = new System.Drawing.Point(6, 117);
+            this.btnInpAes.Name = "btnInpAes";
+            this.btnInpAes.Size = new System.Drawing.Size(129, 40);
+            this.btnInpAes.TabIndex = 4;
+            this.btnInpAes.Text = "导入对称密钥";
+            this.btnInpAes.UseVisualStyleBackColor = true;
+            this.btnInpAes.Click += new System.EventHandler(this.btnInpAes_Click);
+            // 
+            // btnExpAes
+            // 
+            this.btnExpAes.Enabled = false;
+            this.btnExpAes.Location = new System.Drawing.Point(6, 117);
+            this.btnExpAes.Name = "btnExpAes";
+            this.btnExpAes.Size = new System.Drawing.Size(129, 40);
+            this.btnExpAes.TabIndex = 5;
+            this.btnExpAes.Text = "导出对称密钥";
+            this.btnExpAes.UseVisualStyleBackColor = true;
+            this.btnExpAes.Click += new System.EventHandler(this.btnExpAes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 618);
+            this.ClientSize = new System.Drawing.Size(1243, 574);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
@@ -501,13 +783,19 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,6 +841,20 @@
         private System.Windows.Forms.TextBox txtFrom;
         private System.Windows.Forms.Button btnTo;
         private System.Windows.Forms.Button btnFrom;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox txtAESKeyLength;
+        private System.Windows.Forms.Button btnNewAES;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox txtAES;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox txtSecMode;
+        private System.Windows.Forms.RadioButton radioKeyMode2;
+        private System.Windows.Forms.RadioButton radioKeyMode1;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnInpAes;
+        private System.Windows.Forms.Button btnExpAes;
     }
 }
 

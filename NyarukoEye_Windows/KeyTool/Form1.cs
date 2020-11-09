@@ -21,12 +21,14 @@ namespace NyarukoEye_Windows
         private string tempDic = Environment.GetEnvironmentVariable("TEMP");
         private string tempPrivateKeyFile;
         private string tempPublicKeyFile;
+        private string tempAESKeyFile;
 
         public Form1()
         {
             InitializeComponent();
             tempPrivateKeyFile = tempDic + "\\NyaEye_Tools_Pri_" + GetTimeStamp();
             tempPublicKeyFile = tempDic + "\\NyaEye_Tools_Pub_" + GetTimeStamp();
+            tempAESKeyFile = tempDic + "\\NyaEye_Tools_Aes_" + GetTimeStamp();
             string[] opensslPaths = Enc.getOpensslPaths();
             if (opensslPaths.Length == 0)
             {
@@ -246,17 +248,35 @@ namespace NyarukoEye_Windows
         private void btnNewPriKey_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在创建私钥...";
-            txtPrivatePEM.Text = Enc.genPrivateKey(int.Parse(txtKeyLength.Text));
+            string rText = Enc.genPrivateKey(int.Parse(txtKeyLength.Text));
             tabControl1.SelectedIndex = 0;
-            toolStripStatusLabel1.Text = "创建私钥完成。";
+            if (rText.Length == 0)
+            {
+                toolStripStatusLabel1.Text = "创建私钥操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "创建私钥操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "创建私钥完成。";
+                txtPrivatePEM.Text = rText;
+            }
         }
 
         private void btnNewPubKey_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在提取公钥...";
-            txtPublicPEM.Text = Enc.getPublicKey(txtPrivatePEM.Text);
+            string rText = Enc.getPublicKey(txtPrivatePEM.Text);
             tabControl1.SelectedIndex = 1;
-            toolStripStatusLabel1.Text = "提取公钥完成。";
+            if (rText.Length == 0)
+            {
+                toolStripStatusLabel1.Text = "提取公钥操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "提取公钥操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "提取公钥完成。";
+                txtPublicPEM.Text = rText;
+            }
         }
 
         private void txtPrivatePEM_TextChanged(object sender, EventArgs e)
@@ -304,6 +324,7 @@ namespace NyarukoEye_Windows
         {
             if (File.Exists(tempPrivateKeyFile)) File.Delete(tempPrivateKeyFile);
             if (File.Exists(tempPublicKeyFile)) File.Delete(tempPublicKeyFile);
+            if (File.Exists(tempAESKeyFile)) File.Delete(tempAESKeyFile);
         }
 
         private void txtFrom_TextChanged(object sender, EventArgs e)
@@ -345,40 +366,111 @@ namespace NyarukoEye_Windows
         private void btnEncFile_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在加密...";
-            try
+            string rText = Enc.encryptData(tempPublicKeyFile, txtFrom.Text, true, txtTo.Text);
+            if (rText.Length == 0)
             {
-                Enc.encryptData(tempPublicKeyFile, txtFrom.Text, true, txtTo.Text);
+                toolStripStatusLabel1.Text = "加密操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
                 toolStripStatusLabel1.Text = "加密完成";
             }
-            catch (Exception err)
-            {
-                toolStripStatusLabel1.Text = err.Message;
-                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            //if (Enc.error.Length > 0)
-            //{
-            //    toolStripStatusLabel1.Text = "加密操作失败";
-            //    MessageBox.Show(Enc.error, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
 
         private void btnDecFile_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在解密...";
+            string rText = Enc.decryptionData(tempPrivateKeyFile, txtFrom.Text, true, txtTo.Text);
+            if (rText.Length == 0)
+            {
+                toolStripStatusLabel1.Text = "解密操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "解密完成";
+            }
+        }
+
+        private void btnNewAES_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "正在创建对称密钥...";
+            string rText = Enc.getAESkey(int.Parse(txtAESKeyLength.Text));
+            if (rText.Length == 0)
+            {
+                toolStripStatusLabel1.Text = "创建对称密钥失败";
+                MessageBox.Show(Enc.getErrorOnce(), "创建对称密钥失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "创建对称密钥完成。";
+                txtAES.Text = rText;
+                tabControl1.SelectedIndex = 2;
+            }
+        }
+
+        private void btnInpAes_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "请选择要导入的非对称密钥";
+            openFileDialog1.FileName = "AESKey.key";
+            openFileDialog1.Filter = "密钥文件|*.key|所有文件|*.*";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    txtAES.Text = File.ReadAllText(openFileDialog1.FileName);
+                }
+                catch (Exception err)
+                {
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnExpAes_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Title = "指定非对称密钥保存位置";
+            saveFileDialog1.FileName = "AESKey.key";
+            saveFileDialog1.Filter = "密钥文件|*.key|所有文件|*.*";
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string fName = saveFileDialog1.FileName;
+                try
+                {
+                    File.WriteAllText(fName, txtAES.Text);
+                }
+                catch (Exception err)
+                {
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtAES_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAES.Text.Length > 0)
+            {
+                btnExpAes.Enabled = true;
+            }
             try
             {
-                Enc.decryptionData(tempPrivateKeyFile, txtFrom.Text, true, txtTo.Text);
+                File.WriteAllText(tempAESKeyFile, txtAES.Text);
             }
             catch (Exception err)
             {
                 toolStripStatusLabel1.Text = err.Message;
-                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(toolStripStatusLabel1.Text, "临时文件保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //if (Enc.error.Length > 0)
-            //{
-            //    toolStripStatusLabel1.Text = "加密操作失败";
-            //    MessageBox.Show(Enc.error, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+        }
+
+        private void radioKeyMode1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSecMode.Enabled = radioKeyMode1.Checked;
         }
     }
 }

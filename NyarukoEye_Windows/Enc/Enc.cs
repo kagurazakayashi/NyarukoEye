@@ -40,6 +40,12 @@ namespace NyarukoEye_Windows
             }
             return openssls.Where(s => s.IndexOf(".exe") > 0).ToArray();
         }
+        static public string getErrorOnce()
+        {
+            string einfo = error;
+            error = "";
+            return einfo;
+        }
         static public string genPrivateKey(int length = 1024, string outFile = "")
         {
             Process p = new Process();
@@ -192,6 +198,33 @@ namespace NyarukoEye_Windows
             }
             p.WaitForExit();
             if (outFile.Length > 0) return "";
+            string pout = p.StandardOutput.ReadToEnd();
+            p.StandardOutput.Close();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.Close();
+            return pout;
+        }
+        static public string getAESkey(int length = 32, string outFile = "")
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = opensslPath;
+            List<string> arguments = new List<string>();
+            arguments.Add("rand");
+            arguments.Add("-base64");
+            arguments.Add(length.ToString());
+            p.StartInfo.Arguments = string.Join(" ", arguments);
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
+            p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            p.Start();
+            p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
             p.StandardOutput.Close();
             if (getError)
