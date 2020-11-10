@@ -10,7 +10,7 @@ namespace NyarukoEye_Windows
     {
         static public string opensslPath = "openssl";
         static public string error = "";
-        static public bool getError = false;
+        static public bool getError = true;
         static public string[] getOpensslPaths()
         {
             Process p = new Process();
@@ -39,6 +39,11 @@ namespace NyarukoEye_Windows
                 return voidArr;
             }
             return openssls.Where(s => s.IndexOf(".exe") > 0).ToArray();
+        }
+        static public bool isErrorInfo()
+        {
+            if (error.Length > 0) return true;
+            return false;
         }
         static public string getErrorOnce()
         {
@@ -232,6 +237,99 @@ namespace NyarukoEye_Windows
                 error = p.StandardError.ReadToEnd();
                 p.StandardError.Close();
             }
+            p.Close();
+            return pout;
+        }
+        static public string encryptAESData(string aesKeyPath, string source, bool sourceIsPath = false, string encmode = "aes-256-cbc", string outFile = "")
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = opensslPath;
+            List<string> arguments = new List<string>();
+            arguments.Add("enc");
+            arguments.Add("-" + encmode);
+            arguments.Add("-pbkdf2");
+            arguments.Add("-salt");
+            if (sourceIsPath)
+            {
+                arguments.Add("-in");
+                arguments.Add("\"" + source + "\"");
+            }
+            if (outFile.Length > 0)
+            {
+                arguments.Add("-out");
+                arguments.Add("\"" + outFile + "\"");
+            }
+            arguments.Add("-pass");
+            arguments.Add("\"file:" + aesKeyPath + "\"");
+            p.StartInfo.Arguments = string.Join(" ", arguments);
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = !sourceIsPath;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
+            p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            p.Start();
+            if (!sourceIsPath)
+            {
+                p.StandardInput.WriteLine(source);
+                p.StandardInput.Close();
+            }
+            p.WaitForExit();
+            if (outFile.Length > 0) return "";
+            string pout = p.StandardOutput.ReadToEnd();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.StandardOutput.Close();
+            p.Close();
+            return pout;
+        }
+
+        static public string decryptionAESData(string aesKeyPath, string source, bool sourceIsPath = false, string encmode = "aes-256-cbc",string outFile = "")
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = opensslPath;
+            List<string> arguments = new List<string>();
+            arguments.Add("enc");
+            arguments.Add("-d");
+            arguments.Add("-" + encmode);
+            arguments.Add("-pbkdf2");
+            if (sourceIsPath)
+            {
+                arguments.Add("-in");
+                arguments.Add("\"" + source + "\"");
+            }
+            if (outFile.Length > 0)
+            {
+                arguments.Add("-out");
+                arguments.Add("\"" + outFile + "\"");
+            }
+            arguments.Add("-pass");
+            arguments.Add("\"file:" + aesKeyPath + "\"");
+            p.StartInfo.Arguments = string.Join(" ", arguments);
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = !sourceIsPath;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = getError;
+            p.StartInfo.CreateNoWindow = true;
+            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            p.Start();
+            if (!sourceIsPath)
+            {
+                p.StandardInput.WriteLine(source);
+                p.StandardInput.Close();
+            }
+            p.WaitForExit();
+            if (outFile.Length > 0) return "";
+            string pout = p.StandardOutput.ReadToEnd();
+            if (getError)
+            {
+                error = p.StandardError.ReadToEnd();
+                p.StandardError.Close();
+            }
+            p.StandardOutput.Close();
             p.Close();
             return pout;
         }
