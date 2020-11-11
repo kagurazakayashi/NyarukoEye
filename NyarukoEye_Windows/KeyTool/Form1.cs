@@ -184,59 +184,69 @@ namespace NyarukoEye_Windows
         private void btnEncTxt_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在加密...";
-            try
+            string rText = "";
+            if (radioKeyMode1.Checked)
             {
-                string rText = Enc.encryptData(tempPublicKeyFile, txtText.Text);
-                if (rText.Length == 0)
-                {
-                    toolStripStatusLabel1.Text = "加密操作失败";
-                    MessageBox.Show("加密操作失败，检查相关信息再试。", "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    toolStripStatusLabel1.Text = "加密完成";
-                    if (checkBase64.Checked)
-                    {
-                        byte[] rTextB64 = Encoding.Default.GetBytes(rText);
-                        rText = Convert.ToBase64String(rTextB64);
-                    }
-                    txtText.Text = rText;
-                }
+                rText = Enc.encryptAESData(tempAESKeyFile, txtText.Text, false, txtSecMode.Text);
             }
-            catch (Exception err)
+            else
             {
-                toolStripStatusLabel1.Text = err.Message;
-                MessageBox.Show(toolStripStatusLabel1.Text, "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rText = Enc.encryptData(tempPublicKeyFile, txtText.Text);
+            }
+            if (rText.Length == 0 && Enc.isErrorInfo())
+            {
+                toolStripStatusLabel1.Text = "加密操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "加密完成";
+                if (checkBase64.Checked)
+                {
+                    byte[] rTextB64 = Encoding.Default.GetBytes(rText);
+                    rText = Convert.ToBase64String(rTextB64);
+                }
+                txtText.Text = rText;
+                tabControl1.SelectedIndex = 3;
             }
         }
 
         private void btnDecTxt_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在解密...";
-            try
+            string rText = txtText.Text;
+            if (checkBase64.Checked)
             {
-                string rText = txtText.Text;
-                if (checkBase64.Checked)
+                try
                 {
                     byte[] rTextB64 = Convert.FromBase64String(rText);
                     rText = Encoding.Default.GetString(rTextB64);
                 }
-                rText = Enc.decryptionData(tempPrivateKeyFile, rText);
-                if (rText.Length == 0)
+                catch (Exception err)
                 {
-                    toolStripStatusLabel1.Text = "解密操作失败";
-                    MessageBox.Show("解密操作失败，检查相关信息再试。", "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    toolStripStatusLabel1.Text = "解密完成";
-                    txtText.Text = rText;
+                    toolStripStatusLabel1.Text = err.Message;
+                    MessageBox.Show(toolStripStatusLabel1.Text, "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
-            catch (Exception err)
+            if (radioKeyMode1.Checked)
             {
-                toolStripStatusLabel1.Text = err.Message;
-                MessageBox.Show(toolStripStatusLabel1.Text, "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rText = Enc.decryptionAESData(tempAESKeyFile, rText);
+            }
+            else
+            {
+                rText = Enc.decryptionData(tempPrivateKeyFile, rText);
+            }
+            if (rText.Length == 0 && Enc.isErrorInfo())
+            {
+                toolStripStatusLabel1.Text = "解密操作失败";
+                MessageBox.Show(Enc.getErrorOnce(), "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "解密完成";
+                txtText.Text = rText;
+                tabControl1.SelectedIndex = 3;
             }
         }
 
@@ -250,7 +260,7 @@ namespace NyarukoEye_Windows
             toolStripStatusLabel1.Text = "正在创建私钥...";
             string rText = Enc.genPrivateKey(int.Parse(txtKeyLength.Text));
             tabControl1.SelectedIndex = 0;
-            if (rText.Length == 0)
+            if (rText.Length == 0 && Enc.isErrorInfo())
             {
                 toolStripStatusLabel1.Text = "创建私钥操作失败";
                 MessageBox.Show(Enc.getErrorOnce(), "创建私钥操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -267,7 +277,7 @@ namespace NyarukoEye_Windows
             toolStripStatusLabel1.Text = "正在提取公钥...";
             string rText = Enc.getPublicKey(txtPrivatePEM.Text);
             tabControl1.SelectedIndex = 1;
-            if (rText.Length == 0)
+            if (rText.Length == 0 && Enc.isErrorInfo())
             {
                 toolStripStatusLabel1.Text = "提取公钥操作失败";
                 MessageBox.Show(Enc.getErrorOnce(), "提取公钥操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -285,6 +295,11 @@ namespace NyarukoEye_Windows
             if (txtPrivatePEM.Text.Length > 0)
             {
                 btnenable = true;
+                tabPrivatePEM.Text = "非对称私钥";
+            }
+            else
+            {
+                tabPrivatePEM.Text = "[!] 非对称私钥";
             }
             btnExpPri.Enabled = btnenable;
             btnNewPubKey.Enabled = btnenable;
@@ -306,9 +321,12 @@ namespace NyarukoEye_Windows
             if (txtPublicPEM.Text.Length > 0)
             {
                 btnenable = true;
+                tabPublicPEM.Text = "非对称公钥";
             }
-            btnExpPub.Enabled = btnenable;
-            btnEncTxt.Enabled = btnenable;
+            else
+            {
+                tabPublicPEM.Text = "[!] 非对称公钥";
+            }
             try
             {
                 File.WriteAllText(tempPublicKeyFile, txtPublicPEM.Text);
@@ -329,15 +347,7 @@ namespace NyarukoEye_Windows
 
         private void txtFrom_TextChanged(object sender, EventArgs e)
         {
-            if (txtFrom.Text.Length > 0 && txtTo.Text.Length > 0)
-            {
-                btnEncFile.Enabled = btnEncTxt.Enabled;
-                btnDecFile.Enabled = btnDecTxt.Enabled;
-            }
-            else
-            {
-                btnEncFile.Enabled = btnDecFile.Enabled = false;
-            }
+            btnEncFile.Enabled = btnDecFile.Enabled = txtFrom.Text.Length > 0 && txtTo.Text.Length > 0;
         }
 
         private void txtTo_TextChanged(object sender, EventArgs e)
@@ -351,7 +361,11 @@ namespace NyarukoEye_Windows
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "所有文件|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK) txtFrom.Text = openFileDialog1.FileName;
+            if (result == DialogResult.OK)
+            {
+                txtFrom.Text = openFileDialog1.FileName;
+                txtTo.Text = txtFrom.Text + ".enc";
+            }
         }
 
         private void btnTo_Click(object sender, EventArgs e)
@@ -366,8 +380,16 @@ namespace NyarukoEye_Windows
         private void btnEncFile_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在加密...";
-            string rText = Enc.encryptData(tempPublicKeyFile, txtFrom.Text, true, txtTo.Text);
-            if (rText.Length == 0)
+            string rText = "";
+            if (radioKeyMode1.Checked)
+            {
+                rText = Enc.encryptAESData(tempAESKeyFile, txtFrom.Text, true, txtSecMode.Text, txtTo.Text);
+            }
+            else
+            {
+                rText = Enc.encryptData(tempPublicKeyFile, txtFrom.Text, true, txtTo.Text);
+            }
+            if (rText.Length == 0 && Enc.isErrorInfo())
             {
                 toolStripStatusLabel1.Text = "加密操作失败";
                 MessageBox.Show(Enc.getErrorOnce(), "加密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -381,8 +403,16 @@ namespace NyarukoEye_Windows
         private void btnDecFile_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "正在解密...";
-            string rText = Enc.decryptionData(tempPrivateKeyFile, txtFrom.Text, true, txtTo.Text);
-            if (rText.Length == 0)
+            string rText = "";
+            if (radioKeyMode1.Checked)
+            {
+                rText = Enc.decryptionAESData(tempAESKeyFile, txtFrom.Text, true, "aes-256-cbc", txtTo.Text);
+            }
+            else
+            {
+                rText = Enc.decryptionData(tempPrivateKeyFile, txtFrom.Text, true, txtTo.Text);
+            }
+            if (rText.Length == 0 && Enc.isErrorInfo())
             {
                 toolStripStatusLabel1.Text = "解密操作失败";
                 MessageBox.Show(Enc.getErrorOnce(), "解密操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -397,7 +427,7 @@ namespace NyarukoEye_Windows
         {
             toolStripStatusLabel1.Text = "正在创建对称密钥...";
             string rText = Enc.getAESkey(int.Parse(txtAESKeyLength.Text));
-            if (rText.Length == 0)
+            if (rText.Length == 0 && Enc.isErrorInfo())
             {
                 toolStripStatusLabel1.Text = "创建对称密钥失败";
                 MessageBox.Show(Enc.getErrorOnce(), "创建对称密钥失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -456,6 +486,11 @@ namespace NyarukoEye_Windows
             if (txtAES.Text.Length > 0)
             {
                 btnExpAes.Enabled = true;
+                tabAES.Text = "对称密钥";
+            }
+            else
+            {
+                tabAES.Text = "[!] 对称密钥";
             }
             try
             {
@@ -471,6 +506,19 @@ namespace NyarukoEye_Windows
         private void radioKeyMode1_CheckedChanged(object sender, EventArgs e)
         {
             txtSecMode.Enabled = radioKeyMode1.Checked;
+        }
+
+        private void txtText_TextChanged(object sender, EventArgs e)
+        {
+            btnEncTxt.Enabled = btnDecTxt.Enabled = txtText.Text.Length > 0;
+            if (txtText.Text.Length > 0)
+            {
+                tabText.Text = "测试文本";
+            }
+            else
+            {
+                tabText.Text = "[!] 测试文本";
+            }
         }
     }
 }
