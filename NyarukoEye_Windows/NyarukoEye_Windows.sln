@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyTool", "KeyTool\KeyTool.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enc", "Enc\Enc.csproj", "{B3F91EFD-C1CD-4763-B783-77268ACE90FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetTool", "NetTool\NetTool.csproj", "{457DAF2B-EB23-46B3-A475-269A983D3318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetUL", "NetUL\NetUL.csproj", "{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{B3F91EFD-C1CD-4763-B783-77268ACE90FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F91EFD-C1CD-4763-B783-77268ACE90FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F91EFD-C1CD-4763-B783-77268ACE90FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{457DAF2B-EB23-46B3-A475-269A983D3318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{457DAF2B-EB23-46B3-A475-269A983D3318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{457DAF2B-EB23-46B3-A475-269A983D3318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{457DAF2B-EB23-46B3-A475-269A983D3318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
