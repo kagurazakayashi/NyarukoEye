@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -238,6 +239,7 @@ namespace NyarukoEye_Windows
                 p.StandardError.Close();
             }
             p.Close();
+            if (outFile.Length > 0) File.WriteAllText(outFile, pout);
             return pout;
         }
         static public string encryptAESData(string aesKeyPath, string source, bool sourceIsPath = false, string encmode = "aes-256-cbc", string outFile = "")
@@ -287,7 +289,7 @@ namespace NyarukoEye_Windows
             return pout;
         }
 
-        static public string decryptionAESData(string aesKeyPath, string source, bool sourceIsPath = false, string encmode = "aes-256-cbc",string outFile = "")
+        static public string decryptionAESData(string aesKeyPath, string source, bool sourceIsPath = false, string encmode = "aes-256-cbc", string outFile = "")
         {
             Process p = new Process();
             p.StartInfo.FileName = opensslPath;

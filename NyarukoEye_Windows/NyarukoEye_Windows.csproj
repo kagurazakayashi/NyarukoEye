@@ -35,8 +35,11 @@
     <StartupObject>NyarukoEye_Windows.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RSA">
-      <HintPath>RSA\bin\Debug\RSA.dll</HintPath>
+    <Reference Include="Enc">
+      <HintPath>Enc\bin\Debug\Enc.dll</HintPath>
+    </Reference>
+    <Reference Include="NetUL">
+      <HintPath>NetUL\bin\Debug\NetUL.dll</HintPath>
     </Reference>
     <Reference Include="Shot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
