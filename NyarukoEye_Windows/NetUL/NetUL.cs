@@ -3,12 +3,30 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.IO;
+using RestSharp;
 
 namespace NyarukoEye_Windows
 {
     static public class NetUL
     {
         static public string[] httpUploadFile(string url, string[] files, Dictionary<string, string> stringDict = null)
+        {
+            var client = new RestClient(url);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            foreach (var item in stringDict)
+            {
+                request.AddParameter(item.Key, item.Value);
+            }
+            foreach (var item in files)
+            {
+                request.AddFile("files", item);
+            }
+            IRestResponse response = client.Execute(request);
+            string[] r = { response.ErrorMessage, response.Content };
+            return r;
+        }
+        static public string[] httpUploadFile2(string url, string[] files, Dictionary<string, string> stringDict = null)
         {
             // HttpContext context
             // 参考 http://www.cnblogs.com/greenerycn/archive/2010/05/15/csharp_http_post.html
@@ -22,9 +40,11 @@ namespace NyarukoEye_Windows
                 string filePath = item;
                 string fileName = Path.GetFileName(item);
                 var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                var fileHeaderBytes = Encoding.UTF8.GetBytes($"Content-Disposition: form-data; name=\"{"file"}\"; filename=\"{fileName}\"\r\nContent-Type: application/octet-stream\r\n\r\n");
+                var fileHeaderBytes = Encoding.UTF8.GetBytes($"Content-Disposition: form-data; name=\"{"files"}\"; filename=\"{fileName}\"\r\nContent-Type: application/octet-stream\r\n\r\n");
+
                 // 开始拼数据
                 memStream.Write(beginBoundary, 0, beginBoundary.Length);
+
                 // 文件数据
                 memStream.Write(fileHeaderBytes, 0, fileHeaderBytes.Length);
                 var buffer = new byte[1024];
@@ -34,7 +54,7 @@ namespace NyarukoEye_Windows
                     memStream.Write(buffer, 0, bytesRead);
                 }
                 fileStream.Close();
-                // 必须得写入一个换行
+                //必须得写入一个换行
                 byte[] bytes = Encoding.UTF8.GetBytes($"\r\n");
                 memStream.Write(bytes, 0, bytes.Length);
             }
@@ -66,24 +86,24 @@ namespace NyarukoEye_Windows
             webRequest.Timeout = 100000;
             webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
             webRequest.ContentLength = tempBuffer.Length;
+            string responseContent;
             try
             {
                 Stream requestStream = webRequest.GetRequestStream();
                 requestStream.Write(tempBuffer, 0, tempBuffer.Length);
                 requestStream.Close();
+                var httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+                using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.GetEncoding("utf-8")))
+                {
+                    responseContent = httpStreamReader.ReadToEnd();
+                }
+                httpWebResponse.Close();
             }
             catch (Exception e)
             {
                 string[] er = { e.Message, "" };
                 return er;
             }
-            var httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
-            string responseContent;
-            using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.GetEncoding("utf-8")))
-            {
-                responseContent = httpStreamReader.ReadToEnd();
-            }
-            httpWebResponse.Close();
             webRequest.Abort();
             string[] r = { "", responseContent };
             return r;
