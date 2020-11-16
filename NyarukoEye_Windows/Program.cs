@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -16,8 +17,9 @@ namespace NyarukoEye_Windows
         static private string keyType = "";
         static private string encKeyType = "";
         static private string symmetric = "";
-        static private string username = "";
-        static private string password = "";
+        static private string uUsername = "";
+        static private string uPassword = "";
+        static private string uURL = "";
         static private int aesLength = 0;
         static private string publicKey = "";
         static private ImageFormat imgFormat;
@@ -44,6 +46,12 @@ namespace NyarukoEye_Windows
                 printf("退出。");
                 Thread.Sleep(1000);
             };
+            Console.CancelKeyPress += delegate {
+                printf("停止。");
+                screenshotThreadWorking = false;
+                Application.Exit();
+                return;
+            };
             string fileDir = Environment.CurrentDirectory;
             printf("当前程序目录：" + fileDir);
             string[] IniFileDirArr = Directory.GetFiles(fileDir, "*.ini");
@@ -62,6 +70,7 @@ namespace NyarukoEye_Windows
                 Enc.opensslPath = opensslPaths[0];
                 printf("OpenSSL：" + opensslPaths[0]);
             }
+            Enc.debug = debuglevel == 4;
             string IniFileDir = IniFileDirArr[0];
             printf("加载配置文件：" + IniFileDir);
             INI ini = new INI(IniFileDir);
@@ -73,13 +82,21 @@ namespace NyarukoEye_Windows
             int screenW = Screen.PrimaryScreen.Bounds.Width;
             int screenH = Screen.PrimaryScreen.Bounds.Height;
             printf("主屏幕像素：" + screenW.ToString() + " × " + screenH.ToString());
+            prefix = ini.IniReadValue("User", "Prefix");
+            if (prefix.Length == 0)
+            {
+                prefix = "NyarukoEye";
+            }
+            printf("文件前缀：" + prefix);
             tempdir = ini.IniReadValue("Work", "TempDir");
             if (tempdir.Length == 0)
             {
                 string temp = Environment.GetEnvironmentVariable("TEMP");
                 DirectoryInfo info = new DirectoryInfo(temp);
-                tempdir = info.FullName;
+                tempdir = info.FullName + "\\" + prefix;
+                if (!Directory.Exists(tempdir)) Directory.CreateDirectory(tempdir);
             }
+            prefix += "_";
             printf("临时文件夹：" + tempdir);
             imgType = ini.IniReadValue("File", "Type");
             if (imgType.Length == 0)
@@ -113,16 +130,6 @@ namespace NyarukoEye_Windows
             printf("被加密的对称密钥文件存储格式：" + encKeyType);
             publicKey = ini.IniReadValue("Encrypt", "publicKey");
             printf("公钥：" + publicKey);
-            prefix = ini.IniReadValue("User", "Prefix");
-            if (prefix.Length == 0)
-            {
-                prefix = "NyarukoEye_";
-            }
-            else
-            {
-                prefix = prefix + "_";
-            }
-            printf("文件前缀：" + prefix);
             name = ini.IniReadValue("User", "Name");
             if (name.Length == 0)
             {
@@ -145,6 +152,12 @@ namespace NyarukoEye_Windows
                 sleepTimeSecInt = int.Parse(sleepTimeSec);
                 sleepTime = sleepTimeSecInt * 1000;
             }
+            uUsername = ini.IniReadValue("User", "Username");
+            printf("上载用户名：" + uUsername);
+            uPassword = ini.IniReadValue("User", "Password");
+            printf("上载密码：<*>");
+            uURL = ini.IniReadValue("Network", "UploadURL");
+            printf("上载URL：" + uURL);
             printf("间隔时间（秒）：" + sleepTimeSecInt.ToString());
             sleepTimeSec = ini.IniReadValue("Work", "WorkSleep");
             sleepTimeSecInt = 1;
@@ -154,13 +167,6 @@ namespace NyarukoEye_Windows
                 workSleepTime = sleepTimeSecInt * 1000;
             }
             printf("批量处理间隔时间（秒）：" + sleepTimeSecInt.ToString());
-            allTempPath = prefix + name + "*." + imgType;
-            printf("扫描未完成任务：文件夹：" + tempdir + "，文件：" + allTempPath);
-            foreach (string nowFile in getTempFiles())
-            {
-                printf("未完成：" + nowFile);
-            }
-            printf("启动屏幕截图线程 " + threadID.ToString() + " ...", 0);
             ThreadStart screenshotRef = new ThreadStart(screenshotThreadRun);
             Thread screenshotThread = new Thread(screenshotRef);
             screenshotThread.Name = "screenshotThread" + (threadID++).ToString();
@@ -169,8 +175,9 @@ namespace NyarukoEye_Windows
             Application.Run();
             return 0;
         }
-        static private string[] getTempFiles()
+        static private string[] getTempFiles(string fileExtName)
         {
+            allTempPath = prefix + name + "*." + fileExtName;
             DirectoryInfo folder = new DirectoryInfo(tempdir);
             FileInfo[] files = folder.GetFiles(allTempPath);
             string[] filesFullName = new string[files.Length];
@@ -185,13 +192,14 @@ namespace NyarukoEye_Windows
         static private void screenshotThreadRun()
         {
             screenshotThreadWorking = true;
+            string nowThreadID = threadID.ToString();
+            printf("启动屏幕截图线程 " + nowThreadID + " ...", 0);
             while (screenshotThreadWorking)
             {
                 printf("进行屏幕截图...", 0);
                 printf("屏幕截图完成 " + getScreenshot(), 0);
                 if (!encryptThreadWorking)
                 {
-                    printf("启动文件加密线程 " + threadID.ToString() + " ...", 0);
                     ThreadStart encryptRef = new ThreadStart(encryptThreadRun);
                     Thread encryptThread = new Thread(encryptRef);
                     encryptThread.Name = "encryptThread" + (threadID++).ToString();
@@ -199,12 +207,17 @@ namespace NyarukoEye_Windows
                 }
                 Thread.Sleep(sleepTime);
             }
+            printf("结束屏幕截图线程 " + nowThreadID + " 。", 0);
             screenshotThreadWorking = false;
+            printf("退出。");
+            Application.Exit();
         }
         static private void encryptThreadRun()
         {
             encryptThreadWorking = true;
-            foreach (string file in getTempFiles())
+            string nowThreadID = threadID.ToString();
+            printf("启动文件加密线程 " + nowThreadID + " ...", 0);
+            foreach (string file in getTempFiles(imgType))
             {
                 printf("正在处理文件 " + file + " ...", 0);
                 string[] extFileName = file.Split('.');
@@ -242,9 +255,77 @@ namespace NyarukoEye_Windows
                 if (File.Exists(aesKey)) File.Delete(aesKey);
                 printf("删除未加密文件 " + file + " ...", 0);
                 if (File.Exists(file)) File.Delete(file);
+                if (!netuploadThreadWorking)
+                {
+                    ThreadStart encryptRef = new ThreadStart(uploadThreadRun);
+                    Thread encryptThread = new Thread(encryptRef);
+                    encryptThread.Name = "encryptThread" + (threadID++).ToString();
+                    encryptThread.Start();
+                }
                 Thread.Sleep(workSleepTime);
             }
+            printf("结束文件加密线程 " + nowThreadID + " 。", 0);
             encryptThreadWorking = false;
+        }
+        static private void uploadThreadRun()
+        {
+            netuploadThreadWorking = true;
+            string nowThreadID = threadID.ToString();
+            printf("启动网络上载线程 " + nowThreadID + " ...", 0);
+            foreach (string file in getTempFiles(encType))
+            {
+                printf("正在处理文件 " + file + " ...", 0);
+                string[] extFileName = file.Split('.');
+                extFileName[extFileName.Length - 1] = encKeyType;
+                string kFile = string.Join(".", extFileName);
+                if (File.Exists(kFile))
+                {
+                    string[] fileList = { file, kFile };
+                    Dictionary<string, string> netArgv = new Dictionary<string, string>();
+                    netArgv.Add("userName", uUsername);
+                    netArgv.Add("password", uPassword);
+                    netArgv.Add("extension", imgType);
+                    string[] result = NetUL.httpUploadFile(uURL, fileList, netArgv);
+                    string resultErr = result[0];
+                    string resultInfo = result[1];
+                    if (resultErr != null && resultErr.Length > 0)
+                    {
+                        printf(resultErr, 3);
+                        return;
+                    }
+                    string msg = "";
+                    switch (resultInfo)
+                    {
+                        case "100":
+                            msg = "上传成功"; break;
+                        case "101":
+                            msg = "上传成功，原文件删除失败"; break;
+                        case "200":
+                            msg = "用户名或密码不正确"; break;
+                        case "202":
+                            msg = "创建文件失败"; break;
+                        case "203":
+                            msg = "保存文件失败"; break;
+                        case "204":
+                            msg = "解密失败"; break;
+                        default:
+                            msg = "返回信息"; break;
+                    }
+                    msg = resultInfo + msg;
+                    printf(msg, 0);
+                    printf("删除已上传数据文件 " + file + " ...", 0);
+                    if (File.Exists(file)) File.Delete(file);
+                    printf("删除已上传密钥文件 " + kFile + " ...", 0);
+                    if (File.Exists(kFile)) File.Delete(kFile);
+                }
+                else if (File.Exists(file))
+                {
+                    File.Delete(file);
+                }
+                Thread.Sleep(workSleepTime);
+            }
+            printf("结束网络上载线程 " + nowThreadID + " 。", 0);
+            netuploadThreadWorking = false;
         }
         static private string getScreenshot()
         {

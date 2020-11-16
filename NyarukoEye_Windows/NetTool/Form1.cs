@@ -39,7 +39,7 @@ namespace NyarukoEye_Windows
                         listFile.Items.Add(fileName);
                     }
                 }
-                btnStart.Enabled = btnRemove.Enabled = listFile.Items.Count > 0;
+                btnClear.Enabled = btnStart.Enabled = btnRemove.Enabled = listFile.Items.Count > 0;
             }
         }
 
@@ -51,6 +51,7 @@ namespace NyarukoEye_Windows
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = false;
             string[] filelist = new string[listFile.Items.Count];
             for (UInt16 i = 0; i < listFile.Items.Count; i++)
             {
@@ -59,12 +60,14 @@ namespace NyarukoEye_Windows
             Dictionary<string, string> stringDict = new Dictionary<string, string>();
             stringDict.Add("userName", txtName.Text);
             stringDict.Add("password", txtPassword.Text);
+            //stringDict.Add("extension", "jpg");
             string[] result = NetUL.httpUploadFile(txtURL.Text, filelist, stringDict);
             string resultErr = result[0];
             string resultInfo = result[1];
-            if (resultErr.Length > 0)
+            if (resultErr != null && resultErr.Length > 0)
             {
                 MessageBox.Show(resultErr, "网络通信失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnStart.Enabled = true;
                 return;
             }
             switch (resultInfo)
@@ -84,6 +87,13 @@ namespace NyarukoEye_Windows
                 default:
                     MessageBox.Show(resultInfo, "返回信息", MessageBoxButtons.OK, MessageBoxIcon.Information); break;
             }
+            btnStart.Enabled = true;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            listFile.Items.Clear();
+            btnClear.Enabled = btnStart.Enabled = btnRemove.Enabled = listFile.Items.Count > 0;
         }
     }
 }

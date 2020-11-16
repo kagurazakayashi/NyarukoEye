@@ -43,6 +43,7 @@ namespace NyarukoEye_Windows
             this.btnExit = new System.Windows.Forms.Button();
             this.txtURL = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -98,7 +99,7 @@ namespace NyarukoEye_Windows
             this.listFile.ItemHeight = 20;
             this.listFile.Location = new System.Drawing.Point(6, 25);
             this.listFile.Name = "listFile";
-            this.listFile.Size = new System.Drawing.Size(208, 84);
+            this.listFile.Size = new System.Drawing.Size(485, 104);
             this.listFile.TabIndex = 4;
             // 
             // groupBox1
@@ -106,12 +107,13 @@ namespace NyarukoEye_Windows
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.listFile);
             this.groupBox1.Location = new System.Drawing.Point(282, 48);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 120);
+            this.groupBox1.Size = new System.Drawing.Size(535, 141);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "文件列表";
@@ -121,7 +123,7 @@ namespace NyarukoEye_Windows
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(220, 63);
+            this.btnRemove.Location = new System.Drawing.Point(497, 63);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(32, 32);
             this.btnRemove.TabIndex = 6;
@@ -133,7 +135,7 @@ namespace NyarukoEye_Windows
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.Location = new System.Drawing.Point(220, 25);
+            this.btnAdd.Location = new System.Drawing.Point(497, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(32, 32);
             this.btnAdd.TabIndex = 5;
@@ -149,7 +151,7 @@ namespace NyarukoEye_Windows
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(18, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 120);
+            this.groupBox2.Size = new System.Drawing.Size(258, 141);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "凭据信息";
@@ -165,7 +167,7 @@ namespace NyarukoEye_Windows
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStart.Enabled = false;
-            this.btnStart.Location = new System.Drawing.Point(280, 174);
+            this.btnStart.Location = new System.Drawing.Point(557, 195);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(127, 36);
             this.btnStart.TabIndex = 8;
@@ -177,7 +179,7 @@ namespace NyarukoEye_Windows
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Location = new System.Drawing.Point(413, 174);
+            this.btnExit.Location = new System.Drawing.Point(690, 195);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(127, 36);
             this.btnExit.TabIndex = 9;
@@ -192,9 +194,9 @@ namespace NyarukoEye_Windows
             this.txtURL.Location = new System.Drawing.Point(73, 14);
             this.txtURL.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(467, 26);
+            this.txtURL.Size = new System.Drawing.Size(744, 26);
             this.txtURL.TabIndex = 1;
-            this.txtURL.Text = "http://192.168.2.240:8088/test";
+            this.txtURL.Text = "http://192.168.2.240:1818/punch_the_clock";
             // 
             // label3
             // 
@@ -206,11 +208,24 @@ namespace NyarukoEye_Windows
             this.label3.TabIndex = 0;
             this.label3.Text = "URL：";
             // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.Enabled = false;
+            this.btnClear.Location = new System.Drawing.Point(497, 101);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(32, 32);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "C";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 227);
+            this.ClientSize = new System.Drawing.Size(838, 248);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnStart);
@@ -246,6 +261,7 @@ namespace NyarukoEye_Windows
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtURL;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

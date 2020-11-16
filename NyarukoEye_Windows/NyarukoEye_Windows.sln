@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetTool", "NetTool\NetTool.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetUL", "NetUL\NetUL.csproj", "{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NELauncher", "NELauncher\NELauncher.csproj", "{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AE6A41A-3A25-419E-BBCC-9AD2A1A3B714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
