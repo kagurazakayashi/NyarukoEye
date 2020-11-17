@@ -12,6 +12,7 @@ namespace NyarukoEye_Windows
         static public string opensslPath = "openssl";
         static public string error = "";
         static public bool getError = true;
+        static public bool debug = false;
         static public string[] getOpensslPaths()
         {
             Process p = new Process();
@@ -22,7 +23,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
@@ -70,7 +71,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
@@ -106,7 +107,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             if (!privateKeyIsPath)
             {
@@ -151,7 +152,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             if (!sourceIsPath)
             {
@@ -195,7 +196,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             if (!sourceIsPath)
             {
@@ -228,7 +229,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " +p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
@@ -239,6 +240,7 @@ namespace NyarukoEye_Windows
                 p.StandardError.Close();
             }
             p.Close();
+            pout = pout.Replace("\r\n", "\n");
             if (outFile.Length > 0) File.WriteAllText(outFile, pout);
             return pout;
         }
@@ -269,7 +271,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             if (!sourceIsPath)
             {
@@ -316,7 +318,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             if (!sourceIsPath)
             {
