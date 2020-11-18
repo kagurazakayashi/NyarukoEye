@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}</ProjectGuid>
+    <ProjectGuid>{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NELauncher</RootNamespace>
-    <AssemblyName>NELauncher</AssemblyName>
+    <RootNamespace>ConfigEditer</RootNamespace>
+    <AssemblyName>ConfigEditer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -50,7 +50,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HotKeys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -64,6 +63,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -74,6 +74,51 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_30_s128_f_business_30_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_79_s64_f_business_79_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_79_s32_f_business_79_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_7_s32_f_business_7_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_96_s32_f_business_96_1nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_58_s32_f_business_58_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_object_54_s32_f_object_54_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_object_46_s32_f_object_46_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_object_34_s32_f_object_34_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_90_s32_f_business_90_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_63_s32_f_business_63_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_object_116_s32_f_object_116_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_35_s32_f_business_35_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_14_s32_f_business_14_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_object_130_s32_f_object_130_0nbg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

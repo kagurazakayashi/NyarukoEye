@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -41,15 +43,23 @@ namespace NyarukoEye_Windows
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             AppDomain appd = AppDomain.CurrentDomain;
+            Process[] processes = System.Diagnostics.Process.GetProcessesByName(Application.CompanyName);
+            if (processes.Length > 1)
+            {
+                printf("已经有一个实例正在运行。");
+                Thread.Sleep(1000);
+                Environment.Exit(1);
+            }
             appd.ProcessExit += (s, e) =>
             {
                 printf("退出。");
                 Thread.Sleep(1000);
             };
-            Console.CancelKeyPress += delegate {
-                printf("停止。");
+            Console.CancelKeyPress += delegate
+            {
+                printf("停止...");
                 screenshotThreadWorking = false;
-                Application.Exit();
+                Environment.Exit(1);
                 return;
             };
             string fileDir = Environment.CurrentDirectory;
@@ -94,9 +104,9 @@ namespace NyarukoEye_Windows
                 string temp = Environment.GetEnvironmentVariable("TEMP");
                 DirectoryInfo info = new DirectoryInfo(temp);
                 tempdir = info.FullName + "\\" + prefix;
-                if (!Directory.Exists(tempdir)) Directory.CreateDirectory(tempdir);
             }
             prefix += "_";
+            if (!Directory.Exists(tempdir)) Directory.CreateDirectory(tempdir);
             printf("临时文件夹：" + tempdir);
             imgType = ini.IniReadValue("File", "Type");
             if (imgType.Length == 0)
@@ -128,12 +138,12 @@ namespace NyarukoEye_Windows
             printf("对称密钥文件格式：" + keyType);
             encKeyType = ini.IniReadValue("File", "EncKeyType");
             printf("被加密的对称密钥文件存储格式：" + encKeyType);
-            publicKey = ini.IniReadValue("Encrypt", "publicKey");
+            publicKey = ini.IniReadValue("Encrypt", "PublicKey");
             printf("公钥：" + publicKey);
             name = ini.IniReadValue("User", "Name");
             if (name.Length == 0)
             {
-                name = Environment.MachineName + "." + Environment.UserDomainName + "." + Environment.UserName + "_";
+                name = GetNumberAlpha(Environment.MachineName + Environment.UserDomainName + Environment.UserName) + "_";
             }
             else
             {
@@ -189,6 +199,19 @@ namespace NyarukoEye_Windows
             }
             return filesFullName;
         }
+
+        private static string GetNumberAlpha(string source)
+        {
+            string pattern = "[A-Za-z0-9]";
+            string strRet = "";
+            MatchCollection results = Regex.Matches(source, pattern);
+            foreach (var v in results)
+            {
+                strRet += v.ToString();
+            }
+            return strRet;
+        }
+
         static private void screenshotThreadRun()
         {
             screenshotThreadWorking = true;
@@ -198,7 +221,7 @@ namespace NyarukoEye_Windows
             {
                 printf("进行屏幕截图...", 0);
                 printf("屏幕截图完成 " + getScreenshot(), 0);
-                if (!encryptThreadWorking)
+                if (!encryptThreadWorking && publicKey.Length > 0)
                 {
                     ThreadStart encryptRef = new ThreadStart(encryptThreadRun);
                     Thread encryptThread = new Thread(encryptRef);
@@ -210,7 +233,7 @@ namespace NyarukoEye_Windows
             printf("结束屏幕截图线程 " + nowThreadID + " 。", 0);
             screenshotThreadWorking = false;
             printf("退出。");
-            Application.Exit();
+            Environment.Exit(1);
         }
         static private void encryptThreadRun()
         {
@@ -255,7 +278,7 @@ namespace NyarukoEye_Windows
                 if (File.Exists(aesKey)) File.Delete(aesKey);
                 printf("删除未加密文件 " + file + " ...", 0);
                 if (File.Exists(file)) File.Delete(file);
-                if (!netuploadThreadWorking)
+                if (!netuploadThreadWorking && uURL.Length > 0)
                 {
                     ThreadStart encryptRef = new ThreadStart(uploadThreadRun);
                     Thread encryptThread = new Thread(encryptRef);

@@ -118,7 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="f_f_object_46_s32_f_object_46_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_object_46_s32_f_object_46_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_90_s32_f_business_90_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_90_s32_f_business_90_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_63_s32_f_business_63_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_63_s32_f_business_63_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_14_s32_f_business_14_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_14_s32_f_business_14_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_30_s128_f_business_30_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_30_s128_f_business_30_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_object_54_s32_f_object_54_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_object_54_s32_f_object_54_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_79_s32_f_business_79_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_79_s32_f_business_79_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="f_f_object_34_s32_f_object_34_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\f_f_object_34_s32_f_object_34_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_7_s32_f_business_7_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_7_s32_f_business_7_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_35_s32_f_business_35_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_35_s32_f_business_35_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_96_s32_f_business_96_1nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_96_s32_f_business_96_1nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_object_116_s32_f_object_116_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_object_116_s32_f_object_116_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_business_58_s32_f_business_58_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_business_58_s32_f_business_58_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="f_f_object_130_s32_f_object_130_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_object_130_s32_f_object_130_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

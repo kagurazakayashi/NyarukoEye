@@ -59,5 +59,15 @@ namespace NyarukoEye_Windows.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap f_f_object_34_s32_f_object_34_0nbg {
+            get {
+                object obj = ResourceManager.GetObject("f_f_object_34_s32_f_object_34_0nbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

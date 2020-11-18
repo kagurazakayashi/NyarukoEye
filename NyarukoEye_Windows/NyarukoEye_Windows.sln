@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetUL", "NetUL\NetUL.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NELauncher", "NELauncher\NELauncher.csproj", "{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigEditer", "ConfigEditer\ConfigEditer.csproj", "{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

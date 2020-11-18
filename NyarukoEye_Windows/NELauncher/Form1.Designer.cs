@@ -29,12 +29,14 @@ namespace NELauncher
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.启动服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.停止服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重启服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.结束退出F4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +99,12 @@ namespace NELauncher
             this.结束退出F4ToolStripMenuItem.Text = "结束退出(F4)";
             this.结束退出F4ToolStripMenuItem.Click += new System.EventHandler(this.结束退出F4ToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -108,7 +116,9 @@ namespace NELauncher
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
+            this.Opacity = 0D;
             this.Text = "后台服务";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -125,6 +135,7 @@ namespace NELauncher
         private System.Windows.Forms.ToolStripMenuItem 停止服务ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重启服务ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 结束退出F4ToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
