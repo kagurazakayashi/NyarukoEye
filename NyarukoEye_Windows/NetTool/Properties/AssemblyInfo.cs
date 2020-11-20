@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("NetTool")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("NyarukoEye 网络上传测试工具")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NetTool")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("KagurazakaYashi")]
+[assembly: AssemblyProduct("NyarukoEye")]
+[assembly: AssemblyCopyright("Copyright © 2020 KagurazakaYashi")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

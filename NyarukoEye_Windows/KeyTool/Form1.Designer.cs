@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -175,7 +176,7 @@
             this.txtPublicPEM.Location = new System.Drawing.Point(3, 3);
             this.txtPublicPEM.Multiline = true;
             this.txtPublicPEM.Name = "txtPublicPEM";
-            this.txtPublicPEM.Size = new System.Drawing.Size(617, 469);
+            this.txtPublicPEM.Size = new System.Drawing.Size(617, 476);
             this.txtPublicPEM.TabIndex = 2;
             this.txtPublicPEM.TextChanged += new System.EventHandler(this.txtPublicPEM_TextChanged);
             // 
@@ -200,7 +201,7 @@
             this.txtAES.Location = new System.Drawing.Point(3, 3);
             this.txtAES.Multiline = true;
             this.txtAES.Name = "txtAES";
-            this.txtAES.Size = new System.Drawing.Size(617, 469);
+            this.txtAES.Size = new System.Drawing.Size(617, 476);
             this.txtAES.TabIndex = 3;
             this.txtAES.TextChanged += new System.EventHandler(this.txtAES_TextChanged);
             // 
@@ -222,7 +223,7 @@
             this.txtText.Location = new System.Drawing.Point(3, 3);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(617, 469);
+            this.txtText.Size = new System.Drawing.Size(617, 476);
             this.txtText.TabIndex = 4;
             this.txtText.Text = "在此输入测试用文本";
             this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
@@ -441,7 +442,7 @@
             this.groupBox6.Controls.Add(this.btnNewAES);
             this.groupBox6.Location = new System.Drawing.Point(292, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(287, 81);
+            this.groupBox6.Size = new System.Drawing.Size(287, 121);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "建立对称密钥";
@@ -449,7 +450,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(147, 40);
+            this.label3.Location = new System.Drawing.Point(147, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 10;
@@ -462,7 +463,7 @@
             "16",
             "32",
             "64"});
-            this.txtAESKeyLength.Location = new System.Drawing.Point(211, 37);
+            this.txtAESKeyLength.Location = new System.Drawing.Point(211, 53);
             this.txtAESKeyLength.Name = "txtAESKeyLength";
             this.txtAESKeyLength.Size = new System.Drawing.Size(69, 28);
             this.txtAESKeyLength.TabIndex = 9;
@@ -471,7 +472,7 @@
             // btnNewAES
             // 
             this.btnNewAES.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNewAES.Location = new System.Drawing.Point(12, 30);
+            this.btnNewAES.Location = new System.Drawing.Point(12, 46);
             this.btnNewAES.Name = "btnNewAES";
             this.btnNewAES.Size = new System.Drawing.Size(129, 40);
             this.btnNewAES.TabIndex = 7;
@@ -758,7 +759,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(53, 9);
+            this.label1.Location = new System.Drawing.Point(50, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 29);
             this.label1.TabIndex = 5;
@@ -769,7 +770,7 @@
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(213, 6);
+            this.comboBox1.Location = new System.Drawing.Point(213, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(1018, 28);
             this.comboBox1.TabIndex = 6;
@@ -777,11 +778,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
-            this.pictureBox1.Location = new System.Drawing.Point(19, 6);
+            this.pictureBox1.Image = global::NyarukoEye_Windows.Properties.Resources.NyarukoLogin;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
@@ -798,6 +799,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "密钥工具";

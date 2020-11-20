@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace NELauncher
 {
     public partial class Form1 : Form
     {
-        static private string exeName = "NyarukoEye_Windows.exe";
+        static private string exeName = "scrchk.exe";
         static private Thread eyeThread;
         static private Process p;
         static private Action<String> listBoxDelegate;
@@ -56,6 +57,13 @@ namespace NELauncher
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!File.Exists(exeName))
+            {
+                menuStrip1.Enabled = false;
+                //listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 找不到可执行文件： " + exeName);
+                Application.Exit();
+                return;
+            }
             listBoxDelegate = delegate (string n)
             {
                 if (n != null)
@@ -111,6 +119,7 @@ namespace NELauncher
         }
         private void stop()
         {
+            if (menuStrip1.Enabled == false) return;
             停止服务ToolStripMenuItem.Enabled = false;
             menuStrip1.Enabled = false;
             stoping = true;

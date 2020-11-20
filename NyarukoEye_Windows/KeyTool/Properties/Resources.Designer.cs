@@ -63,9 +63,9 @@ namespace NyarukoEye_Windows.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap f_f_object_34_s32_f_object_34_0nbg {
+        internal static System.Drawing.Bitmap NyarukoLogin {
             get {
-                object obj = ResourceManager.GetObject("f_f_object_34_s32_f_object_34_0nbg", resourceCulture);
+                object obj = ResourceManager.GetObject("NyarukoLogin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

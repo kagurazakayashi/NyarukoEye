@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NyarukoLogin.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Enc">
       <HintPath>..\Enc\bin\Debug\Enc.dll</HintPath>
@@ -79,7 +82,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\f_f_object_34_s32_f_object_34_0nbg.png" />
+    <Content Include="NyarukoLogin.ico" />
+    <None Include="Resources\NyarukoLogin.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

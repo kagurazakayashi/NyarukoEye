@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("KeyTool")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("NyarukoEye 密钥工具")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KeyTool")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("KagurazakaYashi")]
+[assembly: AssemblyProduct("NyarukoEye")]
+[assembly: AssemblyCopyright("Copyright © 2020 KagurazakaYashi")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
