@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace NyarukoEye_Windows
@@ -229,7 +230,7 @@ namespace NyarukoEye_Windows
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = getError;
             p.StartInfo.CreateNoWindow = true;
-            if (debug) Console.WriteLine(p.StartInfo.FileName + " " +p.StartInfo.Arguments);
+            if (debug) Console.WriteLine(p.StartInfo.FileName + " " + p.StartInfo.Arguments);
             p.Start();
             p.WaitForExit();
             string pout = p.StandardOutput.ReadToEnd();
