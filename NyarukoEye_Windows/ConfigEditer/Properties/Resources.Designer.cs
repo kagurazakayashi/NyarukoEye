@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConfigEditer.Properties {
+namespace NyarukoEye_Windows.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ConfigEditer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConfigEditer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NyarukoEye_Windows.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -196,6 +196,26 @@ namespace ConfigEditer.Properties {
         internal static System.Drawing.Bitmap f_f_object_54_s32_f_object_54_0nbg {
             get {
                 object obj = ResourceManager.GetObject("f_f_object_54_s32_f_object_54_0nbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap NyarukoEye {
+            get {
+                object obj = ResourceManager.GetObject("NyarukoEye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap NyarukoEye_alt {
+            get {
+                object obj = ResourceManager.GetObject("NyarukoEye_alt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

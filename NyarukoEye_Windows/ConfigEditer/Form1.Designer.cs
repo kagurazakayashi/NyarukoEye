@@ -1,5 +1,5 @@
 ﻿
-namespace ConfigEditer
+namespace NyarukoEye_Windows
 {
     partial class Form1
     {
@@ -29,13 +29,19 @@ namespace ConfigEditer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出为加密配置文件IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tLevelA = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -43,8 +49,10 @@ namespace ConfigEditer
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tLevel = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +60,8 @@ namespace ConfigEditer
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.cSleep = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,6 +69,8 @@ namespace ConfigEditer
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.cWorkSleep = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,6 +79,9 @@ namespace ConfigEditer
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.cPublicKeyB = new System.Windows.Forms.Button();
             this.cPublicKeyG = new System.Windows.Forms.Button();
             this.cPublicKey = new System.Windows.Forms.ComboBox();
@@ -79,6 +94,7 @@ namespace ConfigEditer
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.cEncKeyType = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -89,6 +105,8 @@ namespace ConfigEditer
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.cPasswordB = new System.Windows.Forms.CheckBox();
             this.cUploadURL = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -101,93 +119,109 @@ namespace ConfigEditer
             this.label33 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.打开INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出为加密配置文件IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cSleep)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cWorkSleep)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tLevel)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cSleep)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cWorkSleep)).BeginInit();
+            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件FToolStripMenuItem});
+            this.打开INI配置文件ToolStripMenuItem,
+            this.保存INI配置文件ToolStripMenuItem,
+            this.另存为PToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.导出为加密配置文件IToolStripMenuItem,
+            this.退出QToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(834, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 文件FToolStripMenuItem
+            // 打开INI配置文件ToolStripMenuItem
             // 
-            this.文件FToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开INI配置文件ToolStripMenuItem,
-            this.保存INI配置文件ToolStripMenuItem,
-            this.另存为PToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.导出为加密配置文件IToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.退出QToolStripMenuItem});
-            this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
-            this.文件FToolStripMenuItem.Text = "文件(&F)";
+            this.打开INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.打开INI配置文件ToolStripMenuItem.Name = "打开INI配置文件ToolStripMenuItem";
+            this.打开INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.打开INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(78, 21);
+            this.打开INI配置文件ToolStripMenuItem.Text = "打开(&O)";
+            this.打开INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.打开INI配置文件ToolStripMenuItem_Click_1);
+            // 
+            // 保存INI配置文件ToolStripMenuItem
+            // 
+            this.保存INI配置文件ToolStripMenuItem.Enabled = false;
+            this.保存INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
+            this.保存INI配置文件ToolStripMenuItem.Name = "保存INI配置文件ToolStripMenuItem";
+            this.保存INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.保存INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
+            this.保存INI配置文件ToolStripMenuItem.Text = "保存(&S)";
+            this.保存INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.保存INI配置文件ToolStripMenuItem_Click);
             // 
             // 另存为PToolStripMenuItem
             // 
+            this.另存为PToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
             this.另存为PToolStripMenuItem.Name = "另存为PToolStripMenuItem";
             this.另存为PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.另存为PToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.另存为PToolStripMenuItem.Text = "另存为(&A)...";
+            this.另存为PToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
+            this.另存为PToolStripMenuItem.Text = "另存为(&A)";
+            this.另存为PToolStripMenuItem.Click += new System.EventHandler(this.另存为PToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(264, 6);
+            this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.O)));
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 21);
+            this.toolStripMenuItem1.Text = "导入非明文配置文件(&I)";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // toolStripMenuItem2
+            // 导出为加密配置文件IToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(264, 6);
+            this.导出为加密配置文件IToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
+            this.导出为加密配置文件IToolStripMenuItem.Name = "导出为加密配置文件IToolStripMenuItem";
+            this.导出为加密配置文件IToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.导出为加密配置文件IToolStripMenuItem.Size = new System.Drawing.Size(159, 21);
+            this.导出为加密配置文件IToolStripMenuItem.Text = "导出非明文配置文件(&E)";
+            this.导出为加密配置文件IToolStripMenuItem.Click += new System.EventHandler(this.导出为加密配置文件IToolStripMenuItem_Click);
+            // 
+            // 退出QToolStripMenuItem
+            // 
+            this.退出QToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_130_s32_f_object_130_0nbg;
+            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
+            this.退出QToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(76, 21);
+            this.退出QToolStripMenuItem.Text = "退出(&X)";
+            this.退出QToolStripMenuItem.Click += new System.EventHandler(this.退出QToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -208,6 +242,7 @@ namespace ConfigEditer
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tabPage1.Controls.Add(this.tLevelA);
             this.tabPage1.Controls.Add(this.pictureBox2);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.label30);
@@ -217,7 +252,7 @@ namespace ConfigEditer
             this.tabPage1.Controls.Add(this.label27);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.label25);
-            this.tabPage1.Controls.Add(this.trackBar1);
+            this.tabPage1.Controls.Add(this.tLevel);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -225,20 +260,53 @@ namespace ConfigEditer
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "欢迎";
             // 
+            // tLevelA
+            // 
+            this.tLevelA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tLevelA.Enabled = false;
+            this.tLevelA.Location = new System.Drawing.Point(407, 342);
+            this.tLevelA.Name = "tLevelA";
+            this.tLevelA.Size = new System.Drawing.Size(250, 50);
+            this.tLevelA.TabIndex = 11;
+            this.tLevelA.Text = "应用运行等级设置";
+            this.tLevelA.UseVisualStyleBackColor = true;
+            this.tLevelA.Click += new System.EventHandler(this.tLevelA_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_79_s32_f_business_79_0nbg;
+            this.pictureBox2.Location = new System.Drawing.Point(363, 180);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_30_s128_f_business_30_0nbg;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(129, 107);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(208, 260);
+            this.label30.Location = new System.Drawing.Point(403, 205);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(219, 60);
+            this.label30.Size = new System.Drawing.Size(359, 120);
             this.label30.TabIndex = 8;
-            this.label30.Text = "设置本程序的功能等级，\r\n以适配不同场合下的功能需要。\r\n此处设置会影响具体的功能设置。";
+            this.label30.Text = "设置本程序的功能等级，以适配不同场合下的功能需要。\r\n此处设置会影响具体的功能设置。\r\n\r\n注：一旦按下下面的应用按钮，\r\n不适用的设置框内容将被清空并且禁用。\r" +
+    "\n已被清空的框即使重新启用，也需要重新输入内容。";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(207, 235);
+            this.label31.Location = new System.Drawing.Point(402, 180);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(88, 25);
             this.label31.TabIndex = 7;
@@ -249,10 +317,10 @@ namespace ConfigEditer
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(184, 64);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(429, 60);
+            this.label28.Size = new System.Drawing.Size(541, 60);
             this.label28.TabIndex = 6;
-            this.label28.Text = "本工具用于生成配置文件，无需和主程序放在一起。\r\n版本：1.0 ，请注意和主程序版本对应，否则会出现错误。\r\n请完成本程序中的所有设置，然后从「文件」菜单中生成配" +
-    "置文件。";
+            this.label28.Text = "本工具用于生成配置文件，无需和主程序放在一起，可以在完成配置后从终端机删除。\r\n版本：1.0 ，请注意和主程序版本对应，否则生成的配置文件会导致主程序出现错误。\r" +
+    "\n请完成本程序中的所有设置，然后生成配置文件。";
             // 
             // label29
             // 
@@ -267,7 +335,7 @@ namespace ConfigEditer
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(530, 276);
+            this.label27.Location = new System.Drawing.Point(169, 276);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(107, 20);
             this.label27.TabIndex = 3;
@@ -276,7 +344,7 @@ namespace ConfigEditer
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(530, 372);
+            this.label26.Location = new System.Drawing.Point(169, 372);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(121, 20);
             this.label26.TabIndex = 2;
@@ -285,24 +353,25 @@ namespace ConfigEditer
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(530, 180);
+            this.label25.Location = new System.Drawing.Point(169, 180);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(135, 20);
             this.label25.TabIndex = 1;
             this.label25.Text = "加密并上传到服务器";
             // 
-            // trackBar1
+            // tLevel
             // 
-            this.trackBar1.Cursor = System.Windows.Forms.Cursors.SizeNS;
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(479, 180);
-            this.trackBar1.Maximum = 3;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 212);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.Value = 3;
+            this.tLevel.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.tLevel.LargeChange = 1;
+            this.tLevel.Location = new System.Drawing.Point(118, 180);
+            this.tLevel.Maximum = 3;
+            this.tLevel.Minimum = 1;
+            this.tLevel.Name = "tLevel";
+            this.tLevel.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tLevel.Size = new System.Drawing.Size(45, 212);
+            this.tLevel.TabIndex = 0;
+            this.tLevel.Value = 3;
+            this.tLevel.Scroll += new System.EventHandler(this.tLevel_Scroll);
             // 
             // tabPage2
             // 
@@ -321,6 +390,26 @@ namespace ConfigEditer
             this.tabPage2.Size = new System.Drawing.Size(826, 426);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "文件标识";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_96_s32_f_business_96_1nbg;
+            this.pictureBox4.Location = new System.Drawing.Point(38, 160);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.pictureBox3.Location = new System.Drawing.Point(38, 36);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(33, 28);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 9;
+            this.pictureBox3.TabStop = false;
             // 
             // cName
             // 
@@ -396,6 +485,26 @@ namespace ConfigEditer
             this.tabPage3.Size = new System.Drawing.Size(826, 426);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "画面截取";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
+            this.pictureBox6.Location = new System.Drawing.Point(43, 160);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(19, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 11;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_58_s32_f_business_58_0nbg;
+            this.pictureBox5.Location = new System.Drawing.Point(37, 40);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(33, 22);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 11;
+            this.pictureBox5.TabStop = false;
             // 
             // cSleep
             // 
@@ -491,9 +600,29 @@ namespace ConfigEditer
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "工作处理";
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
+            this.pictureBox8.Location = new System.Drawing.Point(45, 187);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(19, 32);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 15;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.pictureBox7.Location = new System.Drawing.Point(37, 37);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(33, 28);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 14;
+            this.pictureBox7.TabStop = false;
+            // 
             // cWorkSleep
             // 
-            this.cWorkSleep.Location = new System.Drawing.Point(37, 240);
+            this.cWorkSleep.Location = new System.Drawing.Point(37, 260);
             this.cWorkSleep.Maximum = new decimal(new int[] {
             300,
             0,
@@ -516,7 +645,7 @@ namespace ConfigEditer
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(86, 177);
+            this.label11.Location = new System.Drawing.Point(86, 197);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(499, 60);
             this.label11.TabIndex = 12;
@@ -526,7 +655,7 @@ namespace ConfigEditer
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(85, 127);
+            this.label12.Location = new System.Drawing.Point(85, 147);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(126, 50);
             this.label12.TabIndex = 11;
@@ -534,7 +663,8 @@ namespace ConfigEditer
             // 
             // cTempDirB
             // 
-            this.cTempDirB.Location = new System.Drawing.Point(689, 96);
+            this.cTempDirB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cTempDirB.Location = new System.Drawing.Point(689, 116);
             this.cTempDirB.Name = "cTempDirB";
             this.cTempDirB.Size = new System.Drawing.Size(100, 28);
             this.cTempDirB.TabIndex = 10;
@@ -545,7 +675,7 @@ namespace ConfigEditer
             // cTempDir
             // 
             this.cTempDir.FormattingEnabled = true;
-            this.cTempDir.Location = new System.Drawing.Point(37, 96);
+            this.cTempDir.Location = new System.Drawing.Point(37, 116);
             this.cTempDir.Name = "cTempDir";
             this.cTempDir.Size = new System.Drawing.Size(646, 28);
             this.cTempDir.TabIndex = 9;
@@ -555,9 +685,9 @@ namespace ConfigEditer
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(86, 53);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(709, 40);
+            this.label9.Size = new System.Drawing.Size(709, 60);
             this.label9.TabIndex = 7;
-            this.label9.Text = "正在处理的截图、加密、临时密钥等的存储位置，请指定为一个已存在的空文件夹。留空则使用系统临时文件夹。\r\n　";
+            this.label9.Text = "正在处理的截图、加密、临时密钥等的存储位置，请指定为一个已存在的空文件夹。留空则使用系统临时文件夹。\r\n在模式为「仅保存在本地」时，此文件夹为存储文件夹。\r\n　";
             // 
             // label10
             // 
@@ -593,8 +723,39 @@ namespace ConfigEditer
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "文件加密";
             // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
+            this.pictureBox11.Location = new System.Drawing.Point(44, 283);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(18, 32);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 21;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
+            this.pictureBox10.Location = new System.Drawing.Point(44, 158);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(18, 32);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 20;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_46_s32_f_object_46_0nbg;
+            this.pictureBox9.Location = new System.Drawing.Point(44, 35);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(21, 32);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 19;
+            this.pictureBox9.TabStop = false;
+            // 
             // cPublicKeyB
             // 
+            this.cPublicKeyB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cPublicKeyB.Location = new System.Drawing.Point(583, 345);
             this.cPublicKeyB.Name = "cPublicKeyB";
             this.cPublicKeyB.Size = new System.Drawing.Size(100, 28);
@@ -605,6 +766,7 @@ namespace ConfigEditer
             // 
             // cPublicKeyG
             // 
+            this.cPublicKeyG.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cPublicKeyG.Location = new System.Drawing.Point(689, 345);
             this.cPublicKeyG.Name = "cPublicKeyG";
             this.cPublicKeyG.Size = new System.Drawing.Size(100, 28);
@@ -651,7 +813,7 @@ namespace ConfigEditer
             this.cAESLength.Name = "cAESLength";
             this.cAESLength.Size = new System.Drawing.Size(121, 28);
             this.cAESLength.TabIndex = 13;
-            this.cAESLength.Text = "32";
+            this.cAESLength.Text = "64";
             // 
             // label15
             // 
@@ -823,6 +985,16 @@ namespace ConfigEditer
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "类型标识";
             // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_90_s32_f_business_90_0nbg;
+            this.pictureBox12.Location = new System.Drawing.Point(37, 47);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 16;
+            this.pictureBox12.TabStop = false;
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -924,9 +1096,30 @@ namespace ConfigEditer
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "内容上传";
             // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_116_s32_f_object_116_0nbg;
+            this.pictureBox14.Location = new System.Drawing.Point(38, 158);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 20;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_63_s32_f_business_63_0nbg;
+            this.pictureBox13.Location = new System.Drawing.Point(38, 34);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(26, 32);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 20;
+            this.pictureBox13.TabStop = false;
+            // 
             // cPasswordB
             // 
             this.cPasswordB.AutoSize = true;
+            this.cPasswordB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cPasswordB.Location = new System.Drawing.Point(701, 252);
             this.cPasswordB.Name = "cPasswordB";
             this.cPasswordB.Size = new System.Drawing.Size(84, 24);
@@ -942,7 +1135,7 @@ namespace ConfigEditer
             this.cUploadURL.Name = "cUploadURL";
             this.cUploadURL.Size = new System.Drawing.Size(747, 26);
             this.cUploadURL.TabIndex = 18;
-            this.cUploadURL.Text = "NYAE";
+            this.cUploadURL.Text = "http://192.168.2.240:1818/screenshots";
             // 
             // label36
             // 
@@ -1025,226 +1218,70 @@ namespace ConfigEditer
             // 
             this.openFileDialog1.Title = "请选择文件";
             // 
-            // pictureBox2
+            // pictureBox15
             // 
-            this.pictureBox2.Image = global::ConfigEditer.Properties.Resources.f_f_business_79_s32_f_business_79_0nbg;
-            this.pictureBox2.Location = new System.Drawing.Point(168, 235);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ConfigEditer.Properties.Resources.f_f_business_30_s128_f_business_30_0nbg;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 107);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::ConfigEditer.Properties.Resources.f_f_business_96_s32_f_business_96_1nbg;
-            this.pictureBox4.Location = new System.Drawing.Point(38, 160);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(33, 26);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 9;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::ConfigEditer.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.pictureBox3.Location = new System.Drawing.Point(38, 36);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(33, 28);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::ConfigEditer.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
-            this.pictureBox6.Location = new System.Drawing.Point(43, 160);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(19, 32);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox6.TabIndex = 11;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::ConfigEditer.Properties.Resources.f_f_business_58_s32_f_business_58_0nbg;
-            this.pictureBox5.Location = new System.Drawing.Point(37, 40);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(33, 22);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox5.TabIndex = 11;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::ConfigEditer.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
-            this.pictureBox8.Location = new System.Drawing.Point(45, 167);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(19, 32);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox8.TabIndex = 15;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::ConfigEditer.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.pictureBox7.Location = new System.Drawing.Point(37, 37);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(33, 28);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox7.TabIndex = 14;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::ConfigEditer.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
-            this.pictureBox11.Location = new System.Drawing.Point(44, 283);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(18, 32);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox11.TabIndex = 21;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::ConfigEditer.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
-            this.pictureBox10.Location = new System.Drawing.Point(44, 158);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(18, 32);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox10.TabIndex = 20;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::ConfigEditer.Properties.Resources.f_f_object_46_s32_f_object_46_0nbg;
-            this.pictureBox9.Location = new System.Drawing.Point(44, 35);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(21, 32);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox9.TabIndex = 19;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = global::ConfigEditer.Properties.Resources.f_f_business_90_s32_f_business_90_0nbg;
-            this.pictureBox12.Location = new System.Drawing.Point(37, 47);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(33, 26);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox12.TabIndex = 16;
-            this.pictureBox12.TabStop = false;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Image = global::ConfigEditer.Properties.Resources.f_f_object_116_s32_f_object_116_0nbg;
-            this.pictureBox14.Location = new System.Drawing.Point(38, 158);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(29, 32);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox14.TabIndex = 20;
-            this.pictureBox14.TabStop = false;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = global::ConfigEditer.Properties.Resources.f_f_business_63_s32_f_business_63_0nbg;
-            this.pictureBox13.Location = new System.Drawing.Point(38, 34);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(26, 32);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox13.TabIndex = 20;
-            this.pictureBox13.TabStop = false;
-            // 
-            // 打开INI配置文件ToolStripMenuItem
-            // 
-            this.打开INI配置文件ToolStripMenuItem.Image = global::ConfigEditer.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.打开INI配置文件ToolStripMenuItem.Name = "打开INI配置文件ToolStripMenuItem";
-            this.打开INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.打开INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.打开INI配置文件ToolStripMenuItem.Text = "打开(&O)...";
-            // 
-            // 保存INI配置文件ToolStripMenuItem
-            // 
-            this.保存INI配置文件ToolStripMenuItem.Image = global::ConfigEditer.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
-            this.保存INI配置文件ToolStripMenuItem.Name = "保存INI配置文件ToolStripMenuItem";
-            this.保存INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.保存INI配置文件ToolStripMenuItem.Text = "保存(&S)";
-            // 
-            // 导出为加密配置文件IToolStripMenuItem
-            // 
-            this.导出为加密配置文件IToolStripMenuItem.Image = global::ConfigEditer.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
-            this.导出为加密配置文件IToolStripMenuItem.Name = "导出为加密配置文件IToolStripMenuItem";
-            this.导出为加密配置文件IToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.S)));
-            this.导出为加密配置文件IToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.导出为加密配置文件IToolStripMenuItem.Text = "导出为加密配置文件(&E)";
-            // 
-            // 退出QToolStripMenuItem
-            // 
-            this.退出QToolStripMenuItem.Image = global::ConfigEditer.Properties.Resources.f_f_object_130_s32_f_object_130_0nbg;
-            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
-            this.退出QToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.退出QToolStripMenuItem.Text = "退出(&X)";
+            this.pictureBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox15.Image = global::NyarukoEye_Windows.Properties.Resources.NyarukoEye_alt;
+            this.pictureBox15.Location = new System.Drawing.Point(792, 11);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 12;
+            this.pictureBox15.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 484);
+            this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配置编辑器";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tLevel)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cSleep)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cWorkSleep)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1253,7 +1290,6 @@ namespace ConfigEditer
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件FToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1306,7 +1342,7 @@ namespace ConfigEditer
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar tLevel;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label28;
@@ -1321,13 +1357,6 @@ namespace ConfigEditer
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.CheckBox cPasswordB;
-        private System.Windows.Forms.ToolStripMenuItem 打开INI配置文件ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存INI配置文件ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 另存为PToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 导出为加密配置文件IToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem 退出QToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -1342,6 +1371,15 @@ namespace ConfigEditer
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.Button tLevelA;
+        private System.Windows.Forms.ToolStripMenuItem 打开INI配置文件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存INI配置文件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 另存为PToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出为加密配置文件IToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出QToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox15;
     }
 }
 

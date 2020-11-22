@@ -139,6 +139,9 @@
   <data name="f_f_business_79_s32_f_business_79_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\f_f_business_79_s32_f_business_79_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="f_f_object_130_s32_f_object_130_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\f_f_object_130_s32_f_object_130_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="f_f_object_34_s32_f_object_34_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\f_f_object_34_s32_f_object_34_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,7 +160,10 @@
   <data name="f_f_business_58_s32_f_business_58_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\f_f_business_58_s32_f_business_58_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="f_f_object_130_s32_f_object_130_0nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\f_f_object_130_s32_f_object_130_0nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NyarukoEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NyarukoEye.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NyarukoEye_alt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NyarukoEye_alt.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

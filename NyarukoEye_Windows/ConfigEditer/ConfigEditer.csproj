@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ConfigEditer</RootNamespace>
+    <RootNamespace>NyarukoEye_Windows</RootNamespace>
     <AssemblyName>ConfigEditer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -31,7 +31,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\NyarukoEye.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Enc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Enc\bin\Debug\Enc.dll</HintPath>
+    </Reference>
+    <Reference Include="INI">
+      <HintPath>..\INI\bin\Debug\INI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -119,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\f_f_object_130_s32_f_object_130_0nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NyarukoEye.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NyarukoEye_alt.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
