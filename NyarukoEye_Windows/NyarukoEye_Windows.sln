@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INI", "INI\INI.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shot", "Shot\Shot.csproj", "{BD794388-1491-4EF1-B781-00D8AA239896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RsaTool", "RSA\RsaTool.csproj", "{74EA63AA-3992-4C15-B756-0E77B18372E6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyTool", "KeyTool\KeyTool.csproj", "{36958DE2-3BD7-4C63-A975-9698D284A66E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enc", "Enc\Enc.csproj", "{B3F91EFD-C1CD-4763-B783-77268ACE90FA}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NELauncher", "NELauncher\NELauncher.csproj", "{1FC5AE2F-3D76-4747-852B-329B25F5D6C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigEditer", "ConfigEditer\ConfigEditer.csproj", "{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorun", "Autorun\Autorun.csproj", "{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD794388-1491-4EF1-B781-00D8AA239896}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74EA63AA-3992-4C15-B756-0E77B18372E6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36958DE2-3BD7-4C63-A975-9698D284A66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEE87329-E3EA-4658-B68A-CFA2BA6C8A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
