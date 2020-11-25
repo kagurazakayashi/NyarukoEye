@@ -1,0 +1,1 @@
+go build -o nyarukoeyesev.exe ./src/
