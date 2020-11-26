@@ -146,7 +146,10 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 		// 调用当前包(目录)中的其他函数。 其他包中的函数通过 包名.函数名()的方式调用（需要import导入包）
 		tarr := getdate()
 		// fmt.Println(gettime())
-		tstring := "." + confs["filepath"]
+		// Linux
+		// tstring := "." + confs["filepath"]
+		// windows
+		tstring := confs["filepath"]
 		_, err := newfilefolder(tstring)
 		if err != nil {
 			fmt.Fprint(w, "文件夹创建失败\n")
@@ -181,7 +184,6 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 		for i := 0; i < fileslen; i++ {
 			//打开上传文件
 			file, err := files[i].Open()
-			defer file.Close()
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -201,7 +203,6 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 					fmt.Fprint(w, result)
 					return
 				}
-				defer cur.Close()
 				if err != nil {
 					log.Fatal(err)
 				}
@@ -217,6 +218,7 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 					fmt.Fprint(w, result)
 					return
 				}
+				cur.Close()
 			} else {
 				keyPath = tstring + "/" + files[i].Filename
 				//创建上传文件
@@ -232,7 +234,6 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 					fmt.Fprint(w, result)
 					return
 				}
-				defer cur.Close()
 				if err != nil {
 					log.Fatal(err)
 				}
@@ -248,7 +249,9 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 					fmt.Fprint(w, result)
 					return
 				}
+				cur.Close()
 			}
+			file.Close()
 		}
 		// fmt.Printf("filePath:" + filePath + "\n")
 		// fmt.Printf("fileName:" + fileName + "\n")
@@ -291,7 +294,10 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 		toPatharr[(len(toPatharr) - 1)] = extensionstring
 		toPath := strings.Join(toPatharr, ".")
 		// fmt.Printf("paramTime:[%v]\n", paramTimeInt)
-		isdone, returnstring, err := rsabatDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
+		// Linux
+		// isdone, returnstring, err := rsabatDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
+		// windows
+		isdone, returnstring, err := rsacmdDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
 		if returnstring != "" {
 			fmt.Println(returnstring)
 		}
