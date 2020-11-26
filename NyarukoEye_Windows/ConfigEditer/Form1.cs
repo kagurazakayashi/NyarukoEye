@@ -204,7 +204,7 @@ namespace NyarukoEye_Windows
             if (openFileDialog1.ShowDialog() == DialogResult.OK && File.Exists(openFileDialog1.FileName))
             {
                 nowOpenINI = openFileDialog1.FileName;
-                Text = "配置编辑器 - " + nowOpenINI;
+                Text = "客户端配置编辑器 - " + nowOpenINI;
                 openini();
                 保存INI配置文件ToolStripMenuItem.Enabled = true;
             }

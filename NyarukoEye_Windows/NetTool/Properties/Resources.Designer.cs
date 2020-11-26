@@ -63,9 +63,9 @@ namespace NetTool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap NyarukoEye_alt {
+        internal static System.Drawing.Bitmap f_f_business_96_s512_f_business_96_2nbg1 {
             get {
-                object obj = ResourceManager.GetObject("NyarukoEye_alt", resourceCulture);
+                object obj = ResourceManager.GetObject("f_f_business_96_s512_f_business_96_2nbg1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\NyarukoEye_alt.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\f_f_business_96_s512_f_business_96_2nbg.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NetUL">
@@ -82,7 +82,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NyarukoEye_alt.ico" />
+    <None Include="Resources\f_f_business_96_s512_f_business_96_2nbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f_f_business_96_s512_f_business_96_2nbg.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -67,6 +67,7 @@ namespace NyarukoEye_Windows
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(89, 33);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(151, 26);
             this.txtName.TabIndex = 1;
@@ -78,6 +79,7 @@ namespace NyarukoEye_Windows
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Location = new System.Drawing.Point(89, 69);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(151, 26);
             this.txtPassword.TabIndex = 3;
@@ -209,6 +211,7 @@ namespace NyarukoEye_Windows
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtURL.Location = new System.Drawing.Point(107, 14);
             this.txtURL.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtURL.MaxLength = 256;
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(710, 26);
             this.txtURL.TabIndex = 1;
@@ -227,7 +230,7 @@ namespace NyarukoEye_Windows
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::NetTool.Properties.Resources.NyarukoEye_alt;
+            this.pictureBox1.Image = global::NetTool.Properties.Resources.f_f_business_96_s512_f_business_96_2nbg1;
             this.pictureBox1.Location = new System.Drawing.Point(18, 204);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);

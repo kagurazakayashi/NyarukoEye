@@ -79,10 +79,11 @@ namespace NELauncher
             stopDelegate = delegate (string n)
             {
                 listBox1.Items.Add("--- ! ---");
-                listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 后台进程退出");
+                listBox1.Items.Add("[" + DateTime.Now.ToString() + "][P] 后台进程退出！");
                 stop();
                 start();
                 listBox1.Items.Add("--- ! ---");
+                listBox1.SelectedIndex = listBox1.Items.Count - 1;
             };
             start();
             winonoff(0);
@@ -107,12 +108,13 @@ namespace NELauncher
         {
             启动服务ToolStripMenuItem.Enabled = false;
             menuStrip1.Enabled = false;
-            listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 正在启动后台...");
+            listBox1.Items.Add("[" + DateTime.Now.ToString() + "][P] 正在启动后台...");
             ThreadStart eyeRef = new ThreadStart(eyeThreadRun);
             eyeThread = new Thread(eyeRef);
             eyeThread.Name = "eyeThread";
             eyeThread.Start();
-            listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 后台已启动。");
+            listBox1.Items.Add("[" + DateTime.Now.ToString() + "][P] 后台已启动。");
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
             Thread.Sleep(1000);
             menuStrip1.Enabled = true;
             停止服务ToolStripMenuItem.Enabled = true;
@@ -123,7 +125,7 @@ namespace NELauncher
             停止服务ToolStripMenuItem.Enabled = false;
             menuStrip1.Enabled = false;
             stoping = true;
-            listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 正在停止后台...");
+            listBox1.Items.Add("[" + DateTime.Now.ToString() + "][P] 准备停止后台...");
             if (!p.HasExited) p.Kill();
             Process ps = new Process();
             List<string> arguments = new List<string>();
@@ -144,7 +146,8 @@ namespace NELauncher
             ps.Close();
             if (eyeThread != null && eyeThread.IsAlive) eyeThread.Abort();
             eyeThread = null;
-            listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 后台已停止。");
+            listBox1.Items.Add("[" + DateTime.Now.ToString() + "][P] 后台已停止。");
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
             Thread.Sleep(1000);
             stoping = false;
             menuStrip1.Enabled = true;
@@ -158,7 +161,7 @@ namespace NELauncher
 
         private void OnExited(object sender, EventArgs e)
         {
-            listBox1.Invoke(listBoxDelegate, new object[] { "后台退出。" });
+            listBox1.Invoke(listBoxDelegate, new object[] { "[" + DateTime.Now.ToString() + "][P] 正在停止后台..." });
             if (!stoping) Invoke(stopDelegate, new object[] { "" });
         }
 

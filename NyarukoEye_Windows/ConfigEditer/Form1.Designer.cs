@@ -31,17 +31,9 @@ namespace NyarukoEye_Windows
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.打开INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.另存为PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出为加密配置文件IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tLevelA = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -51,8 +43,6 @@ namespace NyarukoEye_Windows
             this.label25 = new System.Windows.Forms.Label();
             this.tLevel = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,8 +50,6 @@ namespace NyarukoEye_Windows
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.cSleep = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,8 +57,6 @@ namespace NyarukoEye_Windows
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.cWorkSleep = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -79,9 +65,6 @@ namespace NyarukoEye_Windows
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.cPublicKeyB = new System.Windows.Forms.Button();
             this.cPublicKeyG = new System.Windows.Forms.Button();
             this.cPublicKey = new System.Windows.Forms.ComboBox();
@@ -94,7 +77,6 @@ namespace NyarukoEye_Windows
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.cEncKeyType = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -105,8 +87,6 @@ namespace NyarukoEye_Windows
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.cPasswordB = new System.Windows.Forms.CheckBox();
             this.cUploadURL = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -121,33 +101,53 @@ namespace NyarukoEye_Windows
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.打开INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存INI配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.另存为PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出为加密配置文件IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tLevel)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cSleep)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cWorkSleep)).BeginInit();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -164,64 +164,6 @@ namespace NyarukoEye_Windows
             this.menuStrip1.Size = new System.Drawing.Size(834, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 打开INI配置文件ToolStripMenuItem
-            // 
-            this.打开INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.打开INI配置文件ToolStripMenuItem.Name = "打开INI配置文件ToolStripMenuItem";
-            this.打开INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.打开INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(78, 21);
-            this.打开INI配置文件ToolStripMenuItem.Text = "打开(&O)";
-            this.打开INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.打开INI配置文件ToolStripMenuItem_Click_1);
-            // 
-            // 保存INI配置文件ToolStripMenuItem
-            // 
-            this.保存INI配置文件ToolStripMenuItem.Enabled = false;
-            this.保存INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
-            this.保存INI配置文件ToolStripMenuItem.Name = "保存INI配置文件ToolStripMenuItem";
-            this.保存INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
-            this.保存INI配置文件ToolStripMenuItem.Text = "保存(&S)";
-            this.保存INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.保存INI配置文件ToolStripMenuItem_Click);
-            // 
-            // 另存为PToolStripMenuItem
-            // 
-            this.另存为PToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
-            this.另存为PToolStripMenuItem.Name = "另存为PToolStripMenuItem";
-            this.另存为PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-            this.另存为PToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
-            this.另存为PToolStripMenuItem.Text = "另存为(&A)";
-            this.另存为PToolStripMenuItem.Click += new System.EventHandler(this.另存为PToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.O)));
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 21);
-            this.toolStripMenuItem1.Text = "导入非明文配置文件(&I)";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // 导出为加密配置文件IToolStripMenuItem
-            // 
-            this.导出为加密配置文件IToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
-            this.导出为加密配置文件IToolStripMenuItem.Name = "导出为加密配置文件IToolStripMenuItem";
-            this.导出为加密配置文件IToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.S)));
-            this.导出为加密配置文件IToolStripMenuItem.Size = new System.Drawing.Size(159, 21);
-            this.导出为加密配置文件IToolStripMenuItem.Text = "导出非明文配置文件(&E)";
-            this.导出为加密配置文件IToolStripMenuItem.Click += new System.EventHandler(this.导出为加密配置文件IToolStripMenuItem_Click);
-            // 
-            // 退出QToolStripMenuItem
-            // 
-            this.退出QToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_130_s32_f_object_130_0nbg;
-            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
-            this.退出QToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(76, 21);
-            this.退出QToolStripMenuItem.Text = "退出(&X)";
-            this.退出QToolStripMenuItem.Click += new System.EventHandler(this.退出QToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -272,26 +214,6 @@ namespace NyarukoEye_Windows
             this.tLevelA.UseVisualStyleBackColor = true;
             this.tLevelA.Click += new System.EventHandler(this.tLevelA_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_79_s32_f_business_79_0nbg;
-            this.pictureBox2.Location = new System.Drawing.Point(363, 180);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_30_s128_f_business_30_0nbg;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 107);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -328,9 +250,9 @@ namespace NyarukoEye_Windows
             this.label29.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label29.Location = new System.Drawing.Point(183, 37);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(107, 25);
+            this.label29.Size = new System.Drawing.Size(164, 25);
             this.label29.TabIndex = 5;
-            this.label29.Text = "配置编辑器";
+            this.label29.Text = "客户端配置编辑器";
             // 
             // label27
             // 
@@ -391,30 +313,10 @@ namespace NyarukoEye_Windows
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "文件标识";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_96_s32_f_business_96_1nbg;
-            this.pictureBox4.Location = new System.Drawing.Point(38, 160);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(33, 26);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 9;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.pictureBox3.Location = new System.Drawing.Point(38, 36);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(33, 28);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            // 
             // cName
             // 
             this.cName.Location = new System.Drawing.Point(36, 218);
-            this.cName.MaxLength = 10;
+            this.cName.MaxLength = 50;
             this.cName.Name = "cName";
             this.cName.Size = new System.Drawing.Size(747, 26);
             this.cName.TabIndex = 8;
@@ -442,7 +344,7 @@ namespace NyarukoEye_Windows
             // cPrefix
             // 
             this.cPrefix.Location = new System.Drawing.Point(36, 96);
-            this.cPrefix.MaxLength = 10;
+            this.cPrefix.MaxLength = 50;
             this.cPrefix.Name = "cPrefix";
             this.cPrefix.Size = new System.Drawing.Size(747, 26);
             this.cPrefix.TabIndex = 5;
@@ -485,26 +387,6 @@ namespace NyarukoEye_Windows
             this.tabPage3.Size = new System.Drawing.Size(826, 426);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "画面截取";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
-            this.pictureBox6.Location = new System.Drawing.Point(43, 160);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(19, 32);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 11;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_58_s32_f_business_58_0nbg;
-            this.pictureBox5.Location = new System.Drawing.Point(37, 40);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(33, 22);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 11;
-            this.pictureBox5.TabStop = false;
             // 
             // cSleep
             // 
@@ -557,6 +439,7 @@ namespace NyarukoEye_Windows
             "tif",
             "gif"});
             this.cType.Location = new System.Drawing.Point(37, 96);
+            this.cType.MaxLength = 3;
             this.cType.Name = "cType";
             this.cType.Size = new System.Drawing.Size(121, 28);
             this.cType.TabIndex = 7;
@@ -599,26 +482,6 @@ namespace NyarukoEye_Windows
             this.tabPage4.Size = new System.Drawing.Size(826, 426);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "工作处理";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
-            this.pictureBox8.Location = new System.Drawing.Point(45, 187);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(19, 32);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 15;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
-            this.pictureBox7.Location = new System.Drawing.Point(37, 37);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(33, 28);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 14;
-            this.pictureBox7.TabStop = false;
             // 
             // cWorkSleep
             // 
@@ -676,6 +539,7 @@ namespace NyarukoEye_Windows
             // 
             this.cTempDir.FormattingEnabled = true;
             this.cTempDir.Location = new System.Drawing.Point(37, 116);
+            this.cTempDir.MaxLength = 256;
             this.cTempDir.Name = "cTempDir";
             this.cTempDir.Size = new System.Drawing.Size(646, 28);
             this.cTempDir.TabIndex = 9;
@@ -723,36 +587,6 @@ namespace NyarukoEye_Windows
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "文件加密";
             // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
-            this.pictureBox11.Location = new System.Drawing.Point(44, 283);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(18, 32);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 21;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
-            this.pictureBox10.Location = new System.Drawing.Point(44, 158);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(18, 32);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 20;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_46_s32_f_object_46_0nbg;
-            this.pictureBox9.Location = new System.Drawing.Point(44, 35);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(21, 32);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 19;
-            this.pictureBox9.TabStop = false;
-            // 
             // cPublicKeyB
             // 
             this.cPublicKeyB.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -779,6 +613,7 @@ namespace NyarukoEye_Windows
             // 
             this.cPublicKey.FormattingEnabled = true;
             this.cPublicKey.Location = new System.Drawing.Point(37, 345);
+            this.cPublicKey.MaxLength = 256;
             this.cPublicKey.Name = "cPublicKey";
             this.cPublicKey.Size = new System.Drawing.Size(540, 28);
             this.cPublicKey.TabIndex = 16;
@@ -810,6 +645,7 @@ namespace NyarukoEye_Windows
             "32",
             "64"});
             this.cAESLength.Location = new System.Drawing.Point(37, 221);
+            this.cAESLength.MaxLength = 3;
             this.cAESLength.Name = "cAESLength";
             this.cAESLength.Size = new System.Drawing.Size(121, 28);
             this.cAESLength.TabIndex = 13;
@@ -941,6 +777,7 @@ namespace NyarukoEye_Windows
             "seed-ecb",
             "seed-ofb"});
             this.cSymmetric.Location = new System.Drawing.Point(36, 96);
+            this.cSymmetric.MaxLength = 30;
             this.cSymmetric.Name = "cSymmetric";
             this.cSymmetric.Size = new System.Drawing.Size(343, 28);
             this.cSymmetric.TabIndex = 10;
@@ -985,16 +822,6 @@ namespace NyarukoEye_Windows
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "类型标识";
             // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_90_s32_f_business_90_0nbg;
-            this.pictureBox12.Location = new System.Drawing.Point(37, 47);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(33, 26);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox12.TabIndex = 16;
-            this.pictureBox12.TabStop = false;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -1007,6 +834,7 @@ namespace NyarukoEye_Windows
             // cEncKeyType
             // 
             this.cEncKeyType.Location = new System.Drawing.Point(242, 180);
+            this.cEncKeyType.MaxLength = 8;
             this.cEncKeyType.Name = "cEncKeyType";
             this.cEncKeyType.Size = new System.Drawing.Size(100, 26);
             this.cEncKeyType.TabIndex = 14;
@@ -1024,6 +852,7 @@ namespace NyarukoEye_Windows
             // cEncType
             // 
             this.cEncType.Location = new System.Drawing.Point(242, 148);
+            this.cEncType.MaxLength = 8;
             this.cEncType.Name = "cEncType";
             this.cEncType.Size = new System.Drawing.Size(100, 26);
             this.cEncType.TabIndex = 12;
@@ -1041,6 +870,7 @@ namespace NyarukoEye_Windows
             // cKeyType
             // 
             this.cKeyType.Location = new System.Drawing.Point(242, 116);
+            this.cKeyType.MaxLength = 8;
             this.cKeyType.Name = "cKeyType";
             this.cKeyType.Size = new System.Drawing.Size(100, 26);
             this.cKeyType.TabIndex = 10;
@@ -1096,26 +926,6 @@ namespace NyarukoEye_Windows
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "内容上传";
             // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_116_s32_f_object_116_0nbg;
-            this.pictureBox14.Location = new System.Drawing.Point(38, 158);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(29, 32);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox14.TabIndex = 20;
-            this.pictureBox14.TabStop = false;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_63_s32_f_business_63_0nbg;
-            this.pictureBox13.Location = new System.Drawing.Point(38, 34);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(26, 32);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 20;
-            this.pictureBox13.TabStop = false;
-            // 
             // cPasswordB
             // 
             this.cPasswordB.AutoSize = true;
@@ -1131,7 +941,7 @@ namespace NyarukoEye_Windows
             // cUploadURL
             // 
             this.cUploadURL.Location = new System.Drawing.Point(38, 96);
-            this.cUploadURL.MaxLength = 10;
+            this.cUploadURL.MaxLength = 200;
             this.cUploadURL.Name = "cUploadURL";
             this.cUploadURL.Size = new System.Drawing.Size(747, 26);
             this.cUploadURL.TabIndex = 18;
@@ -1159,6 +969,7 @@ namespace NyarukoEye_Windows
             // cPassword
             // 
             this.cPassword.Location = new System.Drawing.Point(128, 250);
+            this.cPassword.MaxLength = 100;
             this.cPassword.Name = "cPassword";
             this.cPassword.PasswordChar = '*';
             this.cPassword.Size = new System.Drawing.Size(550, 26);
@@ -1177,6 +988,7 @@ namespace NyarukoEye_Windows
             // cUsername
             // 
             this.cUsername.Location = new System.Drawing.Point(128, 218);
+            this.cUsername.MaxLength = 100;
             this.cUsername.Name = "cUsername";
             this.cUsername.Size = new System.Drawing.Size(550, 26);
             this.cUsername.TabIndex = 13;
@@ -1222,13 +1034,211 @@ namespace NyarukoEye_Windows
             // 
             this.pictureBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox15.Image = global::NyarukoEye_Windows.Properties.Resources.NyarukoEye_alt;
+            this.pictureBox15.Image = global::NyarukoEye_Windows.Properties.Resources.NyarukoEye;
             this.pictureBox15.Location = new System.Drawing.Point(792, 11);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(32, 32);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox15.TabIndex = 12;
             this.pictureBox15.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_79_s32_f_business_79_0nbg;
+            this.pictureBox2.Location = new System.Drawing.Point(363, 180);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_30_s128_f_business_30_0nbg;
+            this.pictureBox1.Location = new System.Drawing.Point(39, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(129, 107);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_96_s32_f_business_96_1nbg;
+            this.pictureBox4.Location = new System.Drawing.Point(38, 160);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.pictureBox3.Location = new System.Drawing.Point(38, 36);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(33, 28);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 9;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
+            this.pictureBox6.Location = new System.Drawing.Point(43, 160);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(19, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 11;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_58_s32_f_business_58_0nbg;
+            this.pictureBox5.Location = new System.Drawing.Point(37, 40);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(33, 22);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 11;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_54_s32_f_object_54_0nbg;
+            this.pictureBox8.Location = new System.Drawing.Point(45, 187);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(19, 32);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 15;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.pictureBox7.Location = new System.Drawing.Point(37, 37);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(33, 28);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 14;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
+            this.pictureBox11.Location = new System.Drawing.Point(44, 283);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(18, 32);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 21;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_34_s32_f_object_34_0nbg;
+            this.pictureBox10.Location = new System.Drawing.Point(44, 158);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(18, 32);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 20;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_46_s32_f_object_46_0nbg;
+            this.pictureBox9.Location = new System.Drawing.Point(44, 35);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(21, 32);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 19;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_90_s32_f_business_90_0nbg;
+            this.pictureBox12.Location = new System.Drawing.Point(37, 47);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 16;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_116_s32_f_object_116_0nbg;
+            this.pictureBox14.Location = new System.Drawing.Point(38, 158);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 20;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_63_s32_f_business_63_0nbg;
+            this.pictureBox13.Location = new System.Drawing.Point(38, 34);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(26, 32);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 20;
+            this.pictureBox13.TabStop = false;
+            // 
+            // 打开INI配置文件ToolStripMenuItem
+            // 
+            this.打开INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_7_s32_f_business_7_0nbg;
+            this.打开INI配置文件ToolStripMenuItem.Name = "打开INI配置文件ToolStripMenuItem";
+            this.打开INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.打开INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(78, 21);
+            this.打开INI配置文件ToolStripMenuItem.Text = "打开(&O)";
+            this.打开INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.打开INI配置文件ToolStripMenuItem_Click_1);
+            // 
+            // 保存INI配置文件ToolStripMenuItem
+            // 
+            this.保存INI配置文件ToolStripMenuItem.Enabled = false;
+            this.保存INI配置文件ToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
+            this.保存INI配置文件ToolStripMenuItem.Name = "保存INI配置文件ToolStripMenuItem";
+            this.保存INI配置文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.保存INI配置文件ToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
+            this.保存INI配置文件ToolStripMenuItem.Text = "保存(&S)";
+            this.保存INI配置文件ToolStripMenuItem.Click += new System.EventHandler(this.保存INI配置文件ToolStripMenuItem_Click);
+            // 
+            // 另存为PToolStripMenuItem
+            // 
+            this.另存为PToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_35_s32_f_business_35_0nbg;
+            this.另存为PToolStripMenuItem.Name = "另存为PToolStripMenuItem";
+            this.另存为PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.另存为PToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
+            this.另存为PToolStripMenuItem.Text = "另存为(&A)";
+            this.另存为PToolStripMenuItem.Click += new System.EventHandler(this.另存为PToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.O)));
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 21);
+            this.toolStripMenuItem1.Text = "导入非明文配置文件(&I)";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 导出为加密配置文件IToolStripMenuItem
+            // 
+            this.导出为加密配置文件IToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_business_14_s32_f_business_14_0nbg;
+            this.导出为加密配置文件IToolStripMenuItem.Name = "导出为加密配置文件IToolStripMenuItem";
+            this.导出为加密配置文件IToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.导出为加密配置文件IToolStripMenuItem.Size = new System.Drawing.Size(159, 21);
+            this.导出为加密配置文件IToolStripMenuItem.Text = "导出非明文配置文件(&E)";
+            this.导出为加密配置文件IToolStripMenuItem.Click += new System.EventHandler(this.导出为加密配置文件IToolStripMenuItem_Click);
+            // 
+            // 退出QToolStripMenuItem
+            // 
+            this.退出QToolStripMenuItem.Image = global::NyarukoEye_Windows.Properties.Resources.f_f_object_130_s32_f_object_130_0nbg;
+            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
+            this.退出QToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(76, 21);
+            this.退出QToolStripMenuItem.Text = "退出(&X)";
+            this.退出QToolStripMenuItem.Click += new System.EventHandler(this.退出QToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1245,43 +1255,43 @@ namespace NyarukoEye_Windows
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "配置编辑器";
+            this.Text = "客户端配置编辑器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tLevel)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cSleep)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cWorkSleep)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

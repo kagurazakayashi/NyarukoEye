@@ -176,7 +176,7 @@
             this.txtPublicPEM.Location = new System.Drawing.Point(3, 3);
             this.txtPublicPEM.Multiline = true;
             this.txtPublicPEM.Name = "txtPublicPEM";
-            this.txtPublicPEM.Size = new System.Drawing.Size(617, 476);
+            this.txtPublicPEM.Size = new System.Drawing.Size(617, 469);
             this.txtPublicPEM.TabIndex = 2;
             this.txtPublicPEM.TextChanged += new System.EventHandler(this.txtPublicPEM_TextChanged);
             // 
@@ -201,7 +201,7 @@
             this.txtAES.Location = new System.Drawing.Point(3, 3);
             this.txtAES.Multiline = true;
             this.txtAES.Name = "txtAES";
-            this.txtAES.Size = new System.Drawing.Size(617, 476);
+            this.txtAES.Size = new System.Drawing.Size(617, 469);
             this.txtAES.TabIndex = 3;
             this.txtAES.TextChanged += new System.EventHandler(this.txtAES_TextChanged);
             // 
@@ -223,7 +223,7 @@
             this.txtText.Location = new System.Drawing.Point(3, 3);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(617, 476);
+            this.txtText.Size = new System.Drawing.Size(617, 469);
             this.txtText.TabIndex = 4;
             this.txtText.Text = "在此输入测试用文本";
             this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
@@ -405,6 +405,7 @@
             "seed-ecb",
             "seed-ofb"});
             this.txtSecMode.Location = new System.Drawing.Point(126, 53);
+            this.txtSecMode.MaxLength = 30;
             this.txtSecMode.Name = "txtSecMode";
             this.txtSecMode.Size = new System.Drawing.Size(154, 28);
             this.txtSecMode.TabIndex = 11;
@@ -464,6 +465,7 @@
             "32",
             "64"});
             this.txtAESKeyLength.Location = new System.Drawing.Point(211, 53);
+            this.txtAESKeyLength.MaxLength = 4;
             this.txtAESKeyLength.Name = "txtAESKeyLength";
             this.txtAESKeyLength.Size = new System.Drawing.Size(69, 28);
             this.txtAESKeyLength.TabIndex = 9;
@@ -522,6 +524,7 @@
             // txtTo
             // 
             this.txtTo.Location = new System.Drawing.Point(104, 78);
+            this.txtTo.MaxLength = 256;
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(371, 26);
             this.txtTo.TabIndex = 8;
@@ -530,6 +533,7 @@
             // txtFrom
             // 
             this.txtFrom.Location = new System.Drawing.Point(104, 32);
+            this.txtFrom.MaxLength = 256;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(371, 26);
             this.txtFrom.TabIndex = 7;
@@ -681,6 +685,7 @@
             "2048",
             "4096"});
             this.txtKeyLength.Location = new System.Drawing.Point(211, 78);
+            this.txtKeyLength.MaxLength = 4;
             this.txtKeyLength.Name = "txtKeyLength";
             this.txtKeyLength.Size = new System.Drawing.Size(69, 28);
             this.txtKeyLength.TabIndex = 5;
@@ -771,6 +776,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(213, 7);
+            this.comboBox1.MaxLength = 256;
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(1018, 28);
             this.comboBox1.TabIndex = 6;
