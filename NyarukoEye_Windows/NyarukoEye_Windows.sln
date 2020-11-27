@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigEditer", "ConfigEdite
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorun", "Autorun\Autorun.csproj", "{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigEditerServer", "ConfigEditerServer\ConfigEditerServer.csproj", "{3D08E3E3-274A-43B8-A65F-1E7DEEBFF593}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B21D97D-8EAD-463C-948C-AE4DC53AFDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D08E3E3-274A-43B8-A65F-1E7DEEBFF593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D08E3E3-274A-43B8-A65F-1E7DEEBFF593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D08E3E3-274A-43B8-A65F-1E7DEEBFF593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D08E3E3-274A-43B8-A65F-1E7DEEBFF593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
