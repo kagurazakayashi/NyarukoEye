@@ -301,12 +301,12 @@ namespace NyarukoEye_Windows
             {
                 tabPrivatePEM.Text = "[!] 非对称私钥";
             }
-            btnExpPri.Enabled = btnenable;
-            btnNewPubKey.Enabled = btnenable;
-            btnDecTxt.Enabled = btnenable;
             try
             {
                 File.WriteAllText(tempPrivateKeyFile, txtPrivatePEM.Text);
+                btnExpPri.Enabled = btnenable;
+                btnNewPubKey.Enabled = btnenable;
+                btnDecTxt.Enabled = btnenable;
             }
             catch (Exception err)
             {
@@ -330,6 +330,7 @@ namespace NyarukoEye_Windows
             try
             {
                 File.WriteAllText(tempPublicKeyFile, txtPublicPEM.Text);
+                btnExpPub.Enabled = btnenable;
             }
             catch (Exception err)
             {

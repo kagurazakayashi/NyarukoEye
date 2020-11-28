@@ -61,7 +61,7 @@ namespace NyarukoEye_Windows
             {
                 printf("停止...");
                 screenshotThreadWorking = false;
-                Environment.Exit(1);
+                Environment.Exit(0);
                 return;
             };
             string fileDir = Environment.CurrentDirectory;
@@ -264,7 +264,7 @@ namespace NyarukoEye_Windows
             printf("结束屏幕截图线程 " + nowThreadID + " 。", 0);
             screenshotThreadWorking = false;
             printf("退出。");
-            Environment.Exit(1);
+            Environment.Exit(0);
         }
         static private void encryptThreadRun()
         {
