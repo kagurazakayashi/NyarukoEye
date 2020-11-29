@@ -24,6 +24,8 @@ namespace NELauncher
         private const int WM_CREATE = 0x1; //窗口消息-创建
         private const int WM_DESTROY = 0x2; //窗口消息-销毁
         private const int Space = 0x3572; //热键ID
+        static UInt16 showMode = 0; // 0 始终隐藏 1 按快捷键显示 2 一直显示
+        static bool hideing = true;
         public Form1()
         {
             InitializeComponent();
@@ -32,26 +34,29 @@ namespace NELauncher
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
-            switch (m.Msg)
+            if (showMode >= 1)
             {
-                case WM_HOTKEY: //窗口消息-热键ID
-                    switch (m.WParam.ToInt32())
-                    {
-                        case Space: //热键ID
-                            winonoff();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                case WM_CREATE: //窗口消息-创建
-                    HotKeys.RegKey(Handle, Space, HotKeys.KeyModifiers.Ctrl | HotKeys.KeyModifiers.Shift | HotKeys.KeyModifiers.Alt, Keys.F11);
-                    break;
-                case WM_DESTROY: //窗口消息-销毁
-                    HotKeys.UnRegKey(Handle, Space); //销毁热键
-                    break;
-                default:
-                    break;
+                switch (m.Msg)
+                {
+                    case WM_HOTKEY: //窗口消息-热键ID
+                        switch (m.WParam.ToInt32())
+                        {
+                            case Space: //热键ID
+                                winonoff();
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case WM_CREATE: //窗口消息-创建
+                        HotKeys.RegKey(Handle, Space, HotKeys.KeyModifiers.Ctrl | HotKeys.KeyModifiers.Shift | HotKeys.KeyModifiers.Alt, Keys.F11);
+                        break;
+                    case WM_DESTROY: //窗口消息-销毁
+                        HotKeys.UnRegKey(Handle, Space); //销毁热键
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -63,6 +68,11 @@ namespace NELauncher
                 //listBox1.Items.Add("[" + DateTime.Now.ToString() + "] 找不到可执行文件： " + exeName);
                 Application.Exit();
                 return;
+            }
+            if (File.Exists("NELauncher.cfg"))
+            {
+                string cfg = File.ReadAllText("NELauncher.cfg");
+                showMode = UInt16.Parse(cfg);
             }
             listBoxDelegate = delegate (string n)
             {
@@ -86,22 +96,23 @@ namespace NELauncher
                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
             };
             start();
-            winonoff(0);
+            if (showMode == 2) winonoff(1);
+            else winonoff(0);
         }
 
         private void winonoff(Int16 mode = -1)
         {
-            bool sw = !ShowInTaskbar;
+            hideing = !hideing;
             if (mode == 0)
             {
-                sw = false;
+                hideing = false;
             }
             else if (mode == 1)
             {
-                sw = true;
+                hideing = true;
             }
-            ShowInTaskbar = sw;
-            Visible = sw;
+            ShowInTaskbar = hideing;
+            Visible = hideing;
         }
 
         private void start()
@@ -210,11 +221,17 @@ namespace NELauncher
         {
             Opacity = 1.00;
             timer1.Enabled = false;
+            if (showMode == 0) Environment.Exit(0);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             stop();
+        }
+
+        private void 停止监控F5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

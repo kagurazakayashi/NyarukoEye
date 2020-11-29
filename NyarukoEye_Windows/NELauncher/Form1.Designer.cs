@@ -37,6 +37,7 @@ namespace NELauncher
             this.重启服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.结束退出F4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.停止监控F5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,8 @@ namespace NELauncher
             this.启动服务ToolStripMenuItem,
             this.停止服务ToolStripMenuItem,
             this.重启服务ToolStripMenuItem,
-            this.结束退出F4ToolStripMenuItem});
+            this.结束退出F4ToolStripMenuItem,
+            this.停止监控F5ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(719, 25);
@@ -105,6 +107,14 @@ namespace NELauncher
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // 停止监控F5ToolStripMenuItem
+            // 
+            this.停止监控F5ToolStripMenuItem.Name = "停止监控F5ToolStripMenuItem";
+            this.停止监控F5ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.停止监控F5ToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
+            this.停止监控F5ToolStripMenuItem.Text = "停止监控(F5)";
+            this.停止监控F5ToolStripMenuItem.Click += new System.EventHandler(this.停止监控F5ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -136,6 +146,7 @@ namespace NELauncher
         private System.Windows.Forms.ToolStripMenuItem 重启服务ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 结束退出F4ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem 停止监控F5ToolStripMenuItem;
     }
 }
 
