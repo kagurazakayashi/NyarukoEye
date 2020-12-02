@@ -295,7 +295,7 @@ func mainHandleFunc(w http.ResponseWriter, req *http.Request) {
 		toPath := strings.Join(toPatharr, ".")
 		// fmt.Printf("paramTime:[%v]\n", paramTimeInt)
 		// Linux
-		// isdone, returnstring, err := rsabatDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
+		// isdone, returnstring, err := rsashDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
 		// windows
 		isdone, returnstring, err := rsacmdDecrypt(confs["filepath"], keyPath, filePath, toPath, fileName, tarr, reip)
 		if returnstring != "" {

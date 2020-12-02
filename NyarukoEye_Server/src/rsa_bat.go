@@ -147,7 +147,7 @@ func rsacmdDecrypt(mainPath string, keyPath string, rsaPath string, toPath strin
 	return true, "", nil
 }
 
-func rsabatDecrypt(mainPath string, keyPath string, rsaPath string, toPath string, filename string, date []string, reip string) (bool, string, error) {
+func rsashDecrypt(mainPath string, keyPath string, rsaPath string, toPath string, filename string, date []string, reip string) (bool, string, error) {
 	// println(shPath)
 
 	//生成sh路径
