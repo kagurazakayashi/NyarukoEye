@@ -21,11 +21,11 @@ AdminQuietInstCmd=%AdminQuietInstCmd%
 UserQuietInstCmd=%UserQuietInstCmd%
 SourceFiles=SourceFiles
 [Strings]
-InstallPrompt=
+InstallPrompt=您正在准备配置 NyarukoEye v1.0.0 。如果之前已经安装，请确认是否所有后台进程都已经退出。
 DisplayLicense=F:\Github\NyarukoEye\NyarukoEye_Windows\Build\Installer\LICENSE.txt
-FinishMessage=
+FinishMessage=文件操作完毕。请在首次启动之前，详细阅读软件说明，生成配置文件后再启动。
 TargetName=F:\Github\NyarukoEye\NyarukoEye_Windows\Build\Installer\NyarukoEye_Install.EXE
-FriendlyName=NyarukoEye 安装
+FriendlyName=NyarukoEye v1.0.0 安装
 AppLaunched=Installer.exe
 PostInstallCmd=<None>
 AdminQuietInstCmd=
@@ -44,8 +44,10 @@ FILE10="INI.dll"
 FILE11="NetUL.dll"
 FILE12="RestSharp.dll"
 FILE13="Shot.dll"
+FILE14="README.pdf"
 [SourceFiles]
 SourceFiles0=F:\Github\NyarukoEye\NyarukoEye_Windows\Build\Release\
+SourceFiles1=F:\Github\NyarukoEye\
 [SourceFiles0]
 %FILE0%=
 %FILE1%=
@@ -61,3 +63,5 @@ SourceFiles0=F:\Github\NyarukoEye\NyarukoEye_Windows\Build\Release\
 %FILE11%=
 %FILE12%=
 %FILE13%=
+[SourceFiles1]
+%FILE14%=
