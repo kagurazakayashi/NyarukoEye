@@ -71,7 +71,6 @@ namespace NyarukoEye_Windows
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(151, 26);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "0wew0";
             // 
             // txtPassword
             // 
@@ -83,7 +82,6 @@ namespace NyarukoEye_Windows
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(151, 26);
             this.txtPassword.TabIndex = 3;
-            this.txtPassword.Text = "123698745";
             // 
             // label2
             // 
@@ -215,7 +213,7 @@ namespace NyarukoEye_Windows
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(710, 26);
             this.txtURL.TabIndex = 1;
-            this.txtURL.Text = "http://192.168.2.240:1818/punch_the_clock";
+            this.txtURL.Text = "http://127.0.0.1:1818/api";
             // 
             // label3
             // 

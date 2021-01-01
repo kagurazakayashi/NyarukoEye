@@ -24,10 +24,8 @@ namespace Installer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i < checkedListBox1.Items.Count; i++)
-            {
-                checkedListBox1.SetItemChecked(i, true);
-            }
+            checkedListBox1.SetItemChecked(1, true);
+            checkedListBox1.SetItemChecked(4, true);
         }
 
         private void textBox1_Click(object sender, EventArgs e)
@@ -164,6 +162,42 @@ namespace Installer
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "临时文件清除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, false);
+            }
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    checkedListBox1.SetItemChecked(1, true);
+                    checkedListBox1.SetItemChecked(4, true);
+                    break;
+                case 1:
+                    checkedListBox1.SetItemChecked(1, true);
+                    checkedListBox1.SetItemChecked(2, true);
+                    checkedListBox1.SetItemChecked(4, true);
+                    checkedListBox1.SetItemChecked(5, true);
+                    checkedListBox1.SetItemChecked(6, true);
+                    break;
+                case 2:
+                    checkedListBox1.SetItemChecked(0, true);
+                    break;
+                case 3:
+                    checkedListBox1.SetItemChecked(0, true);
+                    checkedListBox1.SetItemChecked(3, true);
+                    checkedListBox1.SetItemChecked(5, true);
+                    break;
+                default:
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    {
+                        checkedListBox1.SetItemChecked(i, true);
+                    }
+                    break;
             }
         }
     }
