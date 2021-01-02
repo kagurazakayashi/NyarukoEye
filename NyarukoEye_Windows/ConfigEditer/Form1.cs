@@ -14,7 +14,6 @@ namespace NyarukoEye_Windows
 {
     public partial class Form1 : Form
     {
-        private string filePwd = "UYH7awo9p2xZL5yBWOtDS04AUfFgDQJl";
         private string systemTempDir = "";
         private string nowOpenINI = "";
         public Form1()
@@ -250,7 +249,7 @@ namespace NyarukoEye_Windows
                     try
                     {
                         string txt = File.ReadAllText(openFileDialog1.FileName);
-                        txt = StringAES.Decrypt(txt, filePwd);
+                        txt = StringAES.Decrypt(txt, cConfPwd.Text);
                         File.WriteAllText(saveFileDialog1.FileName, txt);
                         nowOpenINI = saveFileDialog1.FileName;
                         Text = "配置编辑器 - " + nowOpenINI;
@@ -281,7 +280,7 @@ namespace NyarukoEye_Windows
                         try
                         {
                             string txt = File.ReadAllText(nowOpenINI);
-                            txt = StringAES.Encrypt(txt, filePwd);
+                            txt = StringAES.Encrypt(txt, cConfPwd.Text);
                             File.WriteAllText(saveFileDialog1.FileName, txt);
                         }
                         catch (Exception err)
