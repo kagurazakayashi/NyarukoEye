@@ -11,18 +11,22 @@ namespace NyarukoEye_Windows
     {
         static public string[] httpUploadFile(string url, string[] files, Dictionary<string, string> stringDict = null)
         {
-            var client = new RestClient(url);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            foreach (var item in stringDict)
+            RestClientOptions options = new RestClientOptions(url)
+            {
+                Timeout = TimeSpan.FromSeconds(30),
+            };
+            RestClient client = new RestClient(options);
+            RestRequest request = new RestRequest(url, Method.Post);
+
+            foreach (KeyValuePair<string,string> item in stringDict)
             {
                 request.AddParameter(item.Key, item.Value);
             }
-            foreach (var item in files)
+            foreach (string item in files)
             {
                 request.AddFile("files", item);
             }
-            IRestResponse response = client.Execute(request);
+            RestResponse response = client.GetAsync(request).Result;
             string[] r = { response.ErrorMessage, response.Content };
             return r;
         }

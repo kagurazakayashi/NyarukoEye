@@ -100,7 +100,7 @@ namespace NyarukoEye_Windows
                 }
                 catch (Exception err)
                 {
-                    printf("找不到配置文件！", 3);
+                    printf("找不到配置文件！" + err.Message, 3);
                     return -1;
                 }
             }
